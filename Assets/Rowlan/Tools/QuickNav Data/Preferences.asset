@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6db90f1c0c896d48bdb75d58952248a, type: 3}
+  m_Name: Preferences
+  m_EditorClassIdentifier: 
+  selectedTabIndex: 0
+  historyItemsMax: 20
+  history:
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-53266228-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-3783557470937405541-740054558
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-1013958736-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-793437579-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-3783557470937405541-740054558
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-53266228-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-3783557470937405541-740054558
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-3783557470937405541-740054558
+  favorites:
+  - context: 1
+    title: 
+    unityObject: {fileID: 102900000, guid: bde203bbc0ca27440bc5b8ab5875ddd6, type: 3}
+    objectGuid: GlobalObjectId_V1-1-bde203bbc0ca27440bc5b8ab5875ddd6-102900000-0
+  - context: 1
+    title: 
+    unityObject: {fileID: 102900000, guid: 61715beb13e8488aa1bda3898b61a153, type: 3}
+    objectGuid: GlobalObjectId_V1-1-61715beb13e8488aa1bda3898b61a153-102900000-0
