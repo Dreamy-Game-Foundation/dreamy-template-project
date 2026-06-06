@@ -244,6 +244,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 53266233}
     m_Modifications:
+    - target: {fileID: 2810421103934747954, guid: 885d944c7b874ec69b2c60132be38201, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bb129f0554ce5482e97e81f0688f3a7a, type: 3}
     - target: {fileID: 3783557470937405541, guid: 885d944c7b874ec69b2c60132be38201, type: 3}
       propertyPath: m_Name
       value: '[LoadingScreen]'

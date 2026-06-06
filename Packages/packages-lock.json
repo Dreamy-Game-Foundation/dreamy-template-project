@@ -30,6 +30,15 @@
       "dependencies": {},
       "hash": "501e308b633463f0a89c3a0edab35ca3c6eddc61"
     },
+    "com.dreamy.dataconfig": {
+      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.dataconfig.git#v0.2.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      },
+      "hash": "da02d9f94962b441a54470f18d18518a0e4d4cb4"
+    },
     "com.dreamy.datasave": {
       "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.datasave.git#v0.1.0",
       "depth": 0,

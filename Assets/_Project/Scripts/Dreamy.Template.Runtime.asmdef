@@ -4,6 +4,7 @@
     "references": [
         "Dreamy.Core.Runtime",
         "Dreamy.Datasave.Runtime",
+        "Dreamy.DataConfig.Runtime",
         "Dreamy.Assets.Runtime",
         "Dreamy.UI.Runtime",
         "UniTask",

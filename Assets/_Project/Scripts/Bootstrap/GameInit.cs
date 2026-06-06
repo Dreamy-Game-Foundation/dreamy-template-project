@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Dreamy.Core;
+using Dreamy.DataConfig;
 using Dreamy.Datasave;
 using UnityEngine;
 
@@ -12,7 +13,9 @@ namespace Dreamy.Template
 
         private async void Start()
         {
-            await UniTask.Yield();
+            await UniTask.WaitUntil(
+                () => ServiceLocator.IsRegistered<IDataConfigService>(),
+                cancellationToken: this.GetCancellationTokenOnDestroy());
 
             SetInitSetting();
             if (runSmokeTest)
