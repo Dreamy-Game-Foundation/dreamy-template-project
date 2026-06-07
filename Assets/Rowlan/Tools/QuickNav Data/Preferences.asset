@@ -15,30 +15,6 @@ MonoBehaviour:
   selectedTabIndex: 0
   historyItemsMax: 20
   history:
-  - context: 1
-    title: 
-    unityObject: {fileID: 4900000, guid: d400829b4ede41b89fcfce1b1d5716c5, type: 3}
-    objectGuid: GlobalObjectId_V1-1-d400829b4ede41b89fcfce1b1d5716c5-4900000-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 102900000, guid: dee7044efffe4d24f9898fee1074a3b8, type: 3}
-    objectGuid: GlobalObjectId_V1-1-dee7044efffe4d24f9898fee1074a3b8-102900000-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 102900000, guid: a1446b0dea7cf2d478ebdf4a87e289b4, type: 3}
-    objectGuid: GlobalObjectId_V1-1-a1446b0dea7cf2d478ebdf4a87e289b4-102900000-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-793437579-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-53266228-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 102900000, guid: a1446b0dea7cf2d478ebdf4a87e289b4, type: 3}
-    objectGuid: GlobalObjectId_V1-1-a1446b0dea7cf2d478ebdf4a87e289b4-102900000-0
   - context: 0
     title: 
     unityObject: {fileID: 0}
@@ -95,6 +71,30 @@ MonoBehaviour:
     title: 
     unityObject: {fileID: 0}
     objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-1401549907-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-3783557470937405541-1883829395
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-1401549907-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-1013958736-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-3783557470664207606-0
   favorites:
   - context: 1
     title: 

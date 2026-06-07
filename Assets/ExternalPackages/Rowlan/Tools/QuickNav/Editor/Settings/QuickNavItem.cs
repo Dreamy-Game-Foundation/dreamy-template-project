@@ -76,7 +76,6 @@ namespace Rowlan.Tools.QuickNav
             GlobalObjectId id;
             if (!GlobalObjectId.TryParse( objectGuid, out id))
             {
-                Debug.Log("obj is null for " + objectGuid);
                 return;
             }
 

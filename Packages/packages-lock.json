@@ -24,11 +24,11 @@
       "hash": "69150458909824dbc151e7921328e6ac16085b04"
     },
     "com.dreamy.core": {
-      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.core.git#v1.1.0",
+      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.core.git#v1.1.1",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "501e308b633463f0a89c3a0edab35ca3c6eddc61"
+      "hash": "cba1ef9e7d60792317f820acb543105fdac06257"
     },
     "com.dreamy.dataconfig": {
       "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.dataconfig.git#v0.2.0",
@@ -47,6 +47,15 @@
         "com.unity.nuget.newtonsoft-json": "3.2.1"
       },
       "hash": "e510e72a55ab4b55816b0d61ffc0c9011413b1f4"
+    },
+    "com.dreamy.editor-tools": {
+      "version": "https://github.com/Dreamy-Game-Foundation/-com.dreamy.editor-tools.git#v0.2.1",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      },
+      "hash": "fc7073ebb5b8cf757ba69d46fd4cb5c411aea8b0"
     },
     "com.dreamy.ui": {
       "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.ui.git#v0.1.0",

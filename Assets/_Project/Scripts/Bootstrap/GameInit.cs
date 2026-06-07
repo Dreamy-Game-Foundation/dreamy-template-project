@@ -2,26 +2,41 @@ using Cysharp.Threading.Tasks;
 using Dreamy.Core;
 using Dreamy.DataConfig;
 using Dreamy.Datasave;
+using Dreamy.Template.Demo;
 using UnityEngine;
+using Base.LoadScene;
 
 namespace Dreamy.Template
 {
     public sealed class GameInit : MonoBehaviour
     {
         [SerializeField] private bool runSmokeTest = true;
-        [SerializeField] private int targetFPS = 60;
 
         private async void Start()
         {
             await UniTask.WaitUntil(
-                () => ServiceLocator.IsRegistered<IDataConfigService>(),
+                () => GameInstaller.State is
+                    BootstrapState.Ready or BootstrapState.Failed,
                 cancellationToken: this.GetCancellationTokenOnDestroy());
+
+            if (GameInstaller.State == BootstrapState.Failed)
+            {
+                Debug.LogError(
+                    $"[DreamyTemplate] Bootstrap failed: " +
+                    $"{GameInstaller.InitializationException}");
+                return;
+            }
 
             SetInitSetting();
             if (runSmokeTest)
             {
                 RunSmokeTest();
             }
+
+        SceneLoader.Instance.LoadScene(Address.MainScene);
+          
+
+            TemplateDemoApp.Create();
         }
 
         private static void RunSmokeTest()
@@ -39,9 +54,13 @@ namespace Dreamy.Template
             Debug.Log($"[DreamyTemplate] Bootstrap OK. LaunchCount={save.LaunchCount}");
         }
 
-        void SetInitSetting()
+        private static void SetInitSetting()
         {
-            Application.targetFrameRate = targetFPS;
+            IDataConfigService dataConfig =
+                ServiceLocator.Get<IDataConfigService>();
+            GameSettingsConfig settings =
+                dataConfig.GetTable<GameSettingsConfig>();
+            Application.targetFrameRate = settings.TargetFrameRate;
         }
     }
 }

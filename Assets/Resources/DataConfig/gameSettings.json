@@ -1,5 +1,8 @@
 {
   "schemaVersion": 1,
   "startingCoins": 1000,
-  "musicVolume": 1
+  "musicVolume": 1,
+  "targetFrameRate": 60,
+  "poolPreloadCount": 8,
+  "demoDurationSeconds": 20
 }

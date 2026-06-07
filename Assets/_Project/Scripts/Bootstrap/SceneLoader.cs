@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Cysharp.Threading.Tasks;
 using Dreamy.Core;
 using UnityEngine;
@@ -11,19 +11,20 @@ namespace Base.LoadScene
         [SerializeField] private UILoadingScreen loadingScreen;
         [SerializeField] private float minimumLoadingDuration = 1.5f;
 
+        public event Action OnScenePreloading;
         public event Action<float> OnSceneLoading;
         public event Action OnSceneLoaded;
         public event Action OnLastSceneHidden;
         public event Action OnScenePresented;
 
-        private AsyncOperation _loadOperation;
         private bool _isLoading;
+        
 
         public async UniTask LoadScene(string sceneName)
         {
             if (_isLoading)
             {
-                Debug.LogWarning($"Scene loading already in progress.");
+                Debug.LogWarning($"SceneLoader is already loading a scene.");
                 return;
             }
 
@@ -33,20 +34,22 @@ namespace Base.LoadScene
             {
                 InitializeLoading();
 
-                _loadOperation = SceneManager.LoadSceneAsync(
+                OnScenePreloading?.Invoke();
+
+                var loadOperation = SceneManager.LoadSceneAsync(
                     sceneName,
                     LoadSceneMode.Single);
 
-                _loadOperation.allowSceneActivation = false;
+                loadOperation.allowSceneActivation = false;
 
                 float elapsedTime = 0f;
 
-                while (_loadOperation.progress < 0.9f)
+                while (loadOperation.progress < 0.9f)
                 {
                     elapsedTime += Time.unscaledDeltaTime;
 
                     float progress =
-                        (_loadOperation.progress / 0.9f) * 0.8f;
+                        (loadOperation.progress / 0.9f) * 0.8f;
 
                     ReportProgress(progress);
 
@@ -70,15 +73,17 @@ namespace Base.LoadScene
 
                 ReportProgress(1f);
 
-                _loadOperation.allowSceneActivation = true;
+                loadOperation.allowSceneActivation = true;
 
-                await UniTask.WaitUntil(() => _loadOperation.isDone);
+                await UniTask.WaitUntil(
+                    () => loadOperation.isDone);
 
                 await UniTask.Delay(
-                    500,
+                    300,
                     ignoreTimeScale: true);
 
                 loadingScreen.Hide();
+
                 OnScenePresented?.Invoke();
             }
             finally
@@ -101,13 +106,13 @@ namespace Base.LoadScene
 
         private void Cleanup()
         {
-            _loadOperation = null;
             _isLoading = false;
 
+            OnScenePreloading = null;
             OnSceneLoading = null;
             OnSceneLoaded = null;
-            OnScenePresented = null;
             OnLastSceneHidden = null;
+            OnScenePresented = null;
         }
     }
 }

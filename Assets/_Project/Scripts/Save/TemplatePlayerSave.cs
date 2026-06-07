@@ -8,5 +8,6 @@ namespace Dreamy.Template
     {
         public int LaunchCount;
         public int Coins;
+        public int TapRushHighScore;
     }
 }

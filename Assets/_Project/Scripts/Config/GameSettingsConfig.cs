@@ -8,5 +8,11 @@ namespace Dreamy.Template
         public int StartingCoins { get; set; }
 
         public float MusicVolume { get; set; }
+
+        public int TargetFrameRate { get; set; } = 60;
+
+        public int PoolPreloadCount { get; set; } = 8;
+
+        public float DemoDurationSeconds { get; set; } = 20f;
     }
 }

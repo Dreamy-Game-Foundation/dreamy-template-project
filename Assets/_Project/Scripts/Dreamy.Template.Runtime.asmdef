@@ -8,7 +8,11 @@
         "Dreamy.Assets.Runtime",
         "Dreamy.UI.Runtime",
         "UniTask",
-        "Unity.TextMeshPro"
+        "Unity.TextMeshPro",
+        "LeanPool",
+        "Unity.ResourceManager",
+        "Unity.Addressables",
+        "UniTask.Addressables"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -2,6 +2,8 @@ using Cysharp.Threading.Tasks;
 using Dreamy.Core;
 using Dreamy.DataConfig;
 using Dreamy.Datasave;
+using Dreamy.Template.Pooling;
+using System;
 using UnityEngine;
 
 namespace Dreamy.Template
@@ -15,10 +17,25 @@ namespace Dreamy.Template
         private MonoBehaviour remoteConfigProvider = null;
 
         private IDatasaveService datasaveService;
+        private IPoolService poolService;
+
+        public static BootstrapState State { get; private set; }
+
+        public static Exception InitializationException { get; private set; }
 
         private void Awake()
         {
+            DontDestroyOnLoad(gameObject);
+            State = BootstrapState.Initializing;
             RegisterServicesAsync().Forget();
+        }
+
+        private void OnDestroy()
+        {
+            if (poolService is IDisposable disposable)
+            {
+                disposable.Dispose();
+            }
         }
 
         private void OnApplicationPause(bool pauseStatus)
@@ -36,9 +53,26 @@ namespace Dreamy.Template
 
         private async UniTaskVoid RegisterServicesAsync()
         {
+            try
+            {
+                RegisterDatasave();
+                RegisterPool();
+                await RegisterDataConfigAsync();
+                State = BootstrapState.Ready;
+            }
+            catch (Exception exception)
+            {
+                InitializationException = exception;
+                State = BootstrapState.Failed;
+                Debug.LogException(exception);
+            }
+        }
+
+        private void RegisterDatasave()
+        {
             if (!ServiceLocator.IsRegistered<IDatasaveService>())
             {
-                var options = new DatasaveOptions
+                DatasaveOptions options = new()
                 {
                     PrettyPrint = Application.isEditor && prettySaveInEditor,
                     Codec = new PlainTextSaveCodec()
@@ -51,7 +85,23 @@ namespace Dreamy.Template
             {
                 datasaveService = ServiceLocator.Get<IDatasaveService>();
             }
+        }
 
+        private void RegisterPool()
+        {
+            if (!ServiceLocator.IsRegistered<IPoolService>())
+            {
+                poolService = new LeanPoolService();
+                ServiceLocator.Register<IPoolService>(poolService);
+            }
+            else
+            {
+                poolService = ServiceLocator.Get<IPoolService>();
+            }
+        }
+
+        private async UniTask RegisterDataConfigAsync()
+        {
             if (!ServiceLocator.IsRegistered<IDataConfigService>())
             {
                 IRemoteConfigProvider remoteProvider =
@@ -67,9 +117,6 @@ namespace Dreamy.Template
                 ServiceLocator.Register<IDataConfigService>(dataConfigService);
                 Debug.Log(
                     $"[DreamyTemplate] Loaded {configCount} data config(s).");
-                var testConfig = dataConfigService.GetTable<GameSettingsConfig>();
-                Debug.Log(
-                    $"[DreamyTemplate] Loaded {testConfig.GetType()} with {testConfig.StartingCoins} and {testConfig.MusicVolume}");
             }
         }
 

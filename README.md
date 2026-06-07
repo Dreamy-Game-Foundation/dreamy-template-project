@@ -1,49 +1,51 @@
 # Dreamy Template Project
 
-Starter Unity project for Dreamy internal games.
+Starter project for internal Dreamy Unity games.
 
-## What This Template Wires
+## Included
 
-- `com.dreamy.core`
-- `com.dreamy.datasave`
-- `com.dreamy.assets`
-- `com.dreamy.ui`
-- `com.dreamy.editor-tools`
-- UniTask
-- DOTween
-- Addressables
-- Newtonsoft JSON
+- Git-based Dreamy packages: Core, DataSave, DataConfig, Assets, UI, and Editor Tools
+- UniTask, DOTween, Addressables, Newtonsoft JSON, and LeanPool
+- Bootstrap service registration through `GameInstaller`
+- `IPoolService` backed by LeanPool
+- Runtime Home panel and Tap Rush demo
+- JSON game settings and persistent high score
 
-Current package references use Git URLs with `?path=` so the template can update packages from the shared repository:
+## Run
 
-```json
-"com.dreamy.core": "https://gitlab.com/trinhtuu.05/unitybaseproject.git?path=/Packages/com.dreamy.core#dev"
-```
+Open `Assets/_Project/Scenes/Bootstrap.unity` and enter Play Mode. The bootstrap registers services, loads `MainScene` through `SceneLoader`, then creates the Home panel and Tap Rush demo.
 
-For stable releases, replace `#dev` with a tag or commit hash.
-
-## First Scene Setup
-
-Create or open the bootstrap scene and add:
-
-- `GameInstaller`
-- `GameInit`
-- `PanelManager` on the UI root canvas when UI is needed
-
-Or generate it from Unity:
+## Scene Flow
 
 ```text
-Tools/Dreamy/Template/Create Bootstrap Scene
+Bootstrap -> initialize services -> load MainScene -> show Home/demo
 ```
 
-Scripts live under:
+`SceneLoader.LoadAsync` reports normalized progress through `ProgressChanged`, so a game-specific loading screen can subscribe without changing `GameInit`.
 
-```text
-Assets/_DreamyTemplate/Scripts
+## Pooling
+
+Game code depends on `IPoolService`; LeanPool remains a template dependency rather than part of `com.dreamy.core`.
+
+```csharp
+IPoolService pool = ServiceLocator.Get<IPoolService>();
+GameObject instance = pool.Spawn(prefab, position, rotation);
+pool.Despawn(instance);
 ```
 
-Detailed notes:
+Preload shared prefabs during bootstrap or feature initialization:
 
-```text
-Assets/_DreamyTemplate/Docs/README_TEMPLATE.md
+```csharp
+pool.Preload(prefab, preloadCount: 8, capacity: 16);
 ```
+
+## Project Defaults
+
+- Asset serialization: Force Text
+- Color space: Linear
+- Incremental GC: enabled
+- Input handling: Both
+- Android: ARM64 and IL2CPP
+- First build scene: Bootstrap
+
+Scene creation and template validation are intentionally manual. The template does not install editor commands that create or repair scenes.
