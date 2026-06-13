@@ -2,7 +2,6 @@ using Cysharp.Threading.Tasks;
 using Dreamy.Core;
 using Dreamy.DataConfig;
 using Dreamy.Datasave;
-using Dreamy.Template.Pooling;
 using System;
 using UnityEngine;
 
@@ -13,11 +12,7 @@ namespace Dreamy.Template
     {
         [SerializeField] private bool prettySaveInEditor = true;
 
-        [Tooltip("Optional component implementing IRemoteConfigProvider.")] [SerializeField]
-        private MonoBehaviour remoteConfigProvider = null;
-
         private IDatasaveService datasaveService;
-        private IPoolService poolService;
 
         public static BootstrapState State { get; private set; }
 
@@ -28,14 +23,6 @@ namespace Dreamy.Template
             DontDestroyOnLoad(gameObject);
             State = BootstrapState.Initializing;
             RegisterServicesAsync().Forget();
-        }
-
-        private void OnDestroy()
-        {
-            if (poolService is IDisposable disposable)
-            {
-                disposable.Dispose();
-            }
         }
 
         private void OnApplicationPause(bool pauseStatus)
@@ -56,7 +43,6 @@ namespace Dreamy.Template
             try
             {
                 RegisterDatasave();
-                RegisterPool();
                 await RegisterDataConfigAsync();
                 State = BootstrapState.Ready;
             }
@@ -87,27 +73,12 @@ namespace Dreamy.Template
             }
         }
 
-        private void RegisterPool()
-        {
-            if (!ServiceLocator.IsRegistered<IPoolService>())
-            {
-                poolService = new LeanPoolService();
-                ServiceLocator.Register<IPoolService>(poolService);
-            }
-            else
-            {
-                poolService = ServiceLocator.Get<IPoolService>();
-            }
-        }
-
         private async UniTask RegisterDataConfigAsync()
         {
             if (!ServiceLocator.IsRegistered<IDataConfigService>())
             {
-                IRemoteConfigProvider remoteProvider =
-                    ResolveRemoteConfigProvider();
                 IDataConfigSource source =
-                    DataConfigSources.CreateDefault(remoteProvider);
+                    new ResourcesJsonConfigSource();
                 DataConfigService dataConfigService = new(source);
 
                 int configCount = dataConfigService.RegisterAllConfigs();
@@ -118,24 +89,6 @@ namespace Dreamy.Template
                 Debug.Log(
                     $"[DreamyTemplate] Loaded {configCount} data config(s).");
             }
-        }
-
-        private IRemoteConfigProvider ResolveRemoteConfigProvider()
-        {
-            if (!remoteConfigProvider)
-            {
-                return null;
-            }
-
-            if (remoteConfigProvider is IRemoteConfigProvider provider)
-            {
-                return provider;
-            }
-
-            Debug.LogError(
-                $"{remoteConfigProvider.GetType().Name} must implement " +
-                $"{nameof(IRemoteConfigProvider)}.");
-            return null;
         }
     }
 }

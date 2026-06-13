@@ -4,5 +4,10 @@
   "musicVolume": 1,
   "targetFrameRate": 60,
   "poolPreloadCount": 8,
-  "demoDurationSeconds": 2
+  "demoDurationSeconds": 2,
+  "items": [
+    {
+      "id": "ok"
+    }
+  ]
 }

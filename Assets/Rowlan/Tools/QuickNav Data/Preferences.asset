@@ -15,6 +15,38 @@ MonoBehaviour:
   selectedTabIndex: 0
   historyItemsMax: 20
   history:
+  - context: 1
+    title: 
+    unityObject: {fileID: 11500000, guid: 0737e3728e6f4fd99969f677b9c320d1, type: 3}
+    objectGuid: GlobalObjectId_V1-1-0737e3728e6f4fd99969f677b9c320d1-11500000-0
+  - context: 1
+    title: 
+    unityObject: {fileID: 7400000, guid: 985ea24c33c868545afab3da94fca7e1, type: 2}
+    objectGuid: GlobalObjectId_V1-3-985ea24c33c868545afab3da94fca7e1-7400000-0
+  - context: 1
+    title: 
+    unityObject: {fileID: 2800000, guid: 9bd9265533309304db171aa9f916554a, type: 3}
+    objectGuid: GlobalObjectId_V1-1-9bd9265533309304db171aa9f916554a-2800000-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-46423e86e3ad8c54894e2bc28ce116bd-1773408470-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-46423e86e3ad8c54894e2bc28ce116bd-1504916625-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-46423e86e3ad8c54894e2bc28ce116bd-968449484-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-46423e86e3ad8c54894e2bc28ce116bd-1504916625-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-2-46423e86e3ad8c54894e2bc28ce116bd-850362186-0
   - context: 0
     title: 
     unityObject: {fileID: 0}
@@ -35,66 +67,34 @@ MonoBehaviour:
     title: 
     unityObject: {fileID: 0}
     objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 1
+    title: 
+    unityObject: {fileID: 1146936794652093899, guid: d0c02d880ef525d43830e77773f459ff, type: 3}
+    objectGuid: GlobalObjectId_V1-1-d0c02d880ef525d43830e77773f459ff-1146936794652093899-0
   - context: 0
     title: 
     unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+    objectGuid: GlobalObjectId_V1-2-46423e86e3ad8c54894e2bc28ce116bd-1146936794652093899-1355752665
   - context: 0
     title: 
     unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+    objectGuid: GlobalObjectId_V1-2-46423e86e3ad8c54894e2bc28ce116bd-100000-1773508214
   - context: 0
     title: 
     unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+    objectGuid: GlobalObjectId_V1-2-46423e86e3ad8c54894e2bc28ce116bd-1146936794652093899-1355752665
   - context: 0
     title: 
     unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+    objectGuid: GlobalObjectId_V1-2-46423e86e3ad8c54894e2bc28ce116bd-820925814626328125-1773508214
   - context: 0
     title: 
     unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+    objectGuid: GlobalObjectId_V1-2-46423e86e3ad8c54894e2bc28ce116bd-1146936794652093899-1355752665
   - context: 0
     title: 
     unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-1401549907-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-3783557470937405541-1883829395
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-1401549907-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-1013958736-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-3783557470664207606-0
+    objectGuid: GlobalObjectId_V1-2-46423e86e3ad8c54894e2bc28ce116bd-100000-1773508214
   favorites:
   - context: 1
     title: 
