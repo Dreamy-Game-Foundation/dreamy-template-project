@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using Dreamy.Core;
 using Dreamy.DataConfig;
@@ -15,11 +16,11 @@ namespace Dreamy.Template.Demo
         [SerializeField] private Button togglePanelButton;
 
         private LeanPoolService ownedPool;
-        private DemoSession session;
-        private TemplatePlayerSave saveData;
         private IDatasaveService datasave;
+        private TemplateSave saveData;
         private FoundationDemoPanel panel;
-        private EventBinding<DemoScoreChangedEvent> scoreBinding;
+        private int score;
+        private float health = 100f;
         private bool isTransitioning;
         private bool isShuttingDown;
 
@@ -37,19 +38,26 @@ namespace Dreamy.Template.Demo
 
         private async void Start()
         {
-            await UniTask.WaitUntil(
-                () => GameInstaller.State is BootstrapState.Ready or BootstrapState.Failed,
-                cancellationToken: this.GetCancellationTokenOnDestroy());
-
-            if (GameInstaller.State == BootstrapState.Failed)
+            try
             {
-                Debug.LogError(
-                    $"[FoundationDemo] Bootstrap failed: {GameInstaller.InitializationException}");
-                return;
-            }
+                await UniTask.WaitUntil(
+                    () => GameInstaller.State is BootstrapState.Ready or BootstrapState.Failed,
+                    cancellationToken: this.GetCancellationTokenOnDestroy());
 
-            InitializeDemo();
-            await SetPanelVisibleAsync(true);
+                if (GameInstaller.State == BootstrapState.Failed)
+                {
+                    Debug.LogError(
+                        $"[FoundationDemo] Bootstrap failed: {GameInstaller.InitializationException}",
+                        this);
+                    return;
+                }
+
+                InitializeDemo();
+                await SetPanelVisibleAsync(true);
+            }
+            catch (OperationCanceledException)
+            {
+            }
         }
 
         private void InitializeDemo()
@@ -60,29 +68,29 @@ namespace Dreamy.Template.Demo
                 ServiceLocator.Register<IPoolService>(ownedPool);
             }
 
-            session = new DemoSession(0, 100f);
             datasave = ServiceLocator.Get<IDatasaveService>();
-            saveData = datasave.Load<TemplatePlayerSave>();
+            saveData = datasave.Load<TemplateSave>();
             saveData.LaunchCount++;
             datasave.Save(saveData);
         }
 
-        private async UniTask CreateAndBindPanelAsync()
+        private async UniTask CreatePanelAsync()
         {
-            FoundationDemoPanel createdPanel = await PanelManager.Instance.Show<FoundationDemoPanel>(
+            FoundationDemoPanel created = await PanelManager.Instance.Show<FoundationDemoPanel>(
                 Address.FoundationDemoPanel);
             if (isShuttingDown)
             {
-                await createdPanel.Hide();
+                await created.Hide();
                 return;
             }
 
-            panel = createdPanel;
-            BindPanel(createdPanel);
+            panel = created;
+            BindPanel(created);
+            RefreshPanel();
 
-            GameSettingsConfig config = ServiceLocator.Get<IDataConfigService>()
-                .GetTable<GameSettingsConfig>();
-            createdPanel.SetStatus(
+            TemplateConfig config = ServiceLocator.Get<IDataConfigService>()
+                .GetTable<TemplateConfig>();
+            created.SetStatus(
                 $"PASS | launch={saveData.LaunchCount} | config coins={config.StartingCoins}");
         }
 
@@ -94,24 +102,11 @@ namespace Dreamy.Template.Demo
             target.SaveRequested += Save;
             target.LoadRequested += Load;
             target.Destroyed += OnPanelDestroyed;
-            session.Score.RegisterWithInitValue(target.SetScore)
-                .UnRegisterOnDestroy(target.gameObject);
-            session.Health.RegisterWithInitValue(target.SetHealth)
-                .UnRegisterOnDestroy(target.gameObject);
-
-            scoreBinding = new EventBinding<DemoScoreChangedEvent>(OnScoreChanged);
-            MyEventBus<DemoScoreChangedEvent>.Register(scoreBinding);
         }
 
         private void UnbindPanel(FoundationDemoPanel target)
         {
-            if (scoreBinding != null)
-            {
-                MyEventBus<DemoScoreChangedEvent>.Unregister(scoreBinding);
-                scoreBinding = null;
-            }
-
-            if (target == null) return;
+            if (ReferenceEquals(target, null)) return;
             target.AddScoreRequested -= AddScore;
             target.DamageRequested -= Damage;
             target.HealRequested -= Heal;
@@ -120,28 +115,48 @@ namespace Dreamy.Template.Demo
             target.Destroyed -= OnPanelDestroyed;
         }
 
-        private void AddScore() => session.AddScore(10);
-        private void Damage() => session.Damage(10f);
-        private void Heal() => session.Heal(10f);
+        private void AddScore()
+        {
+            score += 10;
+            RefreshPanel();
+            panel?.SetStatus($"Score changed | score={score}");
+        }
+
+        private void Damage()
+        {
+            health = Mathf.Max(0f, health - 10f);
+            RefreshPanel();
+        }
+
+        private void Heal()
+        {
+            health = Mathf.Min(100f, health + 10f);
+            RefreshPanel();
+        }
 
         private void Save()
         {
-            saveData.Coins = session.Score.Value;
-            saveData.TapRushHighScore = Mathf.Max(saveData.TapRushHighScore, saveData.Coins);
+            saveData.Coins = score;
+            saveData.Score = Mathf.Max(saveData.Score, score);
             datasave.Save(saveData);
-            panel.SetStatus($"Save PASS | coins={saveData.Coins}");
+            panel?.SetStatus($"Save PASS | coins={saveData.Coins}");
         }
 
         private void Load()
         {
-            saveData = datasave.Load<TemplatePlayerSave>();
-            session.SetScore(saveData.Coins);
-            panel.SetStatus($"Load PASS | coins={saveData.Coins}");
+            TemplateConfig config = ServiceLocator.Get<IDataConfigService>()
+                .GetTable<TemplateConfig>();
+            score = config.StartingCoins;
+            RefreshPanel();
+            panel?.SetStatus(
+                $"Config Load PASS | coins={config.StartingCoins} ");
         }
 
-        private void OnScoreChanged(DemoScoreChangedEvent value)
+        private void RefreshPanel()
         {
-            panel?.SetStatus($"EventBus PASS | score={value.Score} delta={value.Delta}");
+            if (panel == null) return;
+            panel.SetScore(score);
+            panel.SetHealth(health);
         }
 
         private void TogglePanel()
@@ -160,20 +175,20 @@ namespace Dreamy.Template.Demo
             {
                 if (visible)
                 {
-                    if (panel == null)
-                    {
-                        await CreateAndBindPanelAsync();
-                    }
+                    if (panel == null) await CreatePanelAsync();
                 }
                 else if (panel != null)
                 {
-                    FoundationDemoPanel panelToHide = panel;
+                    FoundationDemoPanel hidingPanel = panel;
                     panel = null;
-                    UnbindPanel(panelToHide);
-                    await panelToHide.Hide();
+                    UnbindPanel(hidingPanel);
+                    await hidingPanel.Hide();
                 }
             }
-            catch (System.Exception exception)
+            catch (OperationCanceledException)
+            {
+            }
+            catch (Exception exception)
             {
                 Debug.LogException(exception, this);
             }
@@ -189,9 +204,9 @@ namespace Dreamy.Template.Demo
 
         private void OnPanelDestroyed()
         {
-            FoundationDemoPanel destroyedPanel = panel;
+            FoundationDemoPanel destroyed = panel;
             panel = null;
-            UnbindPanel(destroyedPanel);
+            UnbindPanel(destroyed);
         }
 
         private void OnDestroy()
@@ -199,10 +214,12 @@ namespace Dreamy.Template.Demo
             isShuttingDown = true;
             UnbindPanel(panel);
             panel = null;
+
             if (togglePanelButton != null)
             {
                 togglePanelButton.onClick.RemoveListener(TogglePanel);
             }
+
             ownedPool?.Dispose();
             if (ownedPool != null)
             {

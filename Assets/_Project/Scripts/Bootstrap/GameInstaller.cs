@@ -1,8 +1,8 @@
+using System;
 using Cysharp.Threading.Tasks;
 using Dreamy.Core;
 using Dreamy.DataConfig;
 using Dreamy.Datasave;
-using System;
 using UnityEngine;
 
 namespace Dreamy.Template
@@ -12,83 +12,56 @@ namespace Dreamy.Template
     {
         [SerializeField] private bool prettySaveInEditor = true;
 
-        private IDatasaveService datasaveService;
+        private IDatasaveService datasave;
 
         public static BootstrapState State { get; private set; }
-
         public static Exception InitializationException { get; private set; }
 
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);
+            InitializeAsync().Forget();
+        }
+
+        private async UniTaskVoid InitializeAsync()
+        {
             State = BootstrapState.Initializing;
-            RegisterServicesAsync().Forget();
-        }
-
-        private void OnApplicationPause(bool pauseStatus)
-        {
-            if (pauseStatus)
-            {
-                datasaveService?.SaveAll();
-            }
-        }
-
-        private void OnApplicationQuit()
-        {
-            datasaveService?.SaveAll();
-        }
-
-        private async UniTaskVoid RegisterServicesAsync()
-        {
             try
             {
-                RegisterDatasave();
-                await RegisterDataConfigAsync();
+                // inject service
+                datasave = new DatasaveService(new DatasaveOptions
+                {
+                    PrettyPrint = Application.isEditor && prettySaveInEditor,
+                    Codec = new PlainTextSaveCodec()
+                });
+                ServiceLocator.Register<IDatasaveService>(datasave);
+
+                IRemoteConfigProvider remoteConfigProvider = new RemoteDataConfigProvider();
+                IDataConfigSource configSource = new CompositeConfigSource(new IDataConfigSource[]
+                {
+                    new RemoteConfigSource(remoteConfigProvider),
+                    new ResourcesJsonConfigSource()
+                });
+                DataConfigService dataConfig = new(configSource);
+                dataConfig.Register<TemplateConfig>("templateConfig");
+                await dataConfig.InitializeAsync(this.GetCancellationTokenOnDestroy());
+                ServiceLocator.Register<IDataConfigService>(dataConfig);
+
                 State = BootstrapState.Ready;
             }
             catch (Exception exception)
             {
                 InitializationException = exception;
                 State = BootstrapState.Failed;
-                Debug.LogException(exception);
+                Debug.LogException(exception, this);
             }
         }
 
-        private void RegisterDatasave()
+        private void OnApplicationPause(bool paused)
         {
-            if (!ServiceLocator.IsRegistered<IDatasaveService>())
-            {
-                DatasaveOptions options = new()
-                {
-                    PrettyPrint = Application.isEditor && prettySaveInEditor,
-                    Codec = new PlainTextSaveCodec()
-                };
-
-                datasaveService = new DatasaveService(options);
-                ServiceLocator.Register<IDatasaveService>(datasaveService);
-            }
-            else
-            {
-                datasaveService = ServiceLocator.Get<IDatasaveService>();
-            }
+            if (paused) datasave?.SaveAll();
         }
 
-        private async UniTask RegisterDataConfigAsync()
-        {
-            if (!ServiceLocator.IsRegistered<IDataConfigService>())
-            {
-                IDataConfigSource source =
-                    new ResourcesJsonConfigSource();
-                DataConfigService dataConfigService = new(source);
-
-                int configCount = dataConfigService.RegisterAllConfigs();
-                await dataConfigService.InitializeAsync(
-                    this.GetCancellationTokenOnDestroy());
-
-                ServiceLocator.Register<IDataConfigService>(dataConfigService);
-                Debug.Log(
-                    $"[DreamyTemplate] Loaded {configCount} data config(s).");
-            }
-        }
+        private void OnApplicationQuit() => datasave?.SaveAll();
     }
 }

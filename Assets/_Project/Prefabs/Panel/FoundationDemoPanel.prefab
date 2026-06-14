@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 6810968695658144868}
   - component: {fileID: 84304267062081357}
   - component: {fileID: 8628232602437784626}
+  - component: {fileID: 4232888082883245110}
+  - component: {fileID: 6287782867841749559}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -114,6 +116,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
+  overrideEase: 0
+  easeIn: 27
+  easeOut: 26
+  overrideDuration: 0
+  durationIn: 0.25
+  durationOut: 0.2
   delayIn: 0
   delayOut: 0
   canvasGroup: {fileID: 6592066560449092358}
@@ -157,10 +165,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: 0229910a5ad190348bd43a7a843eb43a, type: 2}
+  overrideEase: 0
+  easeIn: 27
+  easeOut: 26
+  overrideDuration: 0
+  durationIn: 0.25
+  durationOut: 0.2
   delayIn: 0
   delayOut: 0
   inactiveScale: 0
   activeScale: 1
+--- !u!114 &4232888082883245110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188340758429967369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d077923416a4022816ced37f60db8a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showInterval: 0.5
+  hideInterval: 0.03
+  reverseHideOrder: 1
+  includeInactive: 1
+--- !u!114 &6287782867841749559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188340758429967369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6e677db9cb4e81a15dc1a26343c56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
 --- !u!1 &413751026472371782
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,6 +695,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
+  overrideEase: 0
+  easeIn: 27
+  easeOut: 26
+  overrideDuration: 0
+  durationIn: 0.25
+  durationOut: 0.2
   delayIn: 0
   delayOut: 0
   canvasGroup: {fileID: 7231868485364798759}
@@ -669,6 +718,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: 0229910a5ad190348bd43a7a843eb43a, type: 2}
+  overrideEase: 0
+  easeIn: 27
+  easeOut: 26
+  overrideDuration: 0
+  durationIn: 0.25
+  durationOut: 0.2
   delayIn: 0
   delayOut: 0
   inactiveScale: 0
@@ -1316,6 +1371,7 @@ GameObject:
   - component: {fileID: 2426936197776607461}
   - component: {fileID: 2437199358172825633}
   - component: {fileID: 5762617475997414679}
+  - component: {fileID: 2702602506632647048}
   m_Layer: 0
   m_Name: LoadButton
   m_TagString: Untagged
@@ -1461,6 +1517,11 @@ MonoBehaviour:
   pressScaleMultiplier: 0.9
   releaseScaleMultiplier: 1.15
   duration: 0.1
+  playIdleAnimation: 0
+  idleScaleMultiplier: 1.03
+  idleDuration: 0.8
+  idleDelay: 0.2
+  idleEase: 4
 --- !u!114 &5762617475997414679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1475,10 +1536,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: d4e8c260d16d7cc47a76b989a4d5c417, type: 2}
-  delayIn: 2.5
+  overrideEase: 0
+  easeIn: 27
+  easeOut: 26
+  overrideDuration: 0
+  durationIn: 0.25
+  durationOut: 0.2
+  delayIn: 0
   delayOut: 0
   graphic: {fileID: 4057150396523754737}
   inactiveColor: {r: 0.9551344, g: 1, b: 0.003144443, a: 0}
+--- !u!114 &2702602506632647048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3625861122596294078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6e677db9cb4e81a15dc1a26343c56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 5
 --- !u!1 &5110462360972014237
 GameObject:
   m_ObjectHideFlags: 0
@@ -1496,6 +1576,7 @@ GameObject:
   - component: {fileID: 7116398962150220192}
   - component: {fileID: 3164948743647717712}
   - component: {fileID: 5542305380617747553}
+  - component: {fileID: 5765546036137441441}
   m_Layer: 0
   m_Name: HealButton
   m_TagString: Untagged
@@ -1641,6 +1722,11 @@ MonoBehaviour:
   pressScaleMultiplier: 0.9
   releaseScaleMultiplier: 1.15
   duration: 0.1
+  playIdleAnimation: 0
+  idleScaleMultiplier: 1.03
+  idleDuration: 0.8
+  idleDelay: 0.2
+  idleEase: 4
 --- !u!114 &7116398962150220192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1655,7 +1741,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: 032c4d29dea91954d887dbb7001f8920, type: 2}
-  delayIn: 1.5
+  overrideEase: 0
+  easeIn: 27
+  easeOut: 26
+  overrideDuration: 0
+  durationIn: 0.25
+  durationOut: 0.2
+  delayIn: 0
   delayOut: 0
   rectTransform: {fileID: 6736887662100468145}
   offset: {x: -300, y: 0}
@@ -1673,6 +1765,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
+  overrideEase: 0
+  easeIn: 27
+  easeOut: 26
+  overrideDuration: 0
+  durationIn: 0.25
+  durationOut: 0.2
   delayIn: 1.5
   delayOut: 0
   canvasGroup: {fileID: 5542305380617747553}
@@ -1686,8 +1784,21 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
-  m_BlocksRaycasts: 0
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &5765546036137441441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5110462360972014237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6e677db9cb4e81a15dc1a26343c56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 3
 --- !u!1 &5406023506112310962
 GameObject:
   m_ObjectHideFlags: 0
@@ -2019,6 +2130,7 @@ GameObject:
   - component: {fileID: 5683773363397555312}
   - component: {fileID: 9060738868065808899}
   - component: {fileID: 8378731232440836022}
+  - component: {fileID: 5830824389687136809}
   m_Layer: 0
   m_Name: AddScoreButton
   m_TagString: Untagged
@@ -2162,6 +2274,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: 0229910a5ad190348bd43a7a843eb43a, type: 2}
+  overrideEase: 0
+  easeIn: 27
+  easeOut: 26
+  overrideDuration: 0
+  durationIn: 1
+  durationOut: 0.2
   delayIn: 0.5
   delayOut: 0
   inactiveScale: 0
@@ -2182,6 +2300,24 @@ MonoBehaviour:
   pressScaleMultiplier: 0.9
   releaseScaleMultiplier: 1.15
   duration: 0.1
+  playIdleAnimation: 0
+  idleScaleMultiplier: 1.03
+  idleDuration: 0.8
+  idleDelay: 0.2
+  idleEase: 4
+--- !u!114 &5830824389687136809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6369116771246508488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6e677db9cb4e81a15dc1a26343c56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 1
 --- !u!1 &6746603474466082373
 GameObject:
   m_ObjectHideFlags: 0
@@ -2199,6 +2335,7 @@ GameObject:
   - component: {fileID: 724811351183663332}
   - component: {fileID: 1258124262588477523}
   - component: {fileID: 2468869684690471514}
+  - component: {fileID: 6769057601769336165}
   m_Layer: 0
   m_Name: DamageButton
   m_TagString: Untagged
@@ -2342,6 +2479,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: eb3ffa2895944c3419fa21f2c0abdf3a, type: 2}
+  overrideEase: 0
+  easeIn: 27
+  easeOut: 26
+  overrideDuration: 0
+  durationIn: 0.25
+  durationOut: 0.2
   delayIn: 1
   delayOut: 0
   inactiveRotation: {x: 0, y: 0, z: -12}
@@ -2361,6 +2504,11 @@ MonoBehaviour:
   pressScaleMultiplier: 0.9
   releaseScaleMultiplier: 1.15
   duration: 0.1
+  playIdleAnimation: 0
+  idleScaleMultiplier: 1.03
+  idleDuration: 0.8
+  idleDelay: 0.2
+  idleEase: 4
 --- !u!114 &1258124262588477523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2375,6 +2523,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
+  overrideEase: 0
+  easeIn: 27
+  easeOut: 26
+  overrideDuration: 0
+  durationIn: 0
+  durationOut: 0.2
   delayIn: 0
   delayOut: 0
   canvasGroup: {fileID: 2468869684690471514}
@@ -2390,6 +2544,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &6769057601769336165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6746603474466082373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6e677db9cb4e81a15dc1a26343c56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 2
 --- !u!1 &7352230783136953202
 GameObject:
   m_ObjectHideFlags: 0
@@ -2550,6 +2717,11 @@ MonoBehaviour:
   pressScaleMultiplier: 0.9
   releaseScaleMultiplier: 1.15
   duration: 0.1
+  playIdleAnimation: 0
+  idleScaleMultiplier: 1.03
+  idleDuration: 0.8
+  idleDelay: 0.2
+  idleEase: 4
 --- !u!114 &3819327349909884353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2564,6 +2736,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: cd932b039fe673d45b73e18c4ab4c7e8, type: 2}
+  overrideEase: 0
+  easeIn: 27
+  easeOut: 26
+  overrideDuration: 0
+  durationIn: 0.25
+  durationOut: 0.2
   delayIn: 2
   delayOut: 0
   rectTransform: {fileID: 5207179079994530821}
@@ -2949,6 +3127,7 @@ GameObject:
   - component: {fileID: 7398576871448879032}
   - component: {fileID: 5849563578154489039}
   - component: {fileID: 6040741370590552795}
+  - component: {fileID: 5024712705670706434}
   m_Layer: 0
   m_Name: SaveButton
   m_TagString: Untagged
@@ -3092,10 +3271,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: d4e8c260d16d7cc47a76b989a4d5c417, type: 2}
-  delayIn: 2
+  overrideEase: 0
+  easeIn: 27
+  easeOut: 26
+  overrideDuration: 0
+  durationIn: 0.25
+  durationOut: 0.2
+  delayIn: 0
   delayOut: 0
   graphic: {fileID: 4552132661717212543}
-  inactiveColor: {r: 0, g: 0, b: 0, a: 0}
+  inactiveColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!114 &6040741370590552795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3112,3 +3297,21 @@ MonoBehaviour:
   pressScaleMultiplier: 0.9
   releaseScaleMultiplier: 1.15
   duration: 0.1
+  playIdleAnimation: 0
+  idleScaleMultiplier: 1.03
+  idleDuration: 0.8
+  idleDelay: 0.2
+  idleEase: 4
+--- !u!114 &5024712705670706434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9114989927422000304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6e677db9cb4e81a15dc1a26343c56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 4

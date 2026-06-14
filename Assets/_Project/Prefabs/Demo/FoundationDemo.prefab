@@ -265,7 +265,6 @@ GameObject:
   - component: {fileID: 3397376765213437859}
   - component: {fileID: 6335627652823668855}
   - component: {fileID: 6617634564297996349}
-  - component: {fileID: 2329596121462925001}
   m_Layer: 0
   m_Name: ToggleButton
   m_TagString: Untagged
@@ -411,21 +410,8 @@ MonoBehaviour:
   pressScaleMultiplier: 0.9
   releaseScaleMultiplier: 1.15
   duration: 0.1
---- !u!114 &2329596121462925001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 820925814626328125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b641ae6f56894246bf12d8f182bd4a1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runType: 0
-  settings: {fileID: 11400000, guid: cd932b039fe673d45b73e18c4ab4c7e8, type: 2}
-  delayIn: 2
-  delayOut: 0
-  rectTransform: {fileID: 4100734856798657742}
-  inactiveSize: {x: 1, y: 0.5}
+  playIdleAnimation: 1
+  idleScaleMultiplier: 1.15
+  idleDuration: 0.8
+  idleDelay: 0.2
+  idleEase: 4

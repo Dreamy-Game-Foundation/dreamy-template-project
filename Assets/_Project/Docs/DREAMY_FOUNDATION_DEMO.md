@@ -53,7 +53,7 @@ Scenes: `Bootstrap` is the composition root and persistent loading UI; `MainScen
 
 Panels: the Addressable `FoundationDemoPanel` and the existing `UILoadingScreen`. The root prefab owns a separate toggle button; hiding destroys the current panel and showing creates and binds a fresh panel through `PanelManager`.
 
-Services used by the current demo: `IDataConfigService`, `IDatasaveService`, and `IPoolService`. `DemoSession` owns the small in-memory score/health state.
+Services used by the current demo: `IDataConfigService`, `IDatasaveService`, and `IPoolService`. The root keeps the tiny score/health state directly.
 
 Configs:
 
@@ -101,7 +101,7 @@ Pool: preload configured count; load target prefab through Dreamy Assets; spawn 
 
 Popup: `PanelManager.Show<ResultPopup>(address)` loads the Addressable prefab, initializes/registers it, binds a presenter, animates show, and pushes it on the stack. Hide animates, unregisters, and destroys the instance. Escape/Android Back only closes a panel with `CanBack`.
 
-EventBus: score use case mutates session; session raises `DemoScoreChangedEvent`; presenter/log probe subscribes with an `EventBinding`; teardown always unregisters. Events are notifications, not storage; current score remains in the session.
+The compact prefab demo updates its panel directly and intentionally does not depend on BindableProperty.
 
 ## 16. Verification cases
 

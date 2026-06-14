@@ -23,18 +23,9 @@ namespace Dreamy.Template
                     $"{GameInstaller.InitializationException}");
                 return;
             }
-
-            SetInitSetting();
             await SceneLoader.Instance.LoadScene(Address.MainScene);
         }
 
-        private static void SetInitSetting()
-        {
-            IDataConfigService dataConfig =
-                ServiceLocator.Get<IDataConfigService>();
-            GameSettingsConfig settings =
-                dataConfig.GetTable<GameSettingsConfig>();
-            Application.targetFrameRate = settings.TargetFrameRate;
-        }
+ 
     }
 }

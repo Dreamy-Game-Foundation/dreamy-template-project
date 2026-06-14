@@ -28,7 +28,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "cba1ef9e7d60792317f820acb543105fdac06257"
+      "hash": "e6029ad5ab59f7d4effea7863fd7a209765ef4e5"
     },
     "com.dreamy.dataconfig": {
       "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.dataconfig.git#main",
@@ -37,7 +37,7 @@
       "dependencies": {
         "com.unity.nuget.newtonsoft-json": "3.2.1"
       },
-      "hash": "da02d9f94962b441a54470f18d18518a0e4d4cb4"
+      "hash": "6d199250c544ff7a42414c44fb560217b734af8b"
     },
     "com.dreamy.datasave": {
       "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.datasave.git#main",
@@ -46,7 +46,7 @@
       "dependencies": {
         "com.unity.nuget.newtonsoft-json": "3.2.1"
       },
-      "hash": "f4f3e4a06e7cee7adf9c37939a02af85fc780277"
+      "hash": "9fa6bd21812004b0b2d64a6119ee0514399366b8"
     },
     "com.dreamy.editor-tools": {
       "version": "https://github.com/Dreamy-Game-Foundation/-com.dreamy.editor-tools.git#main",
@@ -55,16 +55,20 @@
       "dependencies": {
         "com.unity.nuget.newtonsoft-json": "3.2.1"
       },
-      "hash": "a80b9ea038950bd7c79be80f249d9201ccf3a525"
+      "hash": "7b5167101cb600ea97c896ec09b92f71a3a0a537"
     },
     "com.dreamy.ui": {
       "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.ui.git#main",
       "depth": 0,
       "source": "git",
       "dependencies": {
-        "com.unity.ugui": "2.0.0"
+        "com.unity.ugui": "2.0.0",
+        "com.cysharp.unitask": "2.5.10",
+        "com.demigiant.dotween": "0.0.3",
+        "com.dreamy.core": "1.1.2",
+        "com.dreamy.assets": "0.1.1"
       },
-      "hash": "f58c833511902b51adc6da258d8ad139fad7e153"
+      "hash": "ff33fadab8d27a1cbdb2632eed3fb80237af0826"
     },
     "com.unity.addressables": {
       "version": "2.7.2",
