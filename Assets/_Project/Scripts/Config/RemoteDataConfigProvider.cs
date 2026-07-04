@@ -11,7 +11,8 @@ namespace Dreamy.Template
             CancellationToken cancellationToken = default)
         {
             // Return null until a remote SDK adapter is connected.
-            // RemoteConfigSource treats it as missing and falls back to Resources.
+            // RemoteConfigSource treats it as missing and falls back to Resources
+            // DreamySDK.GetRemoteData...
             return UniTask.FromResult<string>(null);
         }
     }

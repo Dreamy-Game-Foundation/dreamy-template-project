@@ -1,8 +1,10 @@
 using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using Dreamy.Core;
 using Dreamy.DataConfig;
 using Dreamy.Datasave;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace Dreamy.Template
@@ -28,24 +30,13 @@ namespace Dreamy.Template
             State = BootstrapState.Initializing;
             try
             {
-                // inject service
-                datasave = new DatasaveService(new DatasaveOptions
-                {
-                    PrettyPrint = Application.isEditor && prettySaveInEditor,
-                    Codec = new PlainTextSaveCodec()
-                });
-                ServiceLocator.Register<IDatasaveService>(datasave);
+                var cancellationToken = this.GetCancellationTokenOnDestroy();
 
-                IRemoteConfigProvider remoteConfigProvider = new RemoteDataConfigProvider();
-                IDataConfigSource configSource = new CompositeConfigSource(new IDataConfigSource[]
-                {
-                    new RemoteConfigSource(remoteConfigProvider),
-                    new ResourcesJsonConfigSource()
-                });
-                DataConfigService dataConfig = new(configSource);
-                dataConfig.Register<TemplateConfig>("templateConfig");
-                await dataConfig.InitializeAsync(this.GetCancellationTokenOnDestroy());
-                ServiceLocator.Register<IDataConfigService>(dataConfig);
+                // 1. Install Datasave Service
+                InstallDatasaveService();
+
+                // 2. Install DataConfig Service
+                await InstallDataConfigServiceAsync(cancellationToken);
 
                 State = BootstrapState.Ready;
             }
@@ -54,6 +45,42 @@ namespace Dreamy.Template
                 InitializationException = exception;
                 State = BootstrapState.Failed;
                 Debug.LogException(exception, this);
+            }
+        }
+
+        private void InstallDatasaveService()
+        {
+            datasave = new DatasaveService(new DatasaveOptions
+            {
+                PrettyPrint = Application.isEditor && prettySaveInEditor,
+                Codec = new PlainTextSaveCodec()
+            });
+            ServiceLocator.Register<IDatasaveService>(datasave);
+        }
+
+        private async UniTask InstallDataConfigServiceAsync(CancellationToken cancellationToken)
+        {
+            IRemoteConfigProvider remoteConfigProvider = new RemoteDataConfigProvider();
+            IDataConfigSource configSource = new CompositeConfigSource(new IDataConfigSource[]
+            {
+                new RemoteConfigSource(remoteConfigProvider),
+                new ResourcesJsonConfigSource()
+            });
+
+            var dataConfig = new DataConfigService(configSource);
+            dataConfig.Register<TemplateConfig>("templateConfig");
+
+            // Example of registering a Table Config
+            dataConfig.Register<DataConfigTable<TestConfig>>("testConfigs");
+
+            await dataConfig.InitializeAsync(cancellationToken);
+            ServiceLocator.Register<IDataConfigService>(dataConfig);
+
+            // Example of retrieving and printing rows from the Table Config
+            var testTable = dataConfig.GetTable<DataConfigTable<TestConfig>>();
+            foreach (var row in testTable.GetAll())
+            {
+                Debug.Log($"[TestConfig] Id: {row.Id}, Name: {row.Name}, Value: {row.Value}");
             }
         }
 

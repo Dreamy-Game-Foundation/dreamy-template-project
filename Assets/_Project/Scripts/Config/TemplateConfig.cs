@@ -6,9 +6,5 @@ namespace Dreamy.Template
     public sealed class TemplateConfig : ConfigBase
     {
         public int StartingCoins { get; set; }
-
-
-
-
     }
 }
