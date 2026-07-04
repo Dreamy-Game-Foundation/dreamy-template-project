@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using Dreamy.Core;
 using Dreamy.DataConfig;
 using Dreamy.Datasave;
+using Dreamy.Template.Pooling;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ namespace Dreamy.Template
         [SerializeField] private bool prettySaveInEditor = true;
 
         private IDatasaveService datasave;
+        private IPoolService poolService;
 
         public static BootstrapState State { get; private set; }
         public static Exception InitializationException { get; private set; }
@@ -35,7 +37,10 @@ namespace Dreamy.Template
                 // 1. Install Datasave Service
                 InstallDatasaveService();
 
-                // 2. Install DataConfig Service
+                // 2. Install Pool and other future services
+                InstallOtherServices();
+
+                // 3. Install DataConfig Service (called last due to async loading)
                 await InstallDataConfigServiceAsync(cancellationToken);
 
                 State = BootstrapState.Ready;
@@ -50,12 +55,29 @@ namespace Dreamy.Template
 
         private void InstallDatasaveService()
         {
+            ISaveCodec codec;
+#if UNITY_EDITOR
+            codec = new PlainTextSaveCodec();
+#else
+            codec = new XorSaveCodec("Dreamy123@");
+            // codec = new AesSaveCodec("Dreamy123@");
+#endif
+
             datasave = new DatasaveService(new DatasaveOptions
             {
                 PrettyPrint = Application.isEditor && prettySaveInEditor,
-                Codec = new PlainTextSaveCodec()
+                Codec = codec
             });
             ServiceLocator.Register<IDatasaveService>(datasave);
+        }
+
+        private void InstallOtherServices()
+        {
+            // Install Pool Service
+            poolService = new LeanPoolService();
+            ServiceLocator.Register<IPoolService>(poolService);
+
+            // [Add future services here]
         }
 
         private async UniTask InstallDataConfigServiceAsync(CancellationToken cancellationToken)
@@ -90,5 +112,15 @@ namespace Dreamy.Template
         }
 
         private void OnApplicationQuit() => datasave?.SaveAll();
+
+        private void OnDestroy()
+        {
+            if (poolService is IDisposable disposable)
+            {
+                disposable.Dispose();
+            }
+
+            ServiceLocator.Unregister<IPoolService>();
+        }
     }
 }

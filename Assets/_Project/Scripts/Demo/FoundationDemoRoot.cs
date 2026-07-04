@@ -15,7 +15,6 @@ namespace Dreamy.Template.Demo
     {
         [SerializeField] private Button togglePanelButton;
 
-        private LeanPoolService ownedPool;
         private IDatasaveService datasave;
         private TemplateSave saveData;
         private FoundationDemoPanel panel;
@@ -62,12 +61,6 @@ namespace Dreamy.Template.Demo
 
         private void InitializeDemo()
         {
-            if (!ServiceLocator.IsRegistered<IPoolService>())
-            {
-                ownedPool = new LeanPoolService();
-                ServiceLocator.Register<IPoolService>(ownedPool);
-            }
-
             datasave = ServiceLocator.Get<IDatasaveService>();
             saveData = datasave.Load<TemplateSave>();
             saveData.LaunchCount++;
@@ -218,12 +211,6 @@ namespace Dreamy.Template.Demo
             if (togglePanelButton != null)
             {
                 togglePanelButton.onClick.RemoveListener(TogglePanel);
-            }
-
-            ownedPool?.Dispose();
-            if (ownedPool != null)
-            {
-                ServiceLocator.Unregister<IPoolService>();
             }
         }
     }
