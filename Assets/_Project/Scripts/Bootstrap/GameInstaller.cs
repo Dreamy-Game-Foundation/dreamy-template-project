@@ -94,6 +94,7 @@ namespace Dreamy.Template
 
             // Example of registering a Table Config
             dataConfig.Register<DataConfigTable<TestConfig>>("testConfigs");
+            dataConfig.Register<OfferConfigTable>("offerConfigs");
 
             await dataConfig.InitializeAsync(cancellationToken);
             ServiceLocator.Register<IDataConfigService>(dataConfig);

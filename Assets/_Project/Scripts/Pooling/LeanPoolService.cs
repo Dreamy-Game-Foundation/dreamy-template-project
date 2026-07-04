@@ -11,6 +11,7 @@ namespace Dreamy.Template.Pooling
 
         private readonly Dictionary<GameObject, LeanGameObjectPool> pools =
             new();
+
         private readonly Transform poolRoot;
 
         public LeanPoolService()
@@ -47,6 +48,55 @@ namespace Dreamy.Template.Pooling
             }
 
             return LeanPool.Spawn(prefab, position, rotation, parent);
+        }
+
+        public GameObject Spawn(GameObject prefab, Transform parent)
+        {
+            if (!prefab)
+            {
+                throw new ArgumentNullException(nameof(prefab));
+            }
+
+            return LeanPool.Spawn(prefab, parent);
+        }
+
+        public T Spawn<T>(T prefab, Transform parent)
+            where T : Component
+        {
+            if (!prefab)
+            {
+                throw new ArgumentNullException(nameof(prefab));
+            }
+
+            return LeanPool.Spawn(prefab, parent);
+        }
+
+        public T Spawn<T>(GameObject prefab, Transform parent)
+            where T : Component
+        {
+            if (!prefab)
+            {
+                throw new ArgumentNullException(nameof(prefab));
+            }
+
+            GameObject instance = LeanPool.Spawn(prefab, parent);
+            return instance != null ? instance.GetComponent<T>() : null;
+        }
+
+        public T Spawn<T>(
+            GameObject prefab,
+            Vector3 position,
+            Quaternion rotation,
+            Transform parent = null)
+            where T : Component
+        {
+            if (!prefab)
+            {
+                throw new ArgumentNullException(nameof(prefab));
+            }
+
+            GameObject instance = LeanPool.Spawn(prefab, position, rotation, parent);
+            return instance != null ? instance.GetComponent<T>() : null;
         }
 
         public void Despawn(GameObject instance, float delay = 0f)

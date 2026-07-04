@@ -18,6 +18,8 @@ namespace Dreamy.Template.Demo
         private IDatasaveService datasave;
         private TemplateSave saveData;
         private FoundationDemoPanel panel;
+        private UIShopPanel shopPanel;
+        
         private int score;
         private float health = 100f;
         private bool isTransitioning;
@@ -94,6 +96,7 @@ namespace Dreamy.Template.Demo
             target.HealRequested += Heal;
             target.SaveRequested += Save;
             target.LoadRequested += Load;
+            target.OpenShopRequested += OpenShop;
             target.Destroyed += OnPanelDestroyed;
         }
 
@@ -105,6 +108,7 @@ namespace Dreamy.Template.Demo
             target.HealRequested -= Heal;
             target.SaveRequested -= Save;
             target.LoadRequested -= Load;
+            target.OpenShopRequested -= OpenShop;
             target.Destroyed -= OnPanelDestroyed;
         }
 
@@ -145,6 +149,85 @@ namespace Dreamy.Template.Demo
                 $"Config Load PASS | coins={config.StartingCoins} ");
         }
 
+        private void OpenShop()
+        {
+            OpenShopAsync().Forget();
+        }
+
+        private async UniTaskVoid OpenShopAsync()
+        {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            try
+            {
+                if (panel != null)
+                {
+                    FoundationDemoPanel hidingPanel = panel;
+                    panel = null;
+                    UnbindPanel(hidingPanel);
+                    await hidingPanel.Hide();
+                }
+
+                UIShopPanel created = await PanelManager.Instance.Show<UIShopPanel>(Address.ShopPanel);
+                shopPanel = created;
+                shopPanel.OpenDemoRequested += OpenDemoFromShop;
+                shopPanel.Destroyed += OnShopDestroyed;
+            }
+            catch (Exception exception)
+            {
+                Debug.LogException(exception, this);
+            }
+            finally
+            {
+                isTransitioning = false;
+            }
+        }
+
+        private void OpenDemoFromShop()
+        {
+            OpenDemoFromShopAsync().Forget();
+        }
+
+        private async UniTaskVoid OpenDemoFromShopAsync()
+        {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            try
+            {
+                if (shopPanel != null)
+                {
+                    UIShopPanel hidingShop = shopPanel;
+                    shopPanel = null;
+                    hidingShop.OpenDemoRequested -= OpenDemoFromShop;
+                    hidingShop.Destroyed -= OnShopDestroyed;
+                    await hidingShop.Hide();
+                }
+
+                if (panel == null)
+                {
+                    await CreatePanelAsync();
+                }
+            }
+            catch (Exception exception)
+            {
+                Debug.LogException(exception, this);
+            }
+            finally
+            {
+                isTransitioning = false;
+            }
+        }
+
+        private void OnShopDestroyed()
+        {
+            if (shopPanel != null)
+            {
+                shopPanel.OpenDemoRequested -= OpenDemoFromShop;
+                shopPanel.Destroyed -= OnShopDestroyed;
+                shopPanel = null;
+            }
+        }
+
         private void RefreshPanel()
         {
             if (panel == null) return;
@@ -156,7 +239,8 @@ namespace Dreamy.Template.Demo
         {
             if (!isTransitioning)
             {
-                SetPanelVisibleAsync(panel == null).Forget();
+                bool showDemo = (panel == null && shopPanel == null);
+                SetPanelVisibleAsync(showDemo).Forget();
             }
         }
 
@@ -168,14 +252,25 @@ namespace Dreamy.Template.Demo
             {
                 if (visible)
                 {
-                    if (panel == null) await CreatePanelAsync();
+                    if (panel == null && shopPanel == null) await CreatePanelAsync();
                 }
-                else if (panel != null)
+                else
                 {
-                    FoundationDemoPanel hidingPanel = panel;
-                    panel = null;
-                    UnbindPanel(hidingPanel);
-                    await hidingPanel.Hide();
+                    if (panel != null)
+                    {
+                        FoundationDemoPanel hidingPanel = panel;
+                        panel = null;
+                        UnbindPanel(hidingPanel);
+                        await hidingPanel.Hide();
+                    }
+                    if (shopPanel != null)
+                    {
+                        UIShopPanel hidingShop = shopPanel;
+                        shopPanel = null;
+                        hidingShop.OpenDemoRequested -= OpenDemoFromShop;
+                        hidingShop.Destroyed -= OnShopDestroyed;
+                        await hidingShop.Hide();
+                    }
                 }
             }
             catch (OperationCanceledException)
@@ -207,6 +302,13 @@ namespace Dreamy.Template.Demo
             isShuttingDown = true;
             UnbindPanel(panel);
             panel = null;
+
+            if (shopPanel != null)
+            {
+                shopPanel.OpenDemoRequested -= OpenDemoFromShop;
+                shopPanel.Destroyed -= OnShopDestroyed;
+                shopPanel = null;
+            }
 
             if (togglePanelButton != null)
             {

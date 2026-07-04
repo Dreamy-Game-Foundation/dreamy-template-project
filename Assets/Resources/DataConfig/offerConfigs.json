@@ -1,0 +1,100 @@
+{
+  "rows": [
+    {
+      "id": "gem_pile",
+      "name": "Pile of Gems",
+      "price": 99,
+      "value": 80,
+      "offer_type": "Gem",
+      "icon_name": "Icon_ShopIcon_Gem0"
+    },
+    {
+      "id": "gem_pouch",
+      "name": "Pouch of Gems",
+      "price": 199,
+      "value": 200,
+      "offer_type": "Gem",
+      "icon_name": "Icon_ShopIcon_Gem1"
+    },
+    {
+      "id": "gem_sack",
+      "name": "Sack of Gems",
+      "price": 499,
+      "value": 550,
+      "offer_type": "Gem",
+      "icon_name": "Icon_ShopIcon_Gem2"
+    },
+    {
+      "id": "gem_chest",
+      "name": "Chest of Gems",
+      "price": 999,
+      "value": 1200,
+      "offer_type": "Gem",
+      "icon_name": "Icon_ShopIcon_Gem3"
+    },
+    {
+      "id": "gem_vault",
+      "name": "Vault of Gems",
+      "price": 1999,
+      "value": 2500,
+      "offer_type": "Gem",
+      "icon_name": "Icon_ShopIcon_Gem4"
+    },
+    {
+      "id": "gem_box",
+      "name": "Gems Box",
+      "price": 2999,
+      "value": 4000,
+      "offer_type": "Gem",
+      "icon_name": "Icon_ShopIcon_GemBox"
+    },
+    {
+      "id": "gold_pile",
+      "name": "Pile of Gold",
+      "price": 50,
+      "value": 1000,
+      "offer_type": "Gold",
+      "icon_name": "Icon_ShopIcon_Gold0"
+    },
+    {
+      "id": "gold_pouch",
+      "name": "Pouch of Gold",
+      "price": 100,
+      "value": 2500,
+      "offer_type": "Gold",
+      "icon_name": "Icon_ShopIcon_Gold1"
+    },
+    {
+      "id": "gold_sack",
+      "name": "Sack of Gold",
+      "price": 200,
+      "value": 6000,
+      "offer_type": "Gold",
+      "icon_name": "Icon_ShopIcon_Gold2"
+    },
+    {
+      "id": "gold_chest",
+      "name": "Chest of Gold",
+      "price": 500,
+      "value": 18000,
+      "offer_type": "Gold",
+      "icon_name": "Icon_ShopIcon_Gold3"
+    },
+    {
+      "id": "gold_vault",
+      "name": "Vault of Gold",
+      "price": 1000,
+      "value": 45000,
+      "offer_type": "Gold",
+      "icon_name": "Icon_ShopIcon_Gold4"
+    },
+    {
+      "id": "special_chest",
+      "name": "Special Chest",
+      "price": 4999,
+      "value": 10000,
+      "offer_type": "Gold",
+      "icon_name": "Icon_ShopIcon_SpecialChest"
+    }
+  ]
+}

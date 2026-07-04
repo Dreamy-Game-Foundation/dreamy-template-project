@@ -1,0 +1,118 @@
+using System;
+using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using Dreamy.Core;
+using Dreamy.DataConfig;
+using Dreamy.Assets;
+using Dreamy.UI;
+using Dreamy.Template.Pooling;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Dreamy.Template.Demo
+{
+    public sealed class UIShopPanel : UIPanel
+    {
+        [Header("Controls")]
+        [SerializeField] private Button openDemoButton;
+        [SerializeField] private Button closeButton;
+
+        [Header("Holders")]
+        [SerializeField] private Transform gemOfferHolder;
+        [SerializeField] private Transform goldOfferHolder;
+
+        private GameObject uiGemOfferPrefab;
+        private GameObject uiGoldOfferPrefab;
+
+        public override bool CanBack => true;
+
+        public event Action OpenDemoRequested;
+        public event Action Destroyed;
+
+        private readonly List<GameObject> spawnedItems = new();
+
+        private void OnEnable()
+        {
+            openDemoButton.onClick.AddListener(OnOpenDemo);
+            closeButton.onClick.AddListener(OnClose);
+            
+            LoadOffers().Forget();
+        }
+
+        private void OnDisable()
+        {
+            openDemoButton.onClick.RemoveListener(OnOpenDemo);
+            closeButton.onClick.RemoveListener(OnClose);
+            
+            ClearSpawnedItems();
+        }
+
+        private async UniTaskVoid LoadOffers()
+        {
+            ClearSpawnedItems();
+
+            var dataConfigService = ServiceLocator.Get<IDataConfigService>();
+            if (dataConfigService == null) return;
+
+            var offerTable = dataConfigService.GetTable<OfferConfigTable>();
+            if (offerTable == null) return;
+
+            // Phân loại offer theo Gem và Gold tương tự mẫu tham khảo
+            var gemOffers = offerTable.GetOffersByType(EResourceOffer.Gem);
+            var goldOffers = offerTable.GetOffersByType(EResourceOffer.Gold);
+
+            // Tải bất đồng bộ prefab bằng AssetLoader
+            uiGemOfferPrefab = await AssetLoader.LoadAsync<GameObject>(Address.UIShopResourceOffer_Gem);
+            uiGoldOfferPrefab = await AssetLoader.LoadAsync<GameObject>(Address.UIShopResourceOffer_Gold);
+
+            // Sinh các UI Gem Offer từ Pools
+            foreach (var offer in gemOffers)
+            {
+                if (uiGemOfferPrefab != null && gemOfferHolder != null)
+                {
+                    var uiGemOffer = Pools.Spawn<UIResourceOfferItem>(uiGemOfferPrefab, gemOfferHolder);
+                    uiGemOffer.Setup(offer);
+                    spawnedItems.Add(uiGemOffer.gameObject);
+                }
+                else
+                {
+                    Debug.Log($"[UIShopPanel] Gem Offer (No Prefab/Holder): {offer.Name} | Price: {offer.Price}");
+                }
+            }
+
+            // Sinh các UI Gold Offer từ Pools
+            foreach (var offer in goldOffers)
+            {
+                if (uiGoldOfferPrefab != null && goldOfferHolder != null)
+                {
+                    var uiGoldOffer = Pools.Spawn<UIResourceOfferItem>(uiGoldOfferPrefab, goldOfferHolder);
+                    uiGoldOffer.Setup(offer);
+                    spawnedItems.Add(uiGoldOffer.gameObject);
+                }
+                else
+                {
+                    Debug.Log($"[UIShopPanel] Gold Offer (No Prefab/Holder): {offer.Name} | Price: {offer.Price}");
+                }
+            }
+        }
+
+        private void ClearSpawnedItems()
+        {
+            foreach (var item in spawnedItems)
+            {
+                if (item != null) Pools.Despawn(item);
+            }
+            spawnedItems.Clear();
+        }
+
+        private void OnOpenDemo() => OpenDemoRequested?.Invoke();
+
+        private void OnClose() => Hide().Forget();
+
+        protected override void OnDestroy()
+        {
+            Destroyed?.Invoke();
+            base.OnDestroy();
+        }
+    }
+}

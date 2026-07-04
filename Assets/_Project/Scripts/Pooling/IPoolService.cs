@@ -17,6 +17,20 @@ namespace Dreamy.Template.Pooling
             Transform parent = null)
             where T : Component;
 
+        GameObject Spawn(GameObject prefab, Transform parent);
+
+        T Spawn<T>(T prefab, Transform parent) where T : Component;
+
+        // New APIs to spawn by GameObject prefab and automatically GetComponent<T>
+        T Spawn<T>(GameObject prefab, Transform parent) where T : Component;
+
+        T Spawn<T>(
+            GameObject prefab,
+            Vector3 position,
+            Quaternion rotation,
+            Transform parent = null)
+            where T : Component;
+
         void Despawn(GameObject instance, float delay = 0f);
 
         void Preload(
