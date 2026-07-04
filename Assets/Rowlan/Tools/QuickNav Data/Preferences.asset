@@ -15,10 +15,18 @@ MonoBehaviour:
   selectedTabIndex: 0
   historyItemsMax: 20
   history:
-  - context: 0
+  - context: 1
     title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-1401549907-0
+    unityObject: {fileID: 102900000, guid: effd9780e715d184493ded304c8dec9b, type: 3}
+    objectGuid: GlobalObjectId_V1-1-effd9780e715d184493ded304c8dec9b-102900000-0
+  - context: 1
+    title: 
+    unityObject: {fileID: 102900000, guid: 9c53962885c2c4f449125a979d6ad240, type: 3}
+    objectGuid: GlobalObjectId_V1-1-9c53962885c2c4f449125a979d6ad240-102900000-0
+  - context: 1
+    title: 
+    unityObject: {fileID: 102900000, guid: 669ac005c2fbd364d9621ea70f660b1f, type: 3}
+    objectGuid: GlobalObjectId_V1-1-669ac005c2fbd364d9621ea70f660b1f-102900000-0
   favorites:
   - context: 1
     title: 
