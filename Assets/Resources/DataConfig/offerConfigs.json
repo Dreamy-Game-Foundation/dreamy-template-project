@@ -6,7 +6,7 @@
       "price": 99,
       "value": 80,
       "offer_type": "Gem",
-      "icon_name": "Icon_ShopIcon_Gem0"
+      "icon_name": "Gem_0"
     },
     {
       "id": "gem_pouch",
@@ -14,7 +14,7 @@
       "price": 199,
       "value": 200,
       "offer_type": "Gem",
-      "icon_name": "Icon_ShopIcon_Gem1"
+      "icon_name": "Gem_1"
     },
     {
       "id": "gem_sack",
@@ -22,7 +22,7 @@
       "price": 499,
       "value": 550,
       "offer_type": "Gem",
-      "icon_name": "Icon_ShopIcon_Gem2"
+      "icon_name": "Gem_2"
     },
     {
       "id": "gem_chest",
@@ -30,7 +30,7 @@
       "price": 999,
       "value": 1200,
       "offer_type": "Gem",
-      "icon_name": "Icon_ShopIcon_Gem3"
+      "icon_name": "Gem_3"
     },
     {
       "id": "gem_vault",
@@ -38,7 +38,7 @@
       "price": 1999,
       "value": 2500,
       "offer_type": "Gem",
-      "icon_name": "Icon_ShopIcon_Gem4"
+      "icon_name": "Gem_4"
     },
     {
       "id": "gem_box",
@@ -46,7 +46,15 @@
       "price": 2999,
       "value": 4000,
       "offer_type": "Gem",
-      "icon_name": "Icon_ShopIcon_GemBox"
+      "icon_name": "Gem_5"
+    },
+    {
+      "id": "gem_ads",
+      "name": "Ad Gems",
+      "price": 0,
+      "value": 10,
+      "offer_type": "Gem",
+      "icon_name": "Gem_Ads_0"
     },
     {
       "id": "gold_pile",
@@ -54,7 +62,7 @@
       "price": 50,
       "value": 1000,
       "offer_type": "Gold",
-      "icon_name": "Icon_ShopIcon_Gold0"
+      "icon_name": "Gold_0"
     },
     {
       "id": "gold_pouch",
@@ -62,7 +70,7 @@
       "price": 100,
       "value": 2500,
       "offer_type": "Gold",
-      "icon_name": "Icon_ShopIcon_Gold1"
+      "icon_name": "Gold_1"
     },
     {
       "id": "gold_sack",
@@ -70,7 +78,7 @@
       "price": 200,
       "value": 6000,
       "offer_type": "Gold",
-      "icon_name": "Icon_ShopIcon_Gold2"
+      "icon_name": "Gold_2"
     },
     {
       "id": "gold_chest",
@@ -78,7 +86,7 @@
       "price": 500,
       "value": 18000,
       "offer_type": "Gold",
-      "icon_name": "Icon_ShopIcon_Gold3"
+      "icon_name": "Gold_3"
     },
     {
       "id": "gold_vault",
@@ -86,15 +94,23 @@
       "price": 1000,
       "value": 45000,
       "offer_type": "Gold",
-      "icon_name": "Icon_ShopIcon_Gold4"
+      "icon_name": "Gold_4"
     },
     {
-      "id": "special_chest",
-      "name": "Special Chest",
-      "price": 4999,
-      "value": 10000,
+      "id": "gold_box",
+      "name": "Gold Box",
+      "price": 1500,
+      "value": 80000,
       "offer_type": "Gold",
-      "icon_name": "Icon_ShopIcon_SpecialChest"
+      "icon_name": "Gold_5"
+    },
+    {
+      "id": "gold_ads",
+      "name": "Ad Gold",
+      "price": 0,
+      "value": 500,
+      "offer_type": "Gold",
+      "icon_name": "Gold_Ads_0"
     }
   ]
 }

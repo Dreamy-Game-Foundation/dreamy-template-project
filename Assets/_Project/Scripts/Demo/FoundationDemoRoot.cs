@@ -170,7 +170,6 @@ namespace Dreamy.Template.Demo
 
                 UIShopPanel created = await PanelManager.Instance.Show<UIShopPanel>(Address.ShopPanel);
                 shopPanel = created;
-                shopPanel.OpenDemoRequested += OpenDemoFromShop;
                 shopPanel.Destroyed += OnShopDestroyed;
             }
             catch (Exception exception)
@@ -198,7 +197,6 @@ namespace Dreamy.Template.Demo
                 {
                     UIShopPanel hidingShop = shopPanel;
                     shopPanel = null;
-                    hidingShop.OpenDemoRequested -= OpenDemoFromShop;
                     hidingShop.Destroyed -= OnShopDestroyed;
                     await hidingShop.Hide();
                 }
@@ -222,7 +220,6 @@ namespace Dreamy.Template.Demo
         {
             if (shopPanel != null)
             {
-                shopPanel.OpenDemoRequested -= OpenDemoFromShop;
                 shopPanel.Destroyed -= OnShopDestroyed;
                 shopPanel = null;
             }
@@ -267,7 +264,6 @@ namespace Dreamy.Template.Demo
                     {
                         UIShopPanel hidingShop = shopPanel;
                         shopPanel = null;
-                        hidingShop.OpenDemoRequested -= OpenDemoFromShop;
                         hidingShop.Destroyed -= OnShopDestroyed;
                         await hidingShop.Hide();
                     }
@@ -305,7 +301,6 @@ namespace Dreamy.Template.Demo
 
             if (shopPanel != null)
             {
-                shopPanel.OpenDemoRequested -= OpenDemoFromShop;
                 shopPanel.Destroyed -= OnShopDestroyed;
                 shopPanel = null;
             }

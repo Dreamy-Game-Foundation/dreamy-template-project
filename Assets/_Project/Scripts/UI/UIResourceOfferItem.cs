@@ -25,20 +25,6 @@ namespace Dreamy.Template.Demo
         }
     }
 
-    public class UIResourceValue : MonoBehaviour
-    {
-        [SerializeField] private TMP_Text valueText;
-        [SerializeField] private Image iconImage;
-
-        public void SetValue(ResourceValue resourceValue)
-        {
-            if (valueText != null)
-            {
-                valueText.text = resourceValue.Value.ToString();
-            }
-        }
-    }
-
     public static class CurrencyExtensions
     {
         public static string ToCurrencyFormat(this int priceInCents)
@@ -59,8 +45,8 @@ namespace Dreamy.Template.Demo
         {
             offerEntity = offer;
 
-            // Load Sprite from IconMiscAtlas via AssetLoader
-            AssetLoader.LoadSprite(Address.IconMiscAtlas, offer.IconName)
+            // Load Sprite from ShopOfferAtlas via AssetLoader
+            AssetLoader.LoadSprite(Address.ShopOfferAtlas, offer.IconName)
                 .ContinueWith(sprite =>
                 {
                     if (sprite != null && iconImg != null)

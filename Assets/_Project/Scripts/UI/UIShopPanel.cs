@@ -14,7 +14,6 @@ namespace Dreamy.Template.Demo
     public sealed class UIShopPanel : UIPanel
     {
         [Header("Controls")]
-        [SerializeField] private Button openDemoButton;
         [SerializeField] private Button closeButton;
 
         [Header("Holders")]
@@ -26,30 +25,29 @@ namespace Dreamy.Template.Demo
 
         public override bool CanBack => true;
 
-        public event Action OpenDemoRequested;
         public event Action Destroyed;
 
         private readonly List<GameObject> spawnedItems = new();
 
         private void OnEnable()
         {
-            openDemoButton.onClick.AddListener(OnOpenDemo);
             closeButton.onClick.AddListener(OnClose);
-            
+
             LoadOffers().Forget();
         }
 
         private void OnDisable()
         {
-            openDemoButton.onClick.RemoveListener(OnOpenDemo);
             closeButton.onClick.RemoveListener(OnClose);
-            
+
             ClearSpawnedItems();
         }
 
         private async UniTaskVoid LoadOffers()
         {
             ClearSpawnedItems();
+            gemOfferHolder.DestroyChildren();
+            goldOfferHolder.DestroyChildren();
 
             var dataConfigService = ServiceLocator.Get<IDataConfigService>();
             if (dataConfigService == null) return;
@@ -102,10 +100,9 @@ namespace Dreamy.Template.Demo
             {
                 if (item != null) Pools.Despawn(item);
             }
+
             spawnedItems.Clear();
         }
-
-        private void OnOpenDemo() => OpenDemoRequested?.Invoke();
 
         private void OnClose() => Hide().Forget();
 
