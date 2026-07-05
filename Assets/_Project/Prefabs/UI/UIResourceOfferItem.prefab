@@ -447,7 +447,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
+  m_fontSize: 18
   m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -505,6 +505,7 @@ GameObject:
   - component: {fileID: 4536670045793329080}
   - component: {fileID: 4382252173509994681}
   - component: {fileID: 4361721647092353675}
+  - component: {fileID: 3937919162294273045}
   m_Layer: 0
   m_Name: UIResourceOfferItem
   m_TagString: Untagged
@@ -600,6 +601,29 @@ MonoBehaviour:
   iconImg: {fileID: 4490464348295299248}
   valueTxt: {fileID: 4550155517018506512}
   titleTxt: {fileID: 7365853514237448164}
+--- !u!114 &3937919162294273045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6363639295086346719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2cd429e7cb458993bb2e71ea9a75ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Dreamy.UI.Runtime::Dreamy.UI.UITweenFade
+  runType: 0
+  settings: {fileID: 0}
+  overrideEase: 0
+  easeIn: 27
+  easeOut: 26
+  overrideDuration: 0
+  durationIn: 0.25
+  durationOut: 0.2
+  delayIn: 0
+  delayOut: 0
+  canvasGroup: {fileID: 388307384893020955}
 --- !u!1 &7651368817089565850
 GameObject:
   m_ObjectHideFlags: 0

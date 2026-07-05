@@ -5,12 +5,13 @@ using Dreamy.Core;
 using Dreamy.DataConfig;
 using Dreamy.Assets;
 using Dreamy.UI;
-using Dreamy.Template.Pooling;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Dreamy.Template.Demo {
-    public sealed class UIShopPanel : UIPanel {
+namespace Dreamy.Template.Demo
+{
+    public sealed class UIShopPanel : UIPanel
+    {
         [Header("Controls")] [SerializeField] private Button closeButton;
 
         [Header("Holders")] [SerializeField] private Transform gemOfferHolder;
@@ -25,77 +26,108 @@ namespace Dreamy.Template.Demo {
 
         private readonly List<GameObject> spawnedItems = new();
 
-        private void Awake() {
-            OnPreShow += SpawnOffers;
-            OnPostHide += ClearSpawnedItems;
-        }
+        public override async UniTask Init()
+        {
+            await base.Init();
 
-        public override async UniTask PostInit() {
-            // Tải bất đồng bộ prefab bằng AssetLoader một lần và lưu trữ
-            uiGemOfferPrefab = await AssetLoader.LoadAsync<GameObject>(Address.UIShopResourceOffer_Gem);
-            uiGoldOfferPrefab = await AssetLoader.LoadAsync<GameObject>(Address.UIShopResourceOffer_Gold);
-            await base.PostInit();
-        }
-
-        private void OnEnable() {
-            closeButton.onClick.AddListener(OnClose);
-        }
-
-        private void OnDisable() {
-            closeButton.onClick.RemoveListener(OnClose);
-        }
-
-        private void SpawnOffers() {
+            // 1. Dọn dẹp trước các placeholder/dummy items để tránh đăng ký sai tween
             ClearSpawnedItems();
-            gemOfferHolder.DestroyChildren();
-            goldOfferHolder.DestroyChildren();
 
+            // 2. Tải và tạo mới các Offer Items
+            await LoadOffers();
+
+            // 3. Khởi tạo lại TweenPlayer để nhận dạng và lưu danh sách ITween của các item vừa sinh ra
+            if (tweenPlayer != null)
+            {
+                await tweenPlayer.Init();
+            }
+
+            // 4. Gắn và kích hoạt TweenDelayControl có sẵn của hệ thống để phân bổ delay tự động
+            var delayControl = this.GetOrAddComponent<TweenDelayControl>();
+            if (delayControl != null)
+            {
+                delayControl.ApplyDelays();
+            }
+        }
+
+        private void OnEnable()
+        {
+            closeButton.onClick.AddListener(OnClose);
+            OnPreHide += InitTweenPlayer;
+        }
+
+        private void OnDisable()
+        {
+            closeButton.onClick.RemoveListener(OnClose);
+            OnPreHide -= InitTweenPlayer;
+        }
+
+        void InitTweenPlayer() => tweenPlayer?.Init();
+
+        private async UniTask LoadOffers()
+        {
             var dataConfigService = ServiceLocator.Get<IDataConfigService>();
             if (dataConfigService == null) return;
 
             var offerTable = dataConfigService.GetTable<OfferConfigTable>();
             if (offerTable == null) return;
 
+            // Phân loại offer theo Gem và Gold tương tự mẫu tham khảo
             var gemOffers = offerTable.GetOffersByType(EResourceOffer.Gem);
             var goldOffers = offerTable.GetOffersByType(EResourceOffer.Gold);
 
-            // Sinh các UI Gem Offer từ Pools
-            foreach (var offer in gemOffers) {
-                if (uiGemOfferPrefab != null && gemOfferHolder != null) {
-                    var uiGemOffer = Pools.Spawn<UIResourceOfferItem>(uiGemOfferPrefab, gemOfferHolder);
-                    uiGemOffer.Setup(offer);
-                    spawnedItems.Add(uiGemOffer.gameObject);
+            // Tải bất đồng bộ prefab bằng AssetLoader
+            uiGemOfferPrefab = await AssetLoader.LoadAsync<GameObject>(Address.UIShopResourceOffer_Gem);
+            uiGoldOfferPrefab = await AssetLoader.LoadAsync<GameObject>(Address.UIShopResourceOffer_Gold);
+
+            // Sinh các UI Gem Offer bằng Instantiate
+            foreach (var offer in gemOffers)
+            {
+                if (uiGemOfferPrefab != null && gemOfferHolder != null)
+                {
+                    var itemGo = Instantiate(uiGemOfferPrefab, gemOfferHolder, false);
+                    var uiGemOffer = itemGo.GetComponent<UIResourceOfferItem>();
+                    if (uiGemOffer != null)
+                    {
+                        uiGemOffer.Setup(offer);
+                    }
+
+                    spawnedItems.Add(itemGo);
                 }
-                else {
+                else
+                {
                     Debug.Log($"[UIShopPanel] Gem Offer (No Prefab/Holder): {offer.Name} | Price: {offer.Price}");
                 }
             }
 
-            gemOfferHolder.GetOrAddComponent<TweenDelayControl>()?.ApplyDelays();
+            // Sinh các UI Gold Offer bằng Instantiate
+            foreach (var offer in goldOffers)
+            {
+                if (uiGoldOfferPrefab != null && goldOfferHolder != null)
+                {
+                    var itemGo = Instantiate(uiGoldOfferPrefab, goldOfferHolder, false);
+                    var uiGoldOffer = itemGo.GetComponent<UIResourceOfferItem>();
+                    if (uiGoldOffer != null)
+                    {
+                        uiGoldOffer.Setup(offer);
+                    }
 
-            // Sinh các UI Gold Offer từ Pools
-            foreach (var offer in goldOffers) {
-                if (uiGoldOfferPrefab != null && goldOfferHolder != null) {
-                    var uiGoldOffer = Pools.Spawn<UIResourceOfferItem>(uiGoldOfferPrefab, goldOfferHolder);
-                    uiGoldOffer.Setup(offer);
-                    spawnedItems.Add(uiGoldOffer.gameObject);
+                    spawnedItems.Add(itemGo);
                 }
-                else {
+                else
+                {
                     Debug.Log($"[UIShopPanel] Gold Offer (No Prefab/Holder): {offer.Name} | Price: {offer.Price}");
                 }
             }
-
-            goldOfferHolder.GetOrAddComponent<TweenDelayControl>()?.ApplyDelays();
-
-            // Khởi tạo lại tweenPlayer để tìm và gán các tween từ các item vừa sinh
-            if (tweenPlayer != null) {
-                tweenPlayer.Init().Forget();
-            }
         }
 
-        private void ClearSpawnedItems() {
-            foreach (var item in spawnedItems) {
-                if (item != null) Pools.Despawn(item);
+        private void ClearSpawnedItems()
+        {
+            if (gemOfferHolder != null) gemOfferHolder.DestroyChildren();
+            if (goldOfferHolder != null) goldOfferHolder.DestroyChildren();
+            foreach (var item in spawnedItems)
+            {
+                if (item != null) Destroy(item);
             }
 
             spawnedItems.Clear();
@@ -103,9 +135,8 @@ namespace Dreamy.Template.Demo {
 
         private void OnClose() => Hide().Forget();
 
-        protected override void OnDestroy() {
-            OnPreShow -= SpawnOffers;
-            OnPostHide -= ClearSpawnedItems;
+        protected override void OnDestroy()
+        {
             Destroyed?.Invoke();
             base.OnDestroy();
         }

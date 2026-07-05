@@ -1,8 +1,9 @@
+using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Dreamy.Assets;
-using Cysharp.Threading.Tasks;
+using Dreamy.UI;
 
 namespace Dreamy.Template.Demo
 {
@@ -71,6 +72,7 @@ namespace Dreamy.Template.Demo
             {
                 valueTxt.text = offer.Value.ToString();
             }
+            
         }
     }
 }
