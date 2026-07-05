@@ -37,6 +37,7 @@ namespace Dreamy.Template.Demo
     {
         [SerializeField] protected Image iconImg;
         [SerializeField] protected TextMeshProUGUI valueTxt;
+        [SerializeField] protected TextMeshProUGUI titleTxt;
 
         public OfferConfig Entity => offerEntity;
         protected OfferConfig offerEntity;
@@ -44,6 +45,16 @@ namespace Dreamy.Template.Demo
         public virtual void Setup(OfferConfig offer)
         {
             offerEntity = offer;
+
+            if (titleTxt == null)
+            {
+                titleTxt = transform.Find("Title")?.GetComponent<TextMeshProUGUI>();
+            }
+
+            if (titleTxt != null)
+            {
+                titleTxt.text = offer.Name;
+            }
 
             // Load Sprite from ShopOfferAtlas via AssetLoader
             AssetLoader.LoadSprite(Address.ShopOfferAtlas, offer.IconName)

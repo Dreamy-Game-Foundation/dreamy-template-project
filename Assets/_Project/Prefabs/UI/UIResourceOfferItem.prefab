@@ -350,7 +350,7 @@ MonoBehaviour:
   pressScaleMultiplier: 0.9
   releaseScaleMultiplier: 1.15
   duration: 0.1
-  playIdleAnimation: 1
+  playIdleAnimation: 0
   idleScaleMultiplier: 1.03
   idleDuration: 0.8
   idleDelay: 0.2
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 45
   m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -502,7 +502,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7230470698810507986}
   - component: {fileID: 388307384893020955}
-  - component: {fileID: 5889518265203622375}
   - component: {fileID: 4536670045793329080}
   - component: {fileID: 4382252173509994681}
   - component: {fileID: 4361721647092353675}
@@ -549,29 +548,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &5889518265203622375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6363639295086346719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb2cd429e7cb458993bb2e71ea9a75ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Dreamy.UI.Runtime::Dreamy.UI.UITweenFade
-  runType: 0
-  settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
-  overrideEase: 0
-  easeIn: 27
-  easeOut: 26
-  overrideDuration: 0
-  durationIn: 0.25
-  durationOut: 0.2
-  delayIn: 0
-  delayOut: 0
-  canvasGroup: {fileID: 388307384893020955}
 --- !u!114 &4536670045793329080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,6 +599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Dreamy.Template.Runtime::Dreamy.Template.Demo.UIResourceOfferItem
   iconImg: {fileID: 4490464348295299248}
   valueTxt: {fileID: 4550155517018506512}
+  titleTxt: {fileID: 7365853514237448164}
 --- !u!1 &7651368817089565850
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: a83bbee6e2bed9346a828aa07a594ada, type: 3}
+    - target: {fileID: 3541156088062122531, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -81
+      objectReference: {fileID: 0}
     - target: {fileID: 4490464348295299248, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -42,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5753772256988124137, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.5
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 6363639295086346719, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
       propertyPath: m_Name
@@ -142,7 +146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7365853514237448164, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
       propertyPath: m_fontSize
-      value: 18
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7365853514237448164, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
       propertyPath: m_fontSizeMax
@@ -190,6 +194,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5815351176104136234 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7365853514237448164, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
+  m_PrefabInstance: {fileID: 3930661347942580686}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7988457281617330193 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6363639295086346719, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
@@ -209,4 +224,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Dreamy.Template.Runtime::Dreamy.Template.Demo.UIGemOfferItem
   iconImg: {fileID: 638902168585978238}
   valueTxt: {fileID: 696340498114528478}
+  titleTxt: {fileID: 5815351176104136234}
   priceTxt: {fileID: 4333754372263244178}

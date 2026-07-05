@@ -419,6 +419,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &5279849450805351376 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7365853514237448164, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
+  m_PrefabInstance: {fileID: 3421908492165110836}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8587590011483987435 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6363639295086346719, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
@@ -438,4 +449,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Dreamy.Template.Runtime::Dreamy.Template.Demo.UIGoldOfferItem
   iconImg: {fileID: 1237463143816780932}
   valueTxt: {fileID: 1177807786395359524}
+  titleTxt: {fileID: 5279849450805351376}
   price: {fileID: 1841747609260615388}
