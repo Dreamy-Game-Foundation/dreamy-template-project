@@ -3,6 +3,7 @@
     "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
     "com.demigiant.dotween": "https://github.com/grashaar/DOTween.git",
     "com.dreamy.assets": "https://github.com/Dreamy-Game-Foundation/com.dreamy.assets.git#main",
+    "com.dreamy.audio": "https://github.com/Dreamy-Game-Foundation/com.dreamy.audio.git",
     "com.dreamy.core": "https://github.com/Dreamy-Game-Foundation/com.dreamy.core.git#main",
     "com.dreamy.dataconfig": "https://github.com/Dreamy-Game-Foundation/com.dreamy.dataconfig.git#main",
     "com.dreamy.datasave": "https://github.com/Dreamy-Game-Foundation/com.dreamy.datasave.git#main",

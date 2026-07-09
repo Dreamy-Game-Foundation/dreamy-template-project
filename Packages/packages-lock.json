@@ -23,6 +23,18 @@
       },
       "hash": "69150458909824dbc151e7921328e6ac16085b04"
     },
+    "com.dreamy.audio": {
+      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.audio.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.ugui": "2.0.0",
+        "com.unity.modules.audio": "1.0.0",
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.particlesystem": "1.0.0"
+      },
+      "hash": "e2975df53cfbe5d3b29fbe7432afa6a8d7c37a9d"
+    },
     "com.dreamy.core": {
       "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.core.git#main",
       "depth": 0,

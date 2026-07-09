@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 793437582}
   - component: {fileID: 793437581}
   - component: {fileID: 793437580}
+  - component: {fileID: 793437583}
   m_Layer: 0
   m_Name: Bootstrap
   m_TagString: Untagged
@@ -177,6 +178,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &793437583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793437579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b777d7e907305684b947a85228ad02cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Dreamy.Audio.Runtime::Dreamy.Audio.AudioBootstrap
+  profile: {fileID: 11400000, guid: c4e3953452108ec49a054a2887fda1ed, type: 2}
+  initializeOnAwake: 1
 --- !u!1 &1013958736
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,7 +12,10 @@
         "LeanPool",
         "Unity.ResourceManager",
         "Unity.Addressables",
-        "UniTask.Addressables"
+        "UniTask.Addressables",
+        "Dreamy.Audio.Runtime",
+        "Dreamy.Audio.Runtime.Components",
+        "Dreamy.Audio.Editor"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using Dreamy.Core;
 using Dreamy.DataConfig;
 using Dreamy.Datasave;
+using Dreamy.Audio;
 using UnityEngine;
 using Base.LoadScene;
 
@@ -23,9 +24,9 @@ namespace Dreamy.Template
                     $"{GameInstaller.InitializationException}");
                 return;
             }
-            await SceneLoader.Instance.LoadScene(Address.MainScene);
-        }
 
- 
+            await SceneLoader.Instance.LoadScene(Address.MainScene);
+            DreamyAudio.PlayMusic(new AudioKey("core", "music.main"));
+        }
     }
 }

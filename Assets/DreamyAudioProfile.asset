@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee615fe4a6fe0143b822f943562213e, type: 3}
+  m_Name: DreamyAudioProfile
+  m_EditorClassIdentifier: Dreamy.Audio.Runtime::Dreamy.Audio.DreamyAudioProfile
+  schemaVersion: 1
+  buses: []
+  catalogs:
+  - {fileID: 11400000, guid: f19e906e9c664d344b14da77ddd6716b, type: 2}
+  initialPoolSize: 16
+  maxPoolSize: 64
+  dontDestroyOnLoad: 1
+  logWarnings: 1
