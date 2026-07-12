@@ -4,9 +4,6 @@ Unity template project for internal Dreamy mobile games. This repo is the
 composition root for Dreamy packages and a working sample that shows how to wire
 bootstrap, config, save, asset loading, UI, audio, and pooling together.
 
-The detailed team handbook is here:
-
-- `Assets/_Project/Docs/DREAMY_MOBILE_TEMPLATE_HANDBOOK.md`
 
 ## What This Template Provides
 
