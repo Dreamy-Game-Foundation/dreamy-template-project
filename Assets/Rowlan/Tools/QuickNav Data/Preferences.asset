@@ -15,6 +15,54 @@ MonoBehaviour:
   selectedTabIndex: 0
   historyItemsMax: 20
   history:
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
+  - context: 0
+    title: 
+    unityObject: {fileID: 0}
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
   - context: 1
     title: 
     unityObject: {fileID: 102900000, guid: d196dfb567414edb849330d324fdde3b, type: 3}
@@ -47,38 +95,6 @@ MonoBehaviour:
     title: 
     unityObject: {fileID: 2800000, guid: 855c1e90c512a5d45867f34d8376dfe5, type: 3}
     objectGuid: GlobalObjectId_V1-1-855c1e90c512a5d45867f34d8376dfe5-2800000-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 4900000, guid: c9158e8aaecda9d4581a56e1e9bfc382, type: 3}
-    objectGuid: GlobalObjectId_V1-1-c9158e8aaecda9d4581a56e1e9bfc382-4900000-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 4900000, guid: ce48d486f45b4dc9ad6acf086b90da90, type: 3}
-    objectGuid: GlobalObjectId_V1-1-ce48d486f45b4dc9ad6acf086b90da90-4900000-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 4900000, guid: 51b10685cbbe6a749aa4ab487cef030c, type: 3}
-    objectGuid: GlobalObjectId_V1-1-51b10685cbbe6a749aa4ab487cef030c-4900000-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 11400000, guid: 6ff37d2fa46c95a4ea4e2f133338f5a7, type: 2}
-    objectGuid: GlobalObjectId_V1-3-6ff37d2fa46c95a4ea4e2f133338f5a7-11400000-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 11400000, guid: e6238f7bc8301f64e8a5c6980a4c6ae4, type: 2}
-    objectGuid: GlobalObjectId_V1-3-e6238f7bc8301f64e8a5c6980a4c6ae4-11400000-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 11400000, guid: 6ff37d2fa46c95a4ea4e2f133338f5a7, type: 2}
-    objectGuid: GlobalObjectId_V1-3-6ff37d2fa46c95a4ea4e2f133338f5a7-11400000-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 11400000, guid: e6238f7bc8301f64e8a5c6980a4c6ae4, type: 2}
-    objectGuid: GlobalObjectId_V1-3-e6238f7bc8301f64e8a5c6980a4c6ae4-11400000-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 11400000, guid: 6ff37d2fa46c95a4ea4e2f133338f5a7, type: 2}
-    objectGuid: GlobalObjectId_V1-3-6ff37d2fa46c95a4ea4e2f133338f5a7-11400000-0
   favorites:
   - context: 1
     title: 
