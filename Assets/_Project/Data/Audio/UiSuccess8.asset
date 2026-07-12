@@ -30,7 +30,7 @@ MonoBehaviour:
   timeMode: 0
   priority: 128
   maxInstances: 2
-  cooldownSeconds: 0.5
+  cooldownSeconds: 0
   spatial:
     spatialBlend: 0
     minDistance: 1
