@@ -4,7 +4,7 @@ using Dreamy.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Base.LoadScene
+namespace Dreamy.Template
 {
     public sealed class SceneLoader : LiveSingleton<SceneLoader>
     {

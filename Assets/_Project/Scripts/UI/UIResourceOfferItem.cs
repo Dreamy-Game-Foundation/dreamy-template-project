@@ -47,11 +47,6 @@ namespace Dreamy.Template.Demo
         {
             offerEntity = offer;
 
-            if (titleTxt == null)
-            {
-                titleTxt = transform.Find("Title")?.GetComponent<TextMeshProUGUI>();
-            }
-
             if (titleTxt != null)
             {
                 titleTxt.text = offer.Name;
@@ -72,7 +67,6 @@ namespace Dreamy.Template.Demo
             {
                 valueTxt.text = offer.Value.ToString();
             }
-            
         }
     }
 }

@@ -9,6 +9,6 @@ namespace Dreamy.Template
     {
         public int LaunchCount;
         public int Coins;
-        [FormerlySerializedAs("TapRushHighScore")] public int Score;
+        public int Score;
     }
 }

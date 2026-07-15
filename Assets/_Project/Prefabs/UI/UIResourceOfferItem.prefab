@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 1183888407337789866}
   - component: {fileID: 9219351874826347337}
   - component: {fileID: 2175007582635870273}
+  - component: {fileID: 4382120005109303100}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -346,11 +347,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20ba6cf1c8b4c88a7dc40411527d24c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Dreamy.UI.Runtime::Dreamy.UI.UIScalable
-  originScale: 1
+  originScale: {x: 1, y: 1, z: 1}
   pressScaleMultiplier: 0.9
   releaseScaleMultiplier: 1.15
   duration: 0.1
-  playIdleAnimation: 0
+--- !u!114 &4382120005109303100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5142827890450305674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc876ae6ed98cc64e9a3408356ed14e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Dreamy.UI.Runtime::Dreamy.UI.UIScaleIdle
+  originScale: {x: 1, y: 1, z: 1}
   idleScaleMultiplier: 1.03
   idleDuration: 0.8
   idleDelay: 0.2
@@ -614,7 +627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Dreamy.UI.Runtime::Dreamy.UI.UITweenFade
   runType: 0
-  settings: {fileID: 0}
+  settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
   overrideEase: 0
   easeIn: 27
   easeOut: 26

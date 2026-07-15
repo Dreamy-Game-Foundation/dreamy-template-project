@@ -6,8 +6,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Base.LoadScene {
-    public class UILoadingScreen : MonoBehaviour {
+namespace Dreamy.Template
+{
+    public class UILoadingScreen : MonoBehaviour
+    {
         [SerializeField] private TextMeshProUGUI progressText;
         [SerializeField] private Image progressBarFill;
         [SerializeField] private TMP_Text loadingText;
@@ -22,11 +24,13 @@ namespace Base.LoadScene {
 
         private readonly string[] loadingTexts = { "Loading", "Loading.", "Loading..", "Loading..." };
 
-        private void Awake() {
+        private void Awake()
+        {
             progressBarFill.fillAmount = 0;
         }
 
-        public void Show() {
+        public void Show()
+        {
             gameObject.SetActive(true);
 
             CancelLoadingTask();
@@ -42,23 +46,27 @@ namespace Base.LoadScene {
             progressText.text = "0%";
         }
 
-        public void Hide() {
+        public void Hide()
+        {
             CancelLoadingTask();
             animator.SetTrigger("Close");
         }
 
-        public void Deactive() {
+        public void Deactive()
+        {
             CancelLoadingTask();
             gameObject.SetActive(false);
         }
 
-        private void CancelLoadingTask() {
+        private void CancelLoadingTask()
+        {
             cts?.Cancel();
             cts?.Dispose();
             cts = null;
         }
 
-        public void SetProgress(float progress) {
+        public void SetProgress(float progress)
+        {
             progress = Mathf.Clamp01(progress);
 
             progressTween?.Kill();
@@ -67,7 +75,8 @@ namespace Base.LoadScene {
                 currentPercent,
                 progress,
                 progressAnimDuration,
-                value => {
+                value =>
+                {
                     currentPercent = value;
                     progressBarFill.fillAmount = value;
                     progressText.text = Mathf.RoundToInt(value * 100) + "%";
@@ -75,10 +84,12 @@ namespace Base.LoadScene {
             );
         }
 
-        private async UniTask ShowLoading(CancellationToken token) {
+        private async UniTask ShowLoading(CancellationToken token)
+        {
             int index = 0;
 
-            while (!token.IsCancellationRequested) {
+            while (!token.IsCancellationRequested)
+            {
                 loadingText.text = loadingTexts[index];
                 index = (index + 1) % loadingTexts.Length;
 
@@ -86,7 +97,8 @@ namespace Base.LoadScene {
             }
         }
 
-        private void OnDestroy() {
+        private void OnDestroy()
+        {
             CancelLoadingTask();
             progressTween?.Kill();
         }

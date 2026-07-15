@@ -4,7 +4,6 @@ using Dreamy.DataConfig;
 using Dreamy.Datasave;
 using Dreamy.Audio;
 using UnityEngine;
-using Base.LoadScene;
 
 namespace Dreamy.Template
 {
