@@ -36,6 +36,10 @@ PrefabInstance:
       propertyPath: m_PreserveAspect
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5306883410288241396, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
+      propertyPath: phase
+      value: 0.008082509
+      objectReference: {fileID: 0}
     - target: {fileID: 5753772256988124137, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
       propertyPath: m_SizeDelta.x
       value: 124
@@ -152,14 +156,34 @@ PrefabInstance:
       propertyPath: m_fontSizeMax
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 8906166728806459575, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8906166728806459575, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8906166728806459575, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8906166728806459575, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4361721647092353675, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6513664492288428598, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6363639295086346719, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
       insertIndex: -1
       addedObject: {fileID: 235351028831535450}
+    - targetCorrespondingSourceObject: {fileID: 165315518152584479, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8078942137544990536}
   m_SourcePrefab: {fileID: 100100000, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
 --- !u!114 &638902168585978238 stripped
 MonoBehaviour:
@@ -183,6 +207,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3803239573516053713 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 165315518152584479, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
+  m_PrefabInstance: {fileID: 3930661347942580686}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8078942137544990536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3803239573516053713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cf263e2e0434d178518d992f1321c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Dreamy.UI.Runtime::Dreamy.UI.UIShineWave
+  target: {fileID: 7879122269165734445}
+  shineShader: {fileID: 4800000, guid: 2074739dd0f4452fb142e8d328ad12a9, type: 3}
+  playOnEnable: 1
+  speed: 0.6
+  phase: 0.71406615
+  rotation: 45
+  shineColor: {r: 1, g: 1, b: 1, a: 0.7}
+  width: 0.04
+  softness: 0.12
 --- !u!114 &4333754372263244178 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 767886861895086172, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
@@ -205,6 +255,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7879122269165734445 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6617125266685135843, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}
+  m_PrefabInstance: {fileID: 3930661347942580686}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3803239573516053713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &7988457281617330193 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6363639295086346719, guid: 5d77cf2b298bb144788e9f60f0a04242, type: 3}

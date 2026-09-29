@@ -72,7 +72,7 @@
       "hash": "e00ca5cfdf8886fa1c84dd98d76ee8e983d4e7dd"
     },
     "com.dreamy.ui": {
-      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.ui.git#v1.0.2",
+      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.ui.git#main",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -82,7 +82,7 @@
         "com.dreamy.core": "1.1.2",
         "com.dreamy.assets": "0.1.1"
       },
-      "hash": "dbfec0cf95733c4b8193676b45b5b15c53eba2c4"
+      "hash": "20548222d7f3a8bc6c15a2ea8ea3a59505728c3a"
     },
     "com.unity.2d.animation": {
       "version": "14.0.4",
@@ -278,7 +278,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
-      "version": "2.0.27",
+      "version": "2.0.28",
       "depth": 0,
       "source": "registry",
       "dependencies": {

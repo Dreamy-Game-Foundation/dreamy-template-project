@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1886005028711076852}
   - component: {fileID: 2050172600331361114}
   - component: {fileID: 6617125266685135843}
+  - component: {fileID: 3508281504548521803}
   m_Layer: 0
   m_Name: BG
   m_TagString: Untagged
@@ -75,6 +76,27 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3508281504548521803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165315518152584479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cf263e2e0434d178518d992f1321c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Dreamy.UI.Runtime::Dreamy.UI.UIShineWave
+  target: {fileID: 6617125266685135843}
+  shineShader: {fileID: 4800000, guid: 2074739dd0f4452fb142e8d328ad12a9, type: 3}
+  playOnEnable: 1
+  speed: 0.6
+  phase: 0.72885674
+  rotation: 45
+  shineColor: {r: 1, g: 1, b: 1, a: 0.7}
+  width: 0.18
+  softness: 0.12
 --- !u!1 &4699275376539054333
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,12 +598,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Dreamy.UI.Runtime::Dreamy.UI.UITweenScale
   runType: 0
   settings: {fileID: 11400000, guid: 0229910a5ad190348bd43a7a843eb43a, type: 2}
-  overrideEase: 0
+  overrideEaseIn: 0
   easeIn: 27
   easeOut: 26
-  overrideDuration: 0
+  overrideEaseOut: 0
+  overrideDurationIn: 0
   durationIn: 0.25
   durationOut: 0.2
+  overrideDurationOut: 0
   delayIn: 0
   delayOut: 0
   inactiveScale: 0
@@ -628,12 +652,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Dreamy.UI.Runtime::Dreamy.UI.UITweenFade
   runType: 0
   settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
-  overrideEase: 0
+  overrideEaseIn: 0
   easeIn: 27
   easeOut: 26
-  overrideDuration: 0
+  overrideEaseOut: 0
+  overrideDurationIn: 0
   durationIn: 0.25
   durationOut: 0.2
+  overrideDurationOut: 0
   delayIn: 0
   delayOut: 0
   canvasGroup: {fileID: 388307384893020955}

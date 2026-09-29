@@ -41,13 +41,7 @@ RectTransform:
   - {fileID: 3875909035638619073}
   - {fileID: 1808829456551381164}
   - {fileID: 5371757250740793862}
-  - {fileID: 3784656449236372689}
-  - {fileID: 5550230624205942266}
-  - {fileID: 6736887662100468145}
-  - {fileID: 2920607503628510941}
-  - {fileID: 1612149209386115467}
-  - {fileID: 7656351079820920510}
-  - {fileID: 1391311239697287278}
+  - {fileID: 7012579014006903029}
   m_Father: {fileID: 1102327014377680106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -119,12 +113,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
-  overrideEase: 0
+  overrideEaseIn: 0
   easeIn: 27
   easeOut: 26
-  overrideDuration: 0
+  overrideEaseOut: 0
+  overrideDurationIn: 0
   durationIn: 0.25
   durationOut: 0.2
+  overrideDurationOut: 0
   delayIn: 0
   delayOut: 0
   canvasGroup: {fileID: 6592066560449092358}
@@ -168,12 +164,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: 0229910a5ad190348bd43a7a843eb43a, type: 2}
-  overrideEase: 0
+  overrideEaseIn: 0
   easeIn: 27
   easeOut: 26
-  overrideDuration: 0
+  overrideEaseOut: 0
+  overrideDurationIn: 0
   durationIn: 0.25
   durationOut: 0.2
+  overrideDurationOut: 0
   delayIn: 0
   delayOut: 0
   inactiveScale: 0
@@ -221,7 +219,6 @@ GameObject:
   - component: {fileID: 302496712631505360}
   - component: {fileID: 2846259834804603762}
   - component: {fileID: 5055050108484648207}
-  - component: {fileID: 3364197617170759511}
   - component: {fileID: 7665080236709557020}
   m_Layer: 0
   m_Name: ShopButton
@@ -237,18 +234,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335314545269600949}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7573925822677768964}
-  m_Father: {fileID: 5865705770912914880}
+  m_Father: {fileID: 7012579014006903029}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -962}
-  m_SizeDelta: {x: 820, y: 72}
+  m_AnchoredPosition: {x: 410, y: -743.6847}
+  m_SizeDelta: {x: 820, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5388600733478953319
 CanvasRenderer:
@@ -368,35 +365,6 @@ MonoBehaviour:
   pressScaleMultiplier: 0.9
   releaseScaleMultiplier: 1.15
   duration: 0.1
-  playIdleAnimation: 0
-  idleScaleMultiplier: 1.03
-  idleDuration: 0.8
-  idleDelay: 0.2
-  idleEase: 4
---- !u!114 &3364197617170759511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 335314545269600949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96153a3ee78547c5990264c414ff7bbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runType: 0
-  settings: {fileID: 11400000, guid: d4e8c260d16d7cc47a76b989a4d5c417, type: 2}
-  overrideEase: 0
-  easeIn: 27
-  easeOut: 26
-  overrideDuration: 0
-  durationIn: 0.25
-  durationOut: 0.2
-  delayIn: 0
-  delayOut: 0
-  graphic: {fileID: 5176267155587459007}
-  inactiveColor: {r: 0.9551344, g: 1, b: 0.003144443, a: 0}
 --- !u!114 &7665080236709557020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -971,10 +939,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3154993725114672159}
   - component: {fileID: 7231868485364798759}
-  - component: {fileID: 3023912021343942091}
   - component: {fileID: 5364669566222527752}
   - component: {fileID: 2793046789558783274}
   - component: {fileID: 3869872837342733695}
+  - component: {fileID: 3177602649623905540}
   m_Layer: 0
   m_Name: FoundationDemoPanel
   m_TagString: Untagged
@@ -1015,18 +983,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &3023912021343942091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1146936794652093899}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80cab6a73df24f4f9887e35079565c64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5364669566222527752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1040,7 +996,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 7231868485364798759}
-  tweenPlayer: {fileID: 3023912021343942091}
+  tweenPlayer: {fileID: 3177602649623905540}
   statusText: {fileID: 8009436782338206471}
   scoreText: {fileID: 1615264063839584018}
   healthText: {fileID: 7372630194537094743}
@@ -1064,12 +1020,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
-  overrideEase: 0
+  overrideEaseIn: 0
   easeIn: 27
   easeOut: 26
-  overrideDuration: 0
+  overrideEaseOut: 0
+  overrideDurationIn: 0
   durationIn: 0.25
   durationOut: 0.2
+  overrideDurationOut: 0
   delayIn: 0
   delayOut: 0
   canvasGroup: {fileID: 7231868485364798759}
@@ -1087,16 +1045,330 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: 0229910a5ad190348bd43a7a843eb43a, type: 2}
-  overrideEase: 0
+  overrideEaseIn: 0
   easeIn: 27
   easeOut: 26
-  overrideDuration: 0
+  overrideEaseOut: 0
+  overrideDurationIn: 0
   durationIn: 0.25
   durationOut: 0.2
+  overrideDurationOut: 0
   delayIn: 0
   delayOut: 0
   inactiveScale: 0
   activeScale: 1
+--- !u!114 &3177602649623905540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146936794652093899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 128efe0eeaf344c8bf9cb209502f5d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Dreamy.UI.Runtime::Dreamy.UI.UITweenPlayer
+  collectionMode: 1
+  stagger:
+    enabled: 1
+    showInterval: 0.05
+    hideInterval: 0.03
+    reverseHideOrder: 1
+  manualTargets:
+  - target: {fileID: 3784656449236372689}
+    tweens:
+    - rid: 575624652198248658
+    - rid: 575624652198248659
+  - target: {fileID: 5550230624205942266}
+    tweens:
+    - rid: 575624652198248660
+    - rid: 575624652198248661
+  - target: {fileID: 6736887662100468145}
+    tweens:
+    - rid: 575624652198248683
+    - rid: 575624652198248689
+  - target: {fileID: 2920607503628510941}
+    tweens:
+    - rid: 575624652198248694
+  - target: {fileID: 1612149209386115467}
+    tweens:
+    - rid: 575624652198248685
+  - target: {fileID: 7656351079820920510}
+    tweens:
+    - rid: 575624652198248686
+    - rid: 575624652198248692
+  - target: {fileID: 1391311239697287278}
+    tweens:
+    - rid: 575624652198248691
+    - rid: 575624652198248693
+  - target: {fileID: 2507895657494244915}
+    tweens:
+    - rid: 575624652198248690
+  references:
+    version: 2
+    RefIds:
+    - rid: 575624652198248658
+      type: {class: FadeTweenEffect, ns: Dreamy.UI, asm: Dreamy.UI.Runtime}
+      data:
+        enabled: 1
+        settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
+        overrideSettings:
+          overrideEaseIn: 0
+          easeIn: 27
+          overrideEaseOut: 0
+          easeOut: 26
+          overrideDurationIn: 0
+          durationIn: 0.25
+          overrideDurationOut: 0
+          durationOut: 0.2
+          overrideDelayIn: 0
+          delayIn: 0.2
+          overrideDelayOut: 0
+          delayOut: 0
+        shownAlpha: 1
+        hiddenAlpha: 0
+        controlInteractable: 1
+    - rid: 575624652198248659
+      type: {class: ScaleTweenEffect, ns: Dreamy.UI, asm: Dreamy.UI.Runtime}
+      data:
+        enabled: 1
+        settings: {fileID: 11400000, guid: 0229910a5ad190348bd43a7a843eb43a, type: 2}
+        overrideSettings:
+          overrideEaseIn: 0
+          easeIn: 27
+          overrideEaseOut: 0
+          easeOut: 26
+          overrideDurationIn: 0
+          durationIn: 0.25
+          overrideDurationOut: 0
+          durationOut: 0.2
+          overrideDelayIn: 0
+          delayIn: 0.4
+          overrideDelayOut: 0
+          delayOut: 0
+        shownScale: {x: 1, y: 1, z: 1}
+        hiddenScale: {x: 1, y: 0, z: 0}
+    - rid: 575624652198248660
+      type: {class: MoveTweenEffect, ns: Dreamy.UI, asm: Dreamy.UI.Runtime}
+      data:
+        enabled: 1
+        settings: {fileID: 11400000, guid: 032c4d29dea91954d887dbb7001f8920, type: 2}
+        overrideSettings:
+          overrideEaseIn: 0
+          easeIn: 27
+          overrideEaseOut: 0
+          easeOut: 26
+          overrideDurationIn: 0
+          durationIn: 0.25
+          overrideDurationOut: 0
+          durationOut: 0.2
+          overrideDelayIn: 0
+          delayIn: 0
+          overrideDelayOut: 0
+          delayOut: 0
+        hiddenOffset: {x: -200, y: 0}
+    - rid: 575624652198248661
+      type: {class: FadeTweenEffect, ns: Dreamy.UI, asm: Dreamy.UI.Runtime}
+      data:
+        enabled: 1
+        settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
+        overrideSettings:
+          overrideEaseIn: 0
+          easeIn: 27
+          overrideEaseOut: 0
+          easeOut: 26
+          overrideDurationIn: 0
+          durationIn: 0.25
+          overrideDurationOut: 0
+          durationOut: 0.2
+          overrideDelayIn: 0
+          delayIn: 0
+          overrideDelayOut: 0
+          delayOut: 0
+        shownAlpha: 1
+        hiddenAlpha: 0
+        controlInteractable: 1
+    - rid: 575624652198248683
+      type: {class: RotateTweenEffect, ns: Dreamy.UI, asm: Dreamy.UI.Runtime}
+      data:
+        enabled: 1
+        settings: {fileID: 11400000, guid: eb3ffa2895944c3419fa21f2c0abdf3a, type: 2}
+        overrideSettings:
+          overrideEaseIn: 0
+          easeIn: 27
+          overrideEaseOut: 0
+          easeOut: 26
+          overrideDurationIn: 0
+          durationIn: 0.25
+          overrideDurationOut: 0
+          durationOut: 0.2
+          overrideDelayIn: 0
+          delayIn: 0
+          overrideDelayOut: 0
+          delayOut: 0
+        hiddenRotation: {x: 0, y: 0, z: -12}
+    - rid: 575624652198248685
+      type: {class: FadeTweenEffect, ns: Dreamy.UI, asm: Dreamy.UI.Runtime}
+      data:
+        enabled: 1
+        settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
+        overrideSettings:
+          overrideEaseIn: 0
+          easeIn: 27
+          overrideEaseOut: 0
+          easeOut: 26
+          overrideDurationIn: 0
+          durationIn: 0.25
+          overrideDurationOut: 0
+          durationOut: 0.2
+          overrideDelayIn: 0
+          delayIn: 0
+          overrideDelayOut: 0
+          delayOut: 0
+        shownAlpha: 1
+        hiddenAlpha: 0
+        controlInteractable: 1
+    - rid: 575624652198248686
+      type: {class: MoveTweenEffect, ns: Dreamy.UI, asm: Dreamy.UI.Runtime}
+      data:
+        enabled: 1
+        settings: {fileID: 11400000, guid: 032c4d29dea91954d887dbb7001f8920, type: 2}
+        overrideSettings:
+          overrideEaseIn: 0
+          easeIn: 27
+          overrideEaseOut: 0
+          easeOut: 26
+          overrideDurationIn: 0
+          durationIn: 0.25
+          overrideDurationOut: 0
+          durationOut: 0.2
+          overrideDelayIn: 0
+          delayIn: 0
+          overrideDelayOut: 0
+          delayOut: 0
+        hiddenOffset: {x: 100, y: 0}
+    - rid: 575624652198248689
+      type: {class: FadeTweenEffect, ns: Dreamy.UI, asm: Dreamy.UI.Runtime}
+      data:
+        enabled: 1
+        settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
+        overrideSettings:
+          overrideEaseIn: 0
+          easeIn: 27
+          overrideEaseOut: 0
+          easeOut: 26
+          overrideDurationIn: 0
+          durationIn: 0.25
+          overrideDurationOut: 0
+          durationOut: 0.2
+          overrideDelayIn: 0
+          delayIn: 0
+          overrideDelayOut: 0
+          delayOut: 0
+        shownAlpha: 1
+        hiddenAlpha: 0
+        controlInteractable: 1
+    - rid: 575624652198248690
+      type: {class: ScaleTweenEffect, ns: Dreamy.UI, asm: Dreamy.UI.Runtime}
+      data:
+        enabled: 1
+        settings: {fileID: 11400000, guid: 0229910a5ad190348bd43a7a843eb43a, type: 2}
+        overrideSettings:
+          overrideEaseIn: 0
+          easeIn: 27
+          overrideEaseOut: 0
+          easeOut: 26
+          overrideDurationIn: 0
+          durationIn: 0.25
+          overrideDurationOut: 0
+          durationOut: 0.2
+          overrideDelayIn: 0
+          delayIn: 0
+          overrideDelayOut: 0
+          delayOut: 0
+        shownScale: {x: 1, y: 1, z: 1}
+        hiddenScale: {x: 0, y: 0, z: 0}
+    - rid: 575624652198248691
+      type: {class: MoveTweenEffect, ns: Dreamy.UI, asm: Dreamy.UI.Runtime}
+      data:
+        enabled: 1
+        settings: {fileID: 11400000, guid: 032c4d29dea91954d887dbb7001f8920, type: 2}
+        overrideSettings:
+          overrideEaseIn: 0
+          easeIn: 27
+          overrideEaseOut: 0
+          easeOut: 26
+          overrideDurationIn: 0
+          durationIn: 0.25
+          overrideDurationOut: 0
+          durationOut: 0.2
+          overrideDelayIn: 0
+          delayIn: 0
+          overrideDelayOut: 0
+          delayOut: 0
+        hiddenOffset: {x: -100, y: 0}
+    - rid: 575624652198248692
+      type: {class: FadeTweenEffect, ns: Dreamy.UI, asm: Dreamy.UI.Runtime}
+      data:
+        enabled: 1
+        settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
+        overrideSettings:
+          overrideEaseIn: 0
+          easeIn: 27
+          overrideEaseOut: 0
+          easeOut: 26
+          overrideDurationIn: 0
+          durationIn: 0.25
+          overrideDurationOut: 0
+          durationOut: 0.2
+          overrideDelayIn: 0
+          delayIn: 0
+          overrideDelayOut: 0
+          delayOut: 0
+        shownAlpha: 1
+        hiddenAlpha: 0
+        controlInteractable: 1
+    - rid: 575624652198248693
+      type: {class: FadeTweenEffect, ns: Dreamy.UI, asm: Dreamy.UI.Runtime}
+      data:
+        enabled: 1
+        settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
+        overrideSettings:
+          overrideEaseIn: 0
+          easeIn: 27
+          overrideEaseOut: 0
+          easeOut: 26
+          overrideDurationIn: 0
+          durationIn: 0.25
+          overrideDurationOut: 0
+          durationOut: 0.2
+          overrideDelayIn: 0
+          delayIn: 0
+          overrideDelayOut: 0
+          delayOut: 0
+        shownAlpha: 1
+        hiddenAlpha: 0
+        controlInteractable: 1
+    - rid: 575624652198248694
+      type: {class: MoveTweenEffect, ns: Dreamy.UI, asm: Dreamy.UI.Runtime}
+      data:
+        enabled: 1
+        settings: {fileID: 11400000, guid: 032c4d29dea91954d887dbb7001f8920, type: 2}
+        overrideSettings:
+          overrideEaseIn: 0
+          easeIn: 27
+          overrideEaseOut: 0
+          easeOut: 26
+          overrideDurationIn: 0
+          durationIn: 0.25
+          overrideDurationOut: 0
+          durationOut: 0.2
+          overrideDelayIn: 0
+          delayIn: 0
+          overrideDelayOut: 0
+          delayOut: 0
+        hiddenOffset: {x: 0, y: -20}
 --- !u!1 &2588096922508651609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,6 +1527,75 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!1 &2731031749063788586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7012579014006903029}
+  - component: {fileID: 7032542525552923102}
+  m_Layer: 0
+  m_Name: BtnGroup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7012579014006903029
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2731031749063788586}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3784656449236372689}
+  - {fileID: 5550230624205942266}
+  - {fileID: 6736887662100468145}
+  - {fileID: 2920607503628510941}
+  - {fileID: 1612149209386115467}
+  - {fileID: 7656351079820920510}
+  - {fileID: 1391311239697287278}
+  m_Father: {fileID: 5865705770912914880}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -150.63306}
+  m_SizeDelta: {x: 820, y: 966.1586}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7032542525552923102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2731031749063788586}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 5
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &3077807120703235983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1743,7 +2084,6 @@ GameObject:
   - component: {fileID: 3418612760640152625}
   - component: {fileID: 2426936197776607461}
   - component: {fileID: 2437199358172825633}
-  - component: {fileID: 5762617475997414679}
   - component: {fileID: 2702602506632647048}
   m_Layer: 0
   m_Name: LoadButton
@@ -1759,18 +2099,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3625861122596294078}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2127501199053885540}
-  m_Father: {fileID: 5865705770912914880}
+  m_Father: {fileID: 7012579014006903029}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -864}
-  m_SizeDelta: {x: 820, y: 72}
+  m_AnchoredPosition: {x: 410, y: -604.94775}
+  m_SizeDelta: {x: 820, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3001627472030689663
 CanvasRenderer:
@@ -1890,35 +2230,6 @@ MonoBehaviour:
   pressScaleMultiplier: 0.9
   releaseScaleMultiplier: 1.15
   duration: 0.1
-  playIdleAnimation: 0
-  idleScaleMultiplier: 1.03
-  idleDuration: 0.8
-  idleDelay: 0.2
-  idleEase: 4
---- !u!114 &5762617475997414679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3625861122596294078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96153a3ee78547c5990264c414ff7bbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runType: 0
-  settings: {fileID: 11400000, guid: d4e8c260d16d7cc47a76b989a4d5c417, type: 2}
-  overrideEase: 0
-  easeIn: 27
-  easeOut: 26
-  overrideDuration: 0
-  durationIn: 0.25
-  durationOut: 0.2
-  delayIn: 0
-  delayOut: 0
-  graphic: {fileID: 4057150396523754737}
-  inactiveColor: {r: 0.9551344, g: 1, b: 0.003144443, a: 0}
 --- !u!114 &2702602506632647048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1964,18 +2275,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5110462360972014237}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 349813856318447109}
-  m_Father: {fileID: 5865705770912914880}
+  m_Father: {fileID: 7012579014006903029}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -688}
-  m_SizeDelta: {x: 820, y: 72}
+  m_AnchoredPosition: {x: 410, y: -327.47388}
+  m_SizeDelta: {x: 820, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3597459820455123807
 CanvasRenderer:
@@ -2095,11 +2406,6 @@ MonoBehaviour:
   pressScaleMultiplier: 0.9
   releaseScaleMultiplier: 1.15
   duration: 0.1
-  playIdleAnimation: 0
-  idleScaleMultiplier: 1.03
-  idleDuration: 0.8
-  idleDelay: 0.2
-  idleEase: 4
 --- !u!114 &7116398962150220192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2114,12 +2420,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: 032c4d29dea91954d887dbb7001f8920, type: 2}
-  overrideEase: 0
+  overrideEaseIn: 0
   easeIn: 27
   easeOut: 26
-  overrideDuration: 0
+  overrideEaseOut: 0
+  overrideDurationIn: 0
   durationIn: 0.25
   durationOut: 0.2
+  overrideDurationOut: 0
   delayIn: 0
   delayOut: 0
   rectTransform: {fileID: 6736887662100468145}
@@ -2138,12 +2446,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
-  overrideEase: 0
+  overrideEaseIn: 0
   easeIn: 27
   easeOut: 26
-  overrideDuration: 0
+  overrideEaseOut: 0
+  overrideDurationIn: 0
   durationIn: 0.25
   durationOut: 0.2
+  overrideDurationOut: 0
   delayIn: 1.5
   delayOut: 0
   canvasGroup: {fileID: 5542305380617747553}
@@ -2628,12 +2938,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Dreamy.UI.Runtime::Dreamy.UI.UITweenMove
   runType: 0
   settings: {fileID: 11400000, guid: 032c4d29dea91954d887dbb7001f8920, type: 2}
-  overrideEase: 0
+  overrideEaseIn: 0
   easeIn: 27
   easeOut: 26
-  overrideDuration: 0
+  overrideEaseOut: 0
+  overrideDurationIn: 0
   durationIn: 0.25
   durationOut: 0.2
+  overrideDurationOut: 0
   delayIn: 0
   delayOut: 0
   rectTransform: {fileID: 2507895657494244915}
@@ -2664,12 +2976,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Dreamy.UI.Runtime::Dreamy.UI.UITweenFade
   runType: 0
   settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
-  overrideEase: 0
+  overrideEaseIn: 0
   easeIn: 27
   easeOut: 26
-  overrideDuration: 0
+  overrideEaseOut: 0
+  overrideDurationIn: 0
   durationIn: 0.25
   durationOut: 0.2
+  overrideDurationOut: 0
   delayIn: 0
   delayOut: 0
   canvasGroup: {fileID: 2647103163546391173}
@@ -2718,18 +3032,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6369116771246508488}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8971918200565187333}
-  m_Father: {fileID: 5865705770912914880}
+  m_Father: {fileID: 7012579014006903029}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -512}
-  m_SizeDelta: {x: 820, y: 72}
+  m_AnchoredPosition: {x: 410, y: -50}
+  m_SizeDelta: {x: 820, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5812264329953797001
 CanvasRenderer:
@@ -2847,12 +3161,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: 0229910a5ad190348bd43a7a843eb43a, type: 2}
-  overrideEase: 0
+  overrideEaseIn: 0
   easeIn: 27
   easeOut: 26
-  overrideDuration: 0
+  overrideEaseOut: 0
+  overrideDurationIn: 0
   durationIn: 1
   durationOut: 0.2
+  overrideDurationOut: 0
   delayIn: 0.5
   delayOut: 0
   inactiveScale: 0
@@ -2873,11 +3189,6 @@ MonoBehaviour:
   pressScaleMultiplier: 0.9
   releaseScaleMultiplier: 1.15
   duration: 0.1
-  playIdleAnimation: 0
-  idleScaleMultiplier: 1.03
-  idleDuration: 0.8
-  idleDelay: 0.2
-  idleEase: 4
 --- !u!114 &5830824389687136809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2923,18 +3234,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6746603474466082373}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5393182314872846363}
-  m_Father: {fileID: 5865705770912914880}
+  m_Father: {fileID: 7012579014006903029}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -600}
-  m_SizeDelta: {x: 820, y: 72}
+  m_AnchoredPosition: {x: 410, y: -188.73694}
+  m_SizeDelta: {x: 820, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8228552498779495747
 CanvasRenderer:
@@ -3052,12 +3363,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: eb3ffa2895944c3419fa21f2c0abdf3a, type: 2}
-  overrideEase: 0
+  overrideEaseIn: 0
   easeIn: 27
   easeOut: 26
-  overrideDuration: 0
+  overrideEaseOut: 0
+  overrideDurationIn: 0
   durationIn: 0.25
   durationOut: 0.2
+  overrideDurationOut: 0
   delayIn: 1
   delayOut: 0
   inactiveRotation: {x: 0, y: 0, z: -12}
@@ -3077,11 +3390,6 @@ MonoBehaviour:
   pressScaleMultiplier: 0.9
   releaseScaleMultiplier: 1.15
   duration: 0.1
-  playIdleAnimation: 0
-  idleScaleMultiplier: 1.03
-  idleDuration: 0.8
-  idleDelay: 0.2
-  idleEase: 4
 --- !u!114 &1258124262588477523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3096,12 +3404,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
-  overrideEase: 0
+  overrideEaseIn: 0
   easeIn: 27
   easeOut: 26
-  overrideDuration: 0
+  overrideEaseOut: 0
+  overrideDurationIn: 0
   durationIn: 0
   durationOut: 0.2
+  overrideDurationOut: 0
   delayIn: 0
   delayOut: 0
   canvasGroup: {fileID: 2468869684690471514}
@@ -3290,11 +3600,6 @@ MonoBehaviour:
   pressScaleMultiplier: 0.9
   releaseScaleMultiplier: 1.15
   duration: 0.1
-  playIdleAnimation: 0
-  idleScaleMultiplier: 1.03
-  idleDuration: 0.8
-  idleDelay: 0.2
-  idleEase: 4
 --- !u!114 &3819327349909884353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3309,12 +3614,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runType: 0
   settings: {fileID: 11400000, guid: cd932b039fe673d45b73e18c4ab4c7e8, type: 2}
-  overrideEase: 0
+  overrideEaseIn: 0
   easeIn: 27
   easeOut: 26
-  overrideDuration: 0
+  overrideEaseOut: 0
+  overrideDurationIn: 0
   durationIn: 0.25
   durationOut: 0.2
+  overrideDurationOut: 0
   delayIn: 2
   delayOut: 0
   rectTransform: {fileID: 5207179079994530821}
@@ -3825,18 +4132,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8497544299517347510}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3182104795822778778}
-  m_Father: {fileID: 5865705770912914880}
+  m_Father: {fileID: 7012579014006903029}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -1069}
-  m_SizeDelta: {x: 820, y: 72}
+  m_AnchoredPosition: {x: 410, y: -882.42163}
+  m_SizeDelta: {x: 820, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7594300806318165748
 CanvasRenderer:
@@ -3956,11 +4263,6 @@ MonoBehaviour:
   pressScaleMultiplier: 0.9
   releaseScaleMultiplier: 1.15
   duration: 0.1
-  playIdleAnimation: 0
-  idleScaleMultiplier: 1.03
-  idleDuration: 0.8
-  idleDelay: 0.2
-  idleEase: 4
 --- !u!114 &9084954254299348674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4017,12 +4319,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Dreamy.UI.Runtime::Dreamy.UI.UITweenFade
   runType: 0
   settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
-  overrideEase: 0
+  overrideEaseIn: 0
   easeIn: 27
   easeOut: 26
-  overrideDuration: 0
+  overrideEaseOut: 0
+  overrideDurationIn: 0
   durationIn: 0.25
   durationOut: 0.2
+  overrideDurationOut: 0
   delayIn: 0
   delayOut: 0
   canvasGroup: {fileID: 886108003826368169}
@@ -4091,7 +4395,6 @@ GameObject:
   - component: {fileID: 4552132661717212543}
   - component: {fileID: 5490815129248955805}
   - component: {fileID: 7398576871448879032}
-  - component: {fileID: 5849563578154489039}
   - component: {fileID: 6040741370590552795}
   - component: {fileID: 5024712705670706434}
   m_Layer: 0
@@ -4108,18 +4411,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9114989927422000304}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3687023291591062948}
-  m_Father: {fileID: 5865705770912914880}
+  m_Father: {fileID: 7012579014006903029}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -776}
-  m_SizeDelta: {x: 820, y: 72}
+  m_AnchoredPosition: {x: 410, y: -466.21082}
+  m_SizeDelta: {x: 820, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7489898215184282380
 CanvasRenderer:
@@ -4223,30 +4526,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5849563578154489039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9114989927422000304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96153a3ee78547c5990264c414ff7bbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runType: 0
-  settings: {fileID: 11400000, guid: d4e8c260d16d7cc47a76b989a4d5c417, type: 2}
-  overrideEase: 0
-  easeIn: 27
-  easeOut: 26
-  overrideDuration: 0
-  durationIn: 0.25
-  durationOut: 0.2
-  delayIn: 0
-  delayOut: 0
-  graphic: {fileID: 4552132661717212543}
-  inactiveColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!114 &6040741370590552795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4263,11 +4542,6 @@ MonoBehaviour:
   pressScaleMultiplier: 0.9
   releaseScaleMultiplier: 1.15
   duration: 0.1
-  playIdleAnimation: 0
-  idleScaleMultiplier: 1.03
-  idleDuration: 0.8
-  idleDelay: 0.2
-  idleEase: 4
 --- !u!114 &5024712705670706434
 MonoBehaviour:
   m_ObjectHideFlags: 0
