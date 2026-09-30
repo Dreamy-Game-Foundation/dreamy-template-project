@@ -4,6 +4,8 @@ using Cysharp.Threading.Tasks;
 using Dreamy.Core;
 using Dreamy.DataConfig;
 using Dreamy.Datasave;
+using Dreamy.DailyReward;
+using Dreamy.Economy;
 using Dreamy.Template.Pooling;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -69,6 +71,10 @@ namespace Dreamy.Template
                 Codec = codec
             });
             ServiceLocator.Register<IDatasaveService>(datasave);
+
+            var wallet = new DatasaveResourceWallet(datasave);
+            ServiceLocator.Register<IResourceWallet>(wallet);
+            ServiceLocator.Register<IResourceBalanceProvider>(wallet);
         }
 
         private void InstallOtherServices()
@@ -95,9 +101,11 @@ namespace Dreamy.Template
             // Example of registering a Table Config
             dataConfig.Register<DataConfigTable<TestConfig>>("testConfigs");
             dataConfig.Register<OfferConfigTable>("offerConfigs");
+            DailyRewardInstaller.RegisterConfig(dataConfig);
 
             await dataConfig.InitializeAsync(cancellationToken);
             ServiceLocator.Register<IDataConfigService>(dataConfig);
+            DailyRewardInstaller.Install();
 
             // Example of retrieving and printing rows from the Table Config
             var testTable = dataConfig.GetTable<DataConfigTable<TestConfig>>();

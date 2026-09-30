@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using Dreamy.Core;
 using Dreamy.DataConfig;
 using Dreamy.Datasave;
+using Dreamy.Feature.DailyReward.Integration;
 using Dreamy.Template.Pooling;
 using Dreamy.UI;
 using UnityEngine;
@@ -19,6 +20,7 @@ namespace Dreamy.Template.Demo
         private TemplateSave saveData;
         private FoundationDemoPanel panel;
         private UIShopPanel shopPanel;
+        private DailyRewardPanel dailyRewardPanel;
         
         private int score;
         private float health = 100f;
@@ -97,6 +99,7 @@ namespace Dreamy.Template.Demo
             target.SaveRequested += Save;
             target.LoadRequested += Load;
             target.OpenShopRequested += OpenShop;
+            target.OpenDailyRewardRequested += OpenDailyReward;
             target.Destroyed += OnPanelDestroyed;
         }
 
@@ -109,6 +112,7 @@ namespace Dreamy.Template.Demo
             target.SaveRequested -= Save;
             target.LoadRequested -= Load;
             target.OpenShopRequested -= OpenShop;
+            target.OpenDailyRewardRequested -= OpenDailyReward;
             target.Destroyed -= OnPanelDestroyed;
         }
 
@@ -152,6 +156,62 @@ namespace Dreamy.Template.Demo
         private void OpenShop()
         {
             OpenShopAsync().Forget();
+        }
+
+        private void OpenDailyReward()
+        {
+            OpenDailyRewardAsync().Forget();
+        }
+
+        private async UniTaskVoid OpenDailyRewardAsync()
+        {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            try
+            {
+                if (panel != null)
+                {
+                    FoundationDemoPanel hidingPanel = panel;
+                    panel = null;
+                    UnbindPanel(hidingPanel);
+                    await hidingPanel.Hide();
+                }
+
+                DailyRewardPanel created = await PanelManager.Instance.Show<DailyRewardPanel>(
+                    Address.DailyRewardPanel);
+                dailyRewardPanel = created;
+                dailyRewardPanel.Destroyed += OnDailyRewardDestroyed;
+            }
+            catch (Exception exception)
+            {
+                Debug.LogException(exception, this);
+                if (panel == null && !isShuttingDown) await CreatePanelAsync();
+            }
+            finally
+            {
+                isTransitioning = false;
+            }
+        }
+
+        private void OnDailyRewardDestroyed()
+        {
+            if (dailyRewardPanel != null)
+            {
+                dailyRewardPanel.Destroyed -= OnDailyRewardDestroyed;
+                dailyRewardPanel = null;
+            }
+
+            if (!isShuttingDown) OpenDemoFromDailyRewardAsync().Forget();
+        }
+
+        private async UniTaskVoid OpenDemoFromDailyRewardAsync()
+        {
+            await UniTask.WaitUntil(() => !isTransitioning,
+                cancellationToken: this.GetCancellationTokenOnDestroy());
+            if (!isShuttingDown && panel == null && shopPanel == null && dailyRewardPanel == null)
+            {
+                await CreatePanelAsync();
+            }
         }
 
         private async UniTaskVoid OpenShopAsync()
@@ -236,7 +296,7 @@ namespace Dreamy.Template.Demo
         {
             if (!isTransitioning)
             {
-                bool showDemo = (panel == null && shopPanel == null);
+                bool showDemo = (panel == null && shopPanel == null && dailyRewardPanel == null);
                 SetPanelVisibleAsync(showDemo).Forget();
             }
         }
@@ -249,7 +309,7 @@ namespace Dreamy.Template.Demo
             {
                 if (visible)
                 {
-                    if (panel == null && shopPanel == null) await CreatePanelAsync();
+                    if (panel == null && shopPanel == null && dailyRewardPanel == null) await CreatePanelAsync();
                 }
                 else
                 {
@@ -266,6 +326,13 @@ namespace Dreamy.Template.Demo
                         shopPanel = null;
                         hidingShop.Destroyed -= OnShopDestroyed;
                         await hidingShop.Hide();
+                    }
+                    if (dailyRewardPanel != null)
+                    {
+                        DailyRewardPanel hidingDailyReward = dailyRewardPanel;
+                        dailyRewardPanel = null;
+                        hidingDailyReward.Destroyed -= OnDailyRewardDestroyed;
+                        await hidingDailyReward.Hide();
                     }
                 }
             }
@@ -303,6 +370,12 @@ namespace Dreamy.Template.Demo
             {
                 shopPanel.Destroyed -= OnShopDestroyed;
                 shopPanel = null;
+            }
+
+            if (dailyRewardPanel != null)
+            {
+                dailyRewardPanel.Destroyed -= OnDailyRewardDestroyed;
+                dailyRewardPanel = null;
             }
 
             if (togglePanelButton != null)

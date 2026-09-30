@@ -14,7 +14,10 @@
         "Unity.Addressables",
         "UniTask.Addressables",
         "Dreamy.Audio.Runtime",
-        "Dreamy.Audio.Runtime.Components"
+        "Dreamy.Audio.Runtime.Components",
+        "Dreamy.DailyReward.Runtime",
+        "Dreamy.Economy.Runtime",
+        "Dreamy.Feature.DailyReward.Integration.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

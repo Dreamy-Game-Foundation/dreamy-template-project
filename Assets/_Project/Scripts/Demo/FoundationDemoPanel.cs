@@ -20,6 +20,7 @@ namespace Dreamy.Template.Demo
         [SerializeField] private Button saveButton;
         [SerializeField] private Button loadButton;
         [SerializeField] private Button openShopButton;
+        [SerializeField] private Button openDailyRewardButton;
 
         public override bool CanBack => true;
 
@@ -29,6 +30,7 @@ namespace Dreamy.Template.Demo
         public event Action SaveRequested;
         public event Action LoadRequested;
         public event Action OpenShopRequested;
+        public event Action OpenDailyRewardRequested;
         public event Action Destroyed;
 
         private void OnEnable()
@@ -39,9 +41,10 @@ namespace Dreamy.Template.Demo
             saveButton.onClick.AddListener(OnSave);
             loadButton.onClick.AddListener(OnLoad);
             if (openShopButton != null) openShopButton.onClick.AddListener(OnOpenShop);
+            if (openDailyRewardButton != null) openDailyRewardButton.onClick.AddListener(OnOpenDailyReward);
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
             addScoreButton.onClick.RemoveListener(OnAddScore);
             damageButton.onClick.RemoveListener(OnDamage);
@@ -49,6 +52,8 @@ namespace Dreamy.Template.Demo
             saveButton.onClick.RemoveListener(OnSave);
             loadButton.onClick.RemoveListener(OnLoad);
             if (openShopButton != null) openShopButton.onClick.RemoveListener(OnOpenShop);
+            if (openDailyRewardButton != null) openDailyRewardButton.onClick.RemoveListener(OnOpenDailyReward);
+            base.OnDisable();
         }
 
         public void SetStatus(string value) => statusText.text = value;
@@ -61,6 +66,7 @@ namespace Dreamy.Template.Demo
         private void OnSave() => SaveRequested?.Invoke();
         private void OnLoad() => LoadRequested?.Invoke();
         private void OnOpenShop() => OpenShopRequested?.Invoke();
+        private void OnOpenDailyReward() => OpenDailyRewardRequested?.Invoke();
 
         protected override void OnDestroy()
         {
