@@ -1,0 +1,41 @@
+using System;
+using Dreamy.UI;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Dreamy.Template.Home
+{
+    public sealed class HomePanel : UIPanel, IHomeView
+    {
+        [Header("Navigation")]
+        [SerializeField] private Button shopButton;
+        [SerializeField] private Button settingsButton;
+
+        public override bool CanBack => false;
+        public override bool CanCache => true;
+
+        public event Action<HomeDestination> DestinationRequested;
+
+        private void OnEnable()
+        {
+            shopButton?.onClick.AddListener(RequestShop);
+            settingsButton?.onClick.AddListener(RequestSettings);
+        }
+
+        protected override void OnDisable()
+        {
+            shopButton?.onClick.RemoveListener(RequestShop);
+            settingsButton?.onClick.RemoveListener(RequestSettings);
+            base.OnDisable();
+        }
+
+        public void SetNavigationInteractable(bool interactable)
+        {
+            if (shopButton != null) shopButton.interactable = interactable;
+            if (settingsButton != null) settingsButton.interactable = interactable;
+        }
+
+        private void RequestShop() => DestinationRequested?.Invoke(HomeDestination.Shop);
+        private void RequestSettings() => DestinationRequested?.Invoke(HomeDestination.Settings);
+    }
+}
