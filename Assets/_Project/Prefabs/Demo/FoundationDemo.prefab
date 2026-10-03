@@ -48,10 +48,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a4d18c282f548ba86fa7e4687378138, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a15d2f25ac54b71841471bce1ab0bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  togglePanelButton: {fileID: 6335627652823668855}
 --- !u!223 &9023249614989747020
 Canvas:
   m_ObjectHideFlags: 0

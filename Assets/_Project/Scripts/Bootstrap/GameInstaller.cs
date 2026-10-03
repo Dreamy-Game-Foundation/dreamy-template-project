@@ -4,8 +4,9 @@ using Cysharp.Threading.Tasks;
 using Dreamy.Core;
 using Dreamy.DataConfig;
 using Dreamy.Datasave;
-using Dreamy.DailyReward;
 using Dreamy.Economy;
+using Dreamy.Feature.Shop.Integration;
+using Dreamy.Shop;
 using Dreamy.Template.Pooling;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -83,7 +84,9 @@ namespace Dreamy.Template
             poolService = new LeanPoolService();
             ServiceLocator.Register<IPoolService>(poolService);
 
-            // [Add future services here]
+            // The sample gateway confirms IAP offers for local feature validation.
+            // Replace it with the production store SDK adapter before release.
+            ServiceLocator.Register<IShopPurchaseGateway>(new SimulatedShopPurchaseGateway());
         }
 
         private async UniTask InstallDataConfigServiceAsync(CancellationToken cancellationToken)
@@ -101,11 +104,11 @@ namespace Dreamy.Template
             // Example of registering a Table Config
             dataConfig.Register<DataConfigTable<TestConfig>>("testConfigs");
             dataConfig.Register<OfferConfigTable>("offerConfigs");
-            DailyRewardInstaller.RegisterConfig(dataConfig);
+            ShopInstaller.RegisterConfig(dataConfig);
 
             await dataConfig.InitializeAsync(cancellationToken);
             ServiceLocator.Register<IDataConfigService>(dataConfig);
-            DailyRewardInstaller.Install();
+            ShopInstaller.Install();
 
             // Example of retrieving and printing rows from the Table Config
             var testTable = dataConfig.GetTable<DataConfigTable<TestConfig>>();

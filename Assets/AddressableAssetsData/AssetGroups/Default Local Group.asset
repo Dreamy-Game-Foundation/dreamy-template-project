@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 230dc47490268320aacc3d2d6ee018e9
+    m_Address: Panel/HomePanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 26af8d43db9bd5043b1b8541e35fd020
     m_Address: Panel
     m_ReadOnly: 0
@@ -30,8 +35,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 618a53c7404df3345904c4882b8fdaad
-    m_Address: Panel/DailyRewardPanel.prefab
+  - m_GUID: d6e00e3d3e7b2714581cc90c53ce61c2
+    m_Address: Panel/ShopPanel.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
