@@ -1,5 +1,22 @@
 {
   "dependencies": {
+    "com.coplaydev.unity-mcp": {
+      "version": "https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.modules.animation": "1.0.0",
+        "com.unity.modules.imageconversion": "1.0.0",
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.physics2d": "1.0.0",
+        "com.unity.modules.uielements": "1.0.0",
+        "com.unity.modules.screencapture": "1.0.0",
+        "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.nuget.newtonsoft-json": "3.0.2",
+        "com.unity.test-framework": "1.1.31"
+      },
+      "hash": "30d22075093d1d35dfb0091c1c7550e9ad948577"
+    },
     "com.cysharp.unitask": {
       "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
       "depth": 0,
@@ -77,21 +94,6 @@
       "source": "git",
       "dependencies": {},
       "hash": "885e27604f9b867d91f57b4e54fc1e375d18835f"
-    },
-    "com.dreamy.feature.daily-reward": {
-      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feature.daily-reward.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.dreamy.core": "1.1.2",
-        "com.dreamy.dataconfig": "0.2.0",
-        "com.dreamy.datasave": "0.2.0",
-        "com.dreamy.audio": "0.1.0",
-        "com.dreamy.feature.economy": "0.1.0",
-        "com.dreamy.feature": "0.1.0",
-        "com.dreamy.ui": "0.2.0"
-      },
-      "hash": "a890b18104f9783e76cd4ccc4cdeacf3f12ded4c"
     },
     "com.dreamy.feature.economy": {
       "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feature.economy.git",
