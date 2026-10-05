@@ -30,7 +30,7 @@ Assets/_Project
     Demo            Demo root and demo panel flow
     Pooling         LeanPool adapter and pool helper
     Save            Sample save data
-    UI              Shop/resource UI sample
+    Home            Home navigation and feature entry points
   Prefabs           Loading screen, demo panel, shop panel, UI items
   Textures          Project UI/game textures
   SpriteAtlas       Sprite atlases
@@ -70,7 +70,7 @@ BootstrapScene
   -> GameInstaller initializes services
   -> GameInit waits for Ready state
   -> SceneLoader loads MainScene
-  -> FoundationDemoRoot shows demo UI
+  -> HomeBootstrap / FoundationDemoRoot show their configured UI
 ```
 
 ## Bootstrap And Service Usage
@@ -115,27 +115,13 @@ Config files are stored under:
 Assets/Resources/DataConfig
 ```
 
-Example config row:
-
-```csharp
-public sealed class OfferConfig : DataConfigRow
-{
-    public string Name { get; set; }
-    public string Currency { get; set; }
-    public int Amount { get; set; }
-    public int Price { get; set; }
-}
-
-public sealed class OfferConfigTable : DataConfigTable<OfferConfig>
-{
-}
-```
-
-Usage from a feature root:
+The host registers `TemplateConfig`, `TestConfigTable` and the feature-owned
+`ShopCatalogConfig` before loading configuration. The active shop catalog lives in
+`Assets/_Project/_Feature/Dreamy Shop/0.1.1/Shop Feature/Resources/DataConfig/shopCatalog.json`.
 
 ```csharp
 IDataConfigService configService = ServiceLocator.Get<IDataConfigService>();
-OfferConfig offer = configService.GetTable<OfferConfigTable>().Get("starter_pack");
+TemplateConfig config = configService.GetTable<TemplateConfig>();
 ```
 
 Do not parse JSON directly inside UI panels.
@@ -182,8 +168,10 @@ Assets/_Project/Scripts/Bootstrap/Address.cs
 Example:
 
 ```csharp
-UIShopPanel panel = await PanelManager.Instance.Show<UIShopPanel>(Address.ShopPanel);
+HomePanel panel = await PanelManager.Instance.Show<HomePanel>(Address.HomePanel);
 ```
+
+Shop navigation is owned by `HomeNavigator`: create the feature ShopPanel, bind its ShopPresenter, render offers, then transition. Release the presenter on hide/destroy.
 
 UI rules:
 
@@ -202,7 +190,7 @@ Current sample addresses:
 
 ```csharp
 public const string FoundationDemoPanel = "Panel/FoundationDemoPanel.prefab";
-public const string ShopPanel = "Panel/UIShopPanel.prefab";
+public const string ShopPanel = "Panel/ShopPanel.prefab";
 public const string ShopOfferAtlas = "SpriteAtlas/ShopOfferAtlas.spriteatlasv2";
 ```
 
@@ -274,3 +262,7 @@ Recommended baseline:
 - Update `Packages/manifest.json`, `packages-lock.json`, and docs together when
   package dependencies change.
 
+
+## Host audit and cleanup phases
+
+See [TEMPLATE-HOST-AUDIT.md](TEMPLATE-HOST-AUDIT.md) for the inspected package versions, installer order, Shop/Economy ownership, atlas demo design and remaining validation gates.

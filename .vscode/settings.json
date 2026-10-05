@@ -45,7 +45,7 @@
         "**/*.unity": true,
         "build/": true,
         "Build/": true,
-        "Library/": true,
+        //"Library/": true,
         "library/": true,
         "obj/": true,
         "Obj/": true,
@@ -67,6 +67,6 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "dreamy-template-project.slnx",
+    "dotnet.defaultSolution": "DreamyTemplateProject.slnx",
     "dotnet.enableWorkspaceBasedDevelopment": false
 }

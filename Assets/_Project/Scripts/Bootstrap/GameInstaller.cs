@@ -2,13 +2,14 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Dreamy.Core;
+using Dreamy.Audio;
 using Dreamy.DataConfig;
 using Dreamy.Datasave;
 using Dreamy.Economy;
 using Dreamy.Feature.Shop.Integration;
+using Dreamy.Settings;
 using Dreamy.Shop;
 using Dreamy.Template.Pooling;
-using Newtonsoft.Json;
 using UnityEngine;
 
 namespace Dreamy.Template
@@ -16,10 +17,14 @@ namespace Dreamy.Template
     [DefaultExecutionOrder(-10000)]
     public sealed class GameInstaller : MonoBehaviour
     {
+        [Header("Persistence")]
         [SerializeField] private bool prettySaveInEditor = true;
 
         private IDatasaveService datasave;
         private IPoolService poolService;
+        private IResourceWallet wallet;
+        private IDataConfigService dataConfig;
+        private IShopPurchaseGateway purchaseGateway;
 
         public static BootstrapState State { get; private set; }
         public static Exception InitializationException { get; private set; }
@@ -33,18 +38,23 @@ namespace Dreamy.Template
         private async UniTaskVoid InitializeAsync()
         {
             State = BootstrapState.Initializing;
+            InitializationException = null;
             try
             {
                 var cancellationToken = this.GetCancellationTokenOnDestroy();
 
-                // 1. Install Datasave Service
-                InstallDatasaveService();
+                // 1. Foundation: persistence, pooling and audio.
+                InstallPersistence();
+                InstallInfrastructure();
 
-                // 2. Install Pool and other future services
-                InstallOtherServices();
+                // 2. Economy: one wallet shared by Shop and resource holders.
+                InstallEconomy();
 
-                // 3. Install DataConfig Service (called last due to async loading)
-                await InstallDataConfigServiceAsync(cancellationToken);
+                // 3. Configuration: register every document before loading.
+                await InstallConfigurationAsync(cancellationToken);
+
+                // 4. Features: all required services and config are now ready.
+                InstallFeatures();
 
                 State = BootstrapState.Ready;
             }
@@ -56,14 +66,13 @@ namespace Dreamy.Template
             }
         }
 
-        private void InstallDatasaveService()
+        private void InstallPersistence()
         {
             ISaveCodec codec;
 #if UNITY_EDITOR
             codec = new PlainTextSaveCodec();
 #else
             codec = new XorSaveCodec("Dreamy123@");
-            // codec = new AesSaveCodec("Dreamy123@");
 #endif
 
             datasave = new DatasaveService(new DatasaveOptions
@@ -72,50 +81,51 @@ namespace Dreamy.Template
                 Codec = codec
             });
             ServiceLocator.Register<IDatasaveService>(datasave);
-
-            var wallet = new DatasaveResourceWallet(datasave);
-            ServiceLocator.Register<IResourceWallet>(wallet);
-            ServiceLocator.Register<IResourceBalanceProvider>(wallet);
         }
 
-        private void InstallOtherServices()
+        private void InstallInfrastructure()
         {
-            // Install Pool Service
             poolService = new LeanPoolService();
             ServiceLocator.Register<IPoolService>(poolService);
-
-            // The sample gateway confirms IAP offers for local feature validation.
-            // Replace it with the production store SDK adapter before release.
-            ServiceLocator.Register<IShopPurchaseGateway>(new SimulatedShopPurchaseGateway());
+            ServiceLocator.Register<IAudioService>(DreamyAudio.Service);
         }
 
-        private async UniTask InstallDataConfigServiceAsync(CancellationToken cancellationToken)
+        private void InstallEconomy()
         {
-            IRemoteConfigProvider remoteConfigProvider = new RemoteDataConfigProvider();
-            IDataConfigSource configSource = new CompositeConfigSource(new IDataConfigSource[]
-            {
-                new RemoteConfigSource(remoteConfigProvider),
-                new ResourcesJsonConfigSource()
-            });
+            var resourceWallet = new DatasaveResourceWallet(datasave);
+            wallet = resourceWallet;
+            ServiceLocator.Register<IResourceWallet>(resourceWallet);
+            ServiceLocator.Register<IResourceBalanceProvider>(resourceWallet);
+        }
 
-            var dataConfig = new DataConfigService(configSource);
+        private async UniTask InstallConfigurationAsync(CancellationToken cancellationToken)
+        {
+            dataConfig = new DataConfigService(new ResourcesJsonConfigSource());
             dataConfig.Register<TemplateConfig>("templateConfig");
-
-            // Example of registering a Table Config
-            dataConfig.Register<DataConfigTable<TestConfig>>("testConfigs");
-            dataConfig.Register<OfferConfigTable>("offerConfigs");
+            dataConfig.Register<TestConfigTable>("testConfigs");
             ShopInstaller.RegisterConfig(dataConfig);
 
             await dataConfig.InitializeAsync(cancellationToken);
             ServiceLocator.Register<IDataConfigService>(dataConfig);
-            ShopInstaller.Install();
+        }
 
-            // Example of retrieving and printing rows from the Table Config
-            var testTable = dataConfig.GetTable<DataConfigTable<TestConfig>>();
-            foreach (var row in testTable.GetAll())
+        private void InstallFeatures()
+        {
+            if (!ServiceLocator.TryGet<ISettingsPlatformGateway>(out var settingsGateway))
             {
-                Debug.Log($"[TestConfig] Id: {row.Id}, Name: {row.Name}, Value: {row.Value}");
+                settingsGateway = new SettingsPlatformGateway();
+                ServiceLocator.Register<ISettingsPlatformGateway>(settingsGateway);
             }
+            SettingsInstaller.Install(ServiceLocator.Get<IAudioService>(), settingsGateway);
+
+#if UNITY_EDITOR
+            // Local IAP simulation belongs to the Editor demo only.
+            purchaseGateway = new SimulatedShopPurchaseGateway();
+            ServiceLocator.Register<IShopPurchaseGateway>(purchaseGateway);
+#else
+            ServiceLocator.TryGet(out purchaseGateway);
+#endif
+            ShopInstaller.Install(dataConfig.GetTable<ShopCatalogConfig>(), wallet, purchaseGateway);
         }
 
         private void OnApplicationPause(bool paused)

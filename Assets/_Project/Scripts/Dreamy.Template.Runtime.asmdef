@@ -17,7 +17,9 @@
         "Dreamy.Audio.Runtime.Components",
         "Dreamy.Economy.Runtime",
         "Dreamy.Shop.Runtime",
-        "Dreamy.Feature.Shop.Integration.Runtime"
+        "Dreamy.Feature.Shop.Integration.Runtime",
+        "Dreamy.Settings.Runtime",
+        "Dreamy.Feature.Settings.Integration.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

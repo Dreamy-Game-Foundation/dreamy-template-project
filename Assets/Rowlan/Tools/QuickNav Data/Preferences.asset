@@ -15,10 +15,6 @@ MonoBehaviour:
   selectedTabIndex: 0
   historyItemsMax: 20
   history:
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-10d27668a1136564e9ad7582e2b9146d-8434179691080026003-0
   - context: 1
     title: 
     unityObject: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
@@ -26,18 +22,6 @@ MonoBehaviour:
   - context: 0
     title: 
     unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-10d27668a1136564e9ad7582e2b9146d-8434179691080026003-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-10d27668a1136564e9ad7582e2b9146d-8434179691080026003-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
     objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
   - context: 0
     title: 
@@ -46,27 +30,15 @@ MonoBehaviour:
   - context: 0
     title: 
     unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-10d27668a1136564e9ad7582e2b9146d-8434179691080026003-0
+    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
   - context: 1
     title: 
     unityObject: {fileID: 11400000, guid: 4f0a94fd52444c5419b61334298aaf55, type: 2}
     objectGuid: GlobalObjectId_V1-3-4f0a94fd52444c5419b61334298aaf55-11400000-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-10d27668a1136564e9ad7582e2b9146d-8434179691080026003-0
   - context: 1
     title: 
     unityObject: {fileID: 11400000, guid: 4f0a94fd52444c5419b61334298aaf55, type: 2}
     objectGuid: GlobalObjectId_V1-3-4f0a94fd52444c5419b61334298aaf55-11400000-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-10d27668a1136564e9ad7582e2b9146d-8434179691080026003-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 8434179691080026003, guid: 10d27668a1136564e9ad7582e2b9146d, type: 3}
-    objectGuid: GlobalObjectId_V1-1-10d27668a1136564e9ad7582e2b9146d-8434179691080026003-0
   favorites:
   - context: 1
     title: 

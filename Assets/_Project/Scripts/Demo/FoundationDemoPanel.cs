@@ -19,7 +19,7 @@ namespace Dreamy.Template.Demo
         [SerializeField] private Button healButton;
         [SerializeField] private Button saveButton;
         [SerializeField] private Button loadButton;
-        [SerializeField] private Button openShopButton;
+        [SerializeField] private Button closeButton;
 
         public override bool CanBack => true;
 
@@ -28,7 +28,7 @@ namespace Dreamy.Template.Demo
         public event Action HealRequested;
         public event Action SaveRequested;
         public event Action LoadRequested;
-        public event Action OpenShopRequested;
+        public event Action CloseRequested;
         public event Action Destroyed;
 
         private void OnEnable()
@@ -38,7 +38,7 @@ namespace Dreamy.Template.Demo
             healButton.onClick.AddListener(OnHeal);
             saveButton.onClick.AddListener(OnSave);
             loadButton.onClick.AddListener(OnLoad);
-            if (openShopButton != null) openShopButton.onClick.AddListener(OnOpenShop);
+            if (closeButton != null) closeButton.onClick.AddListener(OnClose);
         }
 
         protected override void OnDisable()
@@ -48,7 +48,7 @@ namespace Dreamy.Template.Demo
             healButton.onClick.RemoveListener(OnHeal);
             saveButton.onClick.RemoveListener(OnSave);
             loadButton.onClick.RemoveListener(OnLoad);
-            if (openShopButton != null) openShopButton.onClick.RemoveListener(OnOpenShop);
+            if (closeButton != null) closeButton.onClick.RemoveListener(OnClose);
             base.OnDisable();
         }
 
@@ -61,7 +61,7 @@ namespace Dreamy.Template.Demo
         private void OnHeal() => HealRequested?.Invoke();
         private void OnSave() => SaveRequested?.Invoke();
         private void OnLoad() => LoadRequested?.Invoke();
-        private void OnOpenShop() => OpenShopRequested?.Invoke();
+        private void OnClose() => CloseRequested?.Invoke();
 
         protected override void OnDestroy()
         {

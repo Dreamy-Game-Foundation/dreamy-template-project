@@ -1,7 +1,11 @@
 using System;
 using Cysharp.Threading.Tasks;
 using Dreamy.Core;
+using Dreamy.DataConfig;
+using Dreamy.Datasave;
+using Dreamy.Template.Demo;
 using Dreamy.Feature.Shop.Integration;
+using Dreamy.Feature.Settings.Integration;
 using Dreamy.Shop;
 using Dreamy.UI;
 
@@ -10,12 +14,14 @@ namespace Dreamy.Template.Home
     public sealed class HomeNavigator : IDisposable
     {
         private bool isTransitioning;
+        private bool disposed;
+        private FoundationDemoRoot demo;
         private ShopPanel shopPanel;
         private ShopPresenter shopPresenter;
 
         public async UniTask OpenAsync(HomeDestination destination)
         {
-            if (isTransitioning)
+            if (disposed || isTransitioning)
             {
                 return;
             }
@@ -25,11 +31,14 @@ namespace Dreamy.Template.Home
             {
                 switch (destination)
                 {
+                    case HomeDestination.Demo:
+                        await OpenDemoAsync();
+                        return;
                     case HomeDestination.Shop:
                         await OpenShopAsync();
                         return;
                     case HomeDestination.Settings:
-                        UnityEngine.Debug.LogWarning("[Home] Settings is not installed yet.");
+                        await PanelManager.Instance.Show<SettingsPanel>(Address.SettingsPanel);
                         return;
                     default:
                         UnityEngine.Debug.LogWarning($"[Home] Unsupported destination: {destination}.");
@@ -42,20 +51,44 @@ namespace Dreamy.Template.Home
             }
         }
 
+        private async UniTask OpenDemoAsync()
+        {
+            FoundationDemoPanel panel = await PanelManager.Instance.Create<FoundationDemoPanel>(
+                Address.FoundationDemoPanel);
+            if (disposed) return;
+
+            demo?.Dispose();
+            demo = new FoundationDemoRoot(
+                panel,
+                ServiceLocator.Get<IDatasaveService>(),
+                ServiceLocator.Get<IDataConfigService>());
+            try
+            {
+                await PanelManager.Instance.Transition<FoundationDemoPanel>(Address.FoundationDemoPanel);
+            }
+            catch
+            {
+                demo.Dispose();
+                demo = null;
+                throw;
+            }
+        }
+
         private async UniTask OpenShopAsync()
         {
             ReleaseShopPresenter();
-            shopPanel = await PanelManager.Instance.Transition<ShopPanel>(Address.ShopPanel);
-            shopPanel.Destroyed += ReleaseShopPresenter;
+            shopPanel = await PanelManager.Instance.Create<ShopPanel>(Address.ShopPanel);
+            shopPanel.OnPostHide += ReleaseShopPresenter;
             shopPresenter = new ShopPresenter(ServiceLocator.Get<IShopService>(), shopPanel);
             shopPresenter.Show();
+            await PanelManager.Instance.Transition<ShopPanel>(Address.ShopPanel);
         }
 
         private void ReleaseShopPresenter()
         {
             if (shopPanel != null)
             {
-                shopPanel.Destroyed -= ReleaseShopPresenter;
+                shopPanel.OnPostHide -= ReleaseShopPresenter;
                 shopPanel = null;
             }
 
@@ -63,6 +96,13 @@ namespace Dreamy.Template.Home
             shopPresenter = null;
         }
 
-        public void Dispose() => ReleaseShopPresenter();
+        public void Dispose()
+        {
+            if (disposed) return;
+            disposed = true;
+            demo?.Dispose();
+            demo = null;
+            ReleaseShopPresenter();
+        }
     }
 }
