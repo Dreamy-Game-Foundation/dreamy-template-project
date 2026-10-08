@@ -26,9 +26,15 @@ namespace Dreamy.Template.Demo
 
             TemplateConfig config = dataConfig.GetTable<TemplateConfig>();
             saveData = datasave.Load<TemplateSave>();
-            saveData.LaunchCount++;
+            if (!saveData.IsInitialized)
+            {
+                saveData.CurrentScore = config.StartingScore;
+                saveData.BestScore = Mathf.Max(saveData.BestScore, saveData.CurrentScore);
+                saveData.IsInitialized = true;
+            }
+            saveData.DemoOpenCount++;
             datasave.Save(saveData);
-            score = config.StartingCoins;
+            score = saveData.CurrentScore;
 
             panel.AddScoreRequested += AddScore;
             panel.DamageRequested += Damage;
@@ -39,7 +45,7 @@ namespace Dreamy.Template.Demo
             panel.OnPostHide += Dispose;
             panel.Destroyed += Dispose;
             RefreshPanel();
-            panel.SetStatus($"Demo opened | count={saveData.LaunchCount} | config coins={config.StartingCoins}");
+            panel.SetStatus($"Demo opened | count={saveData.DemoOpenCount} | starting score={config.StartingScore}");
         }
 
         private void AddScore()
@@ -62,18 +68,18 @@ namespace Dreamy.Template.Demo
 
         private void Save()
         {
-            saveData.Coins = score;
-            saveData.Score = Mathf.Max(saveData.Score, score);
+            saveData.CurrentScore = score;
+            saveData.BestScore = Mathf.Max(saveData.BestScore, score);
             datasave.Save(saveData);
-            panel.SetStatus($"Saved | coins={saveData.Coins} | best score={saveData.Score}");
+            panel.SetStatus($"Saved | score={saveData.CurrentScore} | best score={saveData.BestScore}");
         }
 
         private void Load()
         {
             saveData = datasave.Load<TemplateSave>();
-            score = saveData.Coins;
+            score = saveData.CurrentScore;
             RefreshPanel();
-            panel.SetStatus($"Loaded | coins={saveData.Coins} | best score={saveData.Score}");
+            panel.SetStatus($"Loaded | score={saveData.CurrentScore} | best score={saveData.BestScore}");
         }
 
         private void RefreshPanel()

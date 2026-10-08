@@ -347,3 +347,65 @@ Host có SettingsPlatformGateway tại Scripts/Settings, được đăng ký tr�
 SettingsInstaller. Adapter dùng chung cho GDPR/Restore/Open Store/RequestReview.
 Chưa có DreamySDK: capability=false và trả Unavailable; không giả thành công.
 Hướng dẫn nối SDK nằm ở Assets/_Project/Scripts/Settings/README.md.
+
+## Cập nhật lifecycle và demo save (2026-10-06)
+
+Các thay đổi dưới đây thay thế mô tả cũ về teardown của GameInstaller và tên
+field demo; không đánh dấu toàn bộ phase 1/2 đã hoàn tất.
+
+- GameInstaller chỉ cho một instance cài service. Instance duplicate không
+  teardown service của instance chính. Static owner/state/exception được reset
+  tại SubsystemRegistration.
+- Host ghi lại từng registration và cleanup theo thứ tự ngược khi init lỗi hoặc
+  installer bị destroy. Chỉ unregister khi locator vẫn chứa đúng instance do
+  host đăng ký; giữ nguyên replacement của owner khác. Khi undo registration,
+  phục hồi registration có trước nếu nó chưa bị thay thế. Chỉ Dispose instance
+  host tạo và sở hữu; không Dispose DreamyAudio.Service hay gateway có sẵn.
+  Entitlement bindings được tháo trước service teardown, kể cả partial init.
+- HomeNavigator kiểm tra disposed sau khi Create Shop hoàn tất, trước khi bind
+  presenter. Nếu bind/render/transition lỗi, presenter và callback được tháo.
+  Panel được Create vẫn thuộc cache của PanelManager, không bị navigator destroy.
+- SceneLoader nhận CancellationToken tùy chọn và liên kết lifetime của loader.
+  Event subscription tồn tại qua nhiều lần load; subscriber phải tự unsubscribe.
+  Request trong khi loader đang bận bị từ chối bằng InvalidOperationException.
+  Khi cancel hoặc lỗi callback sau khi Unity đã bắt đầu load, loader bật lại
+  allowSceneActivation và chờ operation hoàn tất trước khi nhả trạng thái bận.
+  Cancellation dừng presentation; không đảo ngược scene load của Unity, nên
+  scene vẫn có thể được activate. OnScenePresented không được phát cho lượt hủy.
+  GameInit quan sát cancellation/exception; scene load dùng lifetime của loader
+  vì activation sẽ destroy GameInit trong scene bootstrap.
+- TemplateConfig dùng StartingScore; JSON startingCoins cũ vẫn được đọc qua alias.
+  TemplateSave version 2 giữ type và save key TemplateSave, dùng DemoOpenCount,
+  CurrentScore, BestScore và IsInitialized. Migration version 1 chuyển LaunchCount
+  thành DemoOpenCount, Coins thành CurrentScore, Score thành BestScore. Các key
+  cũ chỉ được đọc, không ghi vào save mới. Score bằng 0 của save cũ được giữ.
+  Demo seed score từ config một lần cho save mới; mở lại dùng score đã lưu và
+  tăng DemoOpenCount. Save/Load thao tác score demo, không thao tác Economy wallet.
+
+Validation:
+
+- Roslyn host UNITY_EDITOR và nhánh bỏ define UNITY_EDITOR đều exit 0, output
+  trong /tmp; dùng references Bee hiện có, không thay DLL Editor và không phải
+  build player.
+- Năm ca save/config chạy đạt ngoài Editor với source Datasave và Newtonsoft đã
+  resolve: migration v1 với score 42/0, round-trip v2, save mới chưa seed, config
+  tên cũ/mới. Harness chỉ thay Application.persistentDataPath và Debug output.
+- EditMode tests nằm trong Assets/_Project/Tests/Editor: save/config và ownership
+  registration (replacement, restore registration trước, borrowed service).
+  Batch test bị Unity từ chối vì project đang được instance khác mở; ownership
+  tests và Play Mode chưa được chạy trong Editor.
+
+Smoke checks còn cần chạy trong Editor:
+
+1. Hai installer trong cùng phiên; destroy duplicate không đổi locator/state.
+2. Play Mode nhiều lần với Domain Reload off; kiểm tra riêng cấu hình Scene
+   Reload off nếu sử dụng, vì reset static không tự khởi động lại scene giữ nguyên.
+3. Hủy installer khi config đang tải và init lỗi sau partial installation;
+   registry/binding/pool không còn instance mồ côi.
+4. Dispose navigator lúc Create Shop đang chờ; lỗi transition; mở/đóng lại không
+   tăng số callback.
+5. Load scene hai lần với một subscriber; cancel khi progress dưới 0.9 hoặc đang
+   chờ minimumLoadingDuration; callback ném exception; destroy loader khi tải.
+   Operation phải được cho activate và nhả lock, không callback presentation muộn.
+6. Demo first-save, Save -> đổi score -> Load, đóng/mở lại; save v1 có score 0;
+   xác nhận Economy wallet không đổi.

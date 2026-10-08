@@ -77,11 +77,22 @@ namespace Dreamy.Template.Home
         private async UniTask OpenShopAsync()
         {
             ReleaseShopPresenter();
-            shopPanel = await PanelManager.Instance.Create<ShopPanel>(Address.ShopPanel);
-            shopPanel.OnPostHide += ReleaseShopPresenter;
-            shopPresenter = new ShopPresenter(ServiceLocator.Get<IShopService>(), shopPanel);
-            shopPresenter.Show();
-            await PanelManager.Instance.Transition<ShopPanel>(Address.ShopPanel);
+            ShopPanel panel = await PanelManager.Instance.Create<ShopPanel>(Address.ShopPanel);
+            if (disposed) return;
+
+            shopPanel = panel;
+            try
+            {
+                shopPanel.OnPostHide += ReleaseShopPresenter;
+                shopPresenter = new ShopPresenter(ServiceLocator.Get<IShopService>(), shopPanel);
+                shopPresenter.Show();
+                await PanelManager.Instance.Transition<ShopPanel>(Address.ShopPanel);
+            }
+            catch
+            {
+                ReleaseShopPresenter();
+                throw;
+            }
         }
 
         private void ReleaseShopPresenter()

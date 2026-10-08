@@ -12,9 +12,6 @@ GameObject:
   - component: {fileID: 2608188851125929073}
   - component: {fileID: 7793035957304307023}
   - component: {fileID: 4742443814415860354}
-  - component: {fileID: 7675576402849689451}
-  - component: {fileID: 5592906564248913190}
-  - component: {fileID: 1389571505792316166}
   m_Layer: 0
   m_Name: CloseButton
   m_TagString: Untagged
@@ -123,73 +120,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!225 &7675576402849689451
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 415589428752148448}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
---- !u!114 &5592906564248913190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 415589428752148448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb2cd429e7cb458993bb2e71ea9a75ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Dreamy.UI.Runtime::Dreamy.UI.UITweenFade
-  runType: 0
-  settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
-  overrideEaseIn: 0
-  easeIn: 27
-  easeOut: 26
-  overrideEaseOut: 0
-  overrideDurationIn: 0
-  durationIn: 0.25
-  durationOut: 0.2
-  overrideDurationOut: 0
-  overrideDelayIn: 0
-  delayIn: 0
-  overrideDelayOut: 0
-  delayOut: 0
-  canvasGroup: {fileID: 7675576402849689451}
---- !u!114 &1389571505792316166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 415589428752148448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f99e352bce4b86a32d8e8fe25ca17c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Dreamy.UI.Runtime::Dreamy.UI.UITweenMove
-  runType: 0
-  settings: {fileID: 11400000, guid: 032c4d29dea91954d887dbb7001f8920, type: 2}
-  overrideEaseIn: 0
-  easeIn: 27
-  easeOut: 26
-  overrideEaseOut: 0
-  overrideDurationIn: 0
-  durationIn: 0.25
-  durationOut: 0.2
-  overrideDurationOut: 0
-  overrideDelayIn: 0
-  delayIn: 0
-  overrideDelayOut: 0
-  delayOut: 0
-  rectTransform: {fileID: 3028540107273755320}
-  offset: {x: -100, y: 0}
 --- !u!1 &2521000529709213780
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,10 +483,6 @@ PrefabInstance:
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 315489837659572907, guid: 58d7c1a38f4e4d83920eff2d9a6de08a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 315489837659572907, guid: 58d7c1a38f4e4d83920eff2d9a6de08a, type: 3}
       propertyPath: overrideDelayOut
       value: 1
       objectReference: {fileID: 0}
@@ -681,10 +607,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5988948904625094682, guid: 58d7c1a38f4e4d83920eff2d9a6de08a, type: 3}
-      propertyPath: collectionMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5988948904625094682, guid: 58d7c1a38f4e4d83920eff2d9a6de08a, type: 3}
       propertyPath: stagger.hideInterval
       value: 0.01
       objectReference: {fileID: 0}
@@ -773,6 +695,8 @@ MonoBehaviour:
   statusText: {fileID: 5035940815149266796}
   offerContainer: {fileID: 6965859845317548145}
   offerItemPrefab: {fileID: 5563508889273868629, guid: b18a699ac0ef35d43a639269ca3e6245, type: 3}
+  iconAtlas: {fileID: 100100200, guid: b3ab08076877e4d48ad37af178afd723, type: 3}
+  fallbackIcon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!114 &6871799070329584564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -975,83 +899,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8462310889323261611, guid: e72603487e1846788e844014acddf579, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8971546250349980301, guid: e72603487e1846788e844014acddf579, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8359465326093679018}
-    - targetCorrespondingSourceObject: {fileID: 8971546250349980301, guid: e72603487e1846788e844014acddf579, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4750207709215448999}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e72603487e1846788e844014acddf579, type: 3}
---- !u!225 &7227372056424832748 stripped
-CanvasGroup:
-  m_CorrespondingSourceObject: {fileID: 7695040969330008819, guid: e72603487e1846788e844014acddf579, type: 3}
-  m_PrefabInstance: {fileID: 1046680549432196127}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8216777534196307602 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8971546250349980301, guid: e72603487e1846788e844014acddf579, type: 3}
-  m_PrefabInstance: {fileID: 1046680549432196127}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8359465326093679018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8216777534196307602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f99e352bce4b86a32d8e8fe25ca17c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Dreamy.UI.Runtime::Dreamy.UI.UITweenMove
-  runType: 0
-  settings: {fileID: 11400000, guid: 032c4d29dea91954d887dbb7001f8920, type: 2}
-  overrideEaseIn: 0
-  easeIn: 27
-  easeOut: 26
-  overrideEaseOut: 0
-  overrideDurationIn: 0
-  durationIn: 0.25
-  durationOut: 0.2
-  overrideDurationOut: 0
-  overrideDelayIn: 0
-  delayIn: 0
-  overrideDelayOut: 0
-  delayOut: 0
-  rectTransform: {fileID: 8244014448305423996}
-  offset: {x: 100, y: 0}
---- !u!114 &4750207709215448999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8216777534196307602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb2cd429e7cb458993bb2e71ea9a75ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Dreamy.UI.Runtime::Dreamy.UI.UITweenFade
-  runType: 0
-  settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
-  overrideEaseIn: 0
-  easeIn: 27
-  easeOut: 26
-  overrideEaseOut: 0
-  overrideDurationIn: 0
-  durationIn: 0.25
-  durationOut: 0.2
-  overrideDurationOut: 0
-  overrideDelayIn: 0
-  delayIn: 0
-  overrideDelayOut: 0
-  delayOut: 0
-  canvasGroup: {fileID: 7227372056424832748}
 --- !u!224 &8244014448305423996 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9002151518397905507, guid: e72603487e1846788e844014acddf579, type: 3}
@@ -1209,83 +1061,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GemHolder
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7293002030889169268, guid: c81d639b62734a13981155bbce9ef683, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7837544927558415698, guid: c81d639b62734a13981155bbce9ef683, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2198819504734158901}
-    - targetCorrespondingSourceObject: {fileID: 7837544927558415698, guid: c81d639b62734a13981155bbce9ef683, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 9172070486187424529}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c81d639b62734a13981155bbce9ef683, type: 3}
---- !u!225 &931914241680480926 stripped
-CanvasGroup:
-  m_CorrespondingSourceObject: {fileID: 8831451821385956652, guid: c81d639b62734a13981155bbce9ef683, type: 3}
-  m_PrefabInstance: {fileID: 8530184601498396594}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1920152083011015392 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7837544927558415698, guid: c81d639b62734a13981155bbce9ef683, type: 3}
-  m_PrefabInstance: {fileID: 8530184601498396594}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2198819504734158901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1920152083011015392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f99e352bce4b86a32d8e8fe25ca17c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Dreamy.UI.Runtime::Dreamy.UI.UITweenMove
-  runType: 0
-  settings: {fileID: 11400000, guid: 032c4d29dea91954d887dbb7001f8920, type: 2}
-  overrideEaseIn: 0
-  easeIn: 27
-  easeOut: 26
-  overrideEaseOut: 0
-  overrideDurationIn: 0
-  durationIn: 0.25
-  durationOut: 0.2
-  overrideDurationOut: 0
-  overrideDelayIn: 0
-  delayIn: 0
-  overrideDelayOut: 0
-  delayOut: 0
-  rectTransform: {fileID: 1930501561454789134}
-  offset: {x: 100, y: 0}
---- !u!114 &9172070486187424529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1920152083011015392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb2cd429e7cb458993bb2e71ea9a75ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Dreamy.UI.Runtime::Dreamy.UI.UITweenFade
-  runType: 0
-  settings: {fileID: 11400000, guid: 03827c79be381164eb2d9e7e255cc946, type: 2}
-  overrideEaseIn: 0
-  easeIn: 27
-  easeOut: 26
-  overrideEaseOut: 0
-  overrideDurationIn: 0
-  durationIn: 0.25
-  durationOut: 0.2
-  overrideDurationOut: 0
-  overrideDelayIn: 0
-  delayIn: 0
-  overrideDelayOut: 0
-  delayOut: 0
-  canvasGroup: {fileID: 931914241680480926}
 --- !u!224 &1930501561454789134 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7830573664029910460, guid: c81d639b62734a13981155bbce9ef683, type: 3}
