@@ -1,12 +1,19 @@
 # Shop Feature
 
+GameInstaller calls ShopFeatureInstaller.RegisterConfig before config initialization, then installs ShopFeatureInstaller into the shared PanelPresenterFactory with the Datasave wallet, balance provider and purchase gateway. The imported installer source matches the pinned Dreamy Shop sample.
+
+Open through `PanelManager.Instance.Transition<ShopPanel>(Address.ShopPanel)`. PanelManager creates and disposes one ShopPresenter per opening. HomeNavigator only routes navigation; it does not construct presenters. Keep ShopDemo off managed ShopPanel instances to prevent duplicate purchase handlers. IAP simulation remains Editor-only.
+
+The existing catalog, entitlement effects, atlas, prefabs and GUID references are retained. Integration assemblies reference Dreamy.UI.Presentation and Dreamy.DataConfig.Runtime directly.
+
+
 Sample của Dreamy Shop. Import từ Window > Package Manager > Dreamy Shop > Samples > Import. Unity chép nội dung vào Assets/Samples/Dreamy Shop/0.1.1/Shop Feature/.
 
 ## Cấu trúc và tích hợp
 
 Giữ nguyên folder, .meta, asmdef và reference prefab khi chuyển vào project. Chỉ giữ một bản script/asmdef và một JSON cho mỗi key Resources/DataConfig. Bootstrap config/save/wallet/audio tại GameInstaller trước khi bật UI, theo [README package](../../README.md). Link tương đối này dùng trong source package; sau import, mở README package từ Package Manager.
 
-ShopPanel hiển thị offer, ShopOfferItem phát sự kiện mua, ShopDemo là ví dụ bind presenter. Gán container/item/button và giữ một shopCatalog.json. Cài config/wallet/gateway tại root, bind ShopPresenter trước animation. Thay SimulatedShopPurchaseGateway bằng gateway thanh toán thật.
+ShopPanel hiển thị offer, ShopOfferItem phát sự kiện mua, ShopFeatureInstaller đăng ký presenter vào factory chung. Gán container/item/button và giữ một shopCatalog.json. Cài config/wallet/gateway tại root, bind ShopPresenter trước animation. Thay SimulatedShopPurchaseGateway bằng gateway thanh toán thật.
 
 Assembly Dreamy.Feature.Shop.Integration.Runtime reference Dreamy.Shop.Runtime, Dreamy.Economy.Runtime, Dreamy.Core.Runtime, Dreamy.UI.Runtime, Unity.TextMeshPro, UnityEngine.UI, UniTask.
 
@@ -46,17 +53,10 @@ Code UI cần namespace Dreamy.UI, Dreamy.Core, Dreamy.Shop và Dreamy.Feature.S
 Trong method async UniTask:
 
 ```csharp
-ShopPanel panel = await PanelManager.Instance.Create<ShopPanel>(
-    PanelAddress.Shop);
-
-var presenter = new ShopPresenter(
-    ServiceLocator.Get<IShopService>(), panel);
-panel.Destroyed += presenter.Dispose;
-presenter.Show();
-await panel.Show();
+await PanelManager.Instance.Transition<ShopPanel>(Address.ShopPanel);
 ```
 
-Host giữ một presenter cho mỗi panel instance. Nếu panel được cache, dùng lại presenter và gọi Show() khi mở lại; không tạo thêm presenter mỗi lần mở cùng instance. Khi dùng luồng host này, bỏ ShopDemo trên instance nếu có để tránh hai presenter xử lý cùng button.
+GameInstaller đăng ký ShopFeatureInstaller vào factory chung. Mỗi lần mở panel có một presenter; đóng/disable/destroy sẽ dispose, mở lại tạo presenter mới. Không gắn ShopDemo vào panel được factory quản lý.
 
 Scene cần Canvas có PanelManager và EventSystem. Nút Close được presenter xử lý; đóng từ code bằng:
 

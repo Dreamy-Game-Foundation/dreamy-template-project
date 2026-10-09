@@ -1,18 +1,27 @@
 using System;
 using Cysharp.Threading.Tasks;
+using Dreamy.UI;
 
 namespace Dreamy.Template.Home
 {
-    public sealed class HomePresenter : IDisposable
+    public sealed class HomePresenter : IPanelPresenter
     {
         private readonly IHomeView view;
         private readonly HomeNavigator navigator;
         private bool disposed;
+        private bool isBound;
 
         public HomePresenter(IHomeView view, HomeNavigator navigator)
         {
             this.view = view ?? throw new ArgumentNullException(nameof(view));
             this.navigator = navigator ?? throw new ArgumentNullException(nameof(navigator));
+        }
+
+        public void Show()
+        {
+            if (disposed || isBound) return;
+            isBound = true;
+            view.SetNavigationInteractable(true);
             view.DestinationRequested += OnDestinationRequested;
         }
 

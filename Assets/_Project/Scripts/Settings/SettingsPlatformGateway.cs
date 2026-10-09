@@ -6,10 +6,10 @@ namespace Dreamy.Template
 {
     public sealed class SettingsPlatformGateway : ISettingsPlatformGateway
     {
-        public bool CanShowGdprConsent => true;
-        public bool CanRestorePurchases => true;
-        public bool CanOpenStore => false;
-        public bool CanRequestReview => false;
+        public bool CanShowGdprConsent => false;
+        public bool CanRestorePurchases => false;
+        public bool CanOpenStore => true;
+        public bool CanRequestReview => true;
 
         public UniTask<SettingsOperationResult> ShowGdprConsentAsync(
             CancellationToken cancellationToken = default) =>

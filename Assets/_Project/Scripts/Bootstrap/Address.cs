@@ -11,6 +11,8 @@ namespace Dreamy.Template
         public const string ShopPanel = "Panel/ShopPanel.prefab";
         public const string SettingsPanel = "Panel/SettingsPanel.prefab";
 
+        public const string RateUsPanel = "Panel/RateUsPanel.prefab";
+
         // SpriteAtlas
         public const string ShopOfferAtlas = "SpriteAtlas/ShopOfferAtlas.spriteatlasv2";
     }

@@ -1,6 +1,7 @@
 using System;
 using System.Reflection;
 using Dreamy.Core;
+using Dreamy.UI;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -77,6 +78,57 @@ namespace Dreamy.Template.Tests
             Assert.That(ServiceLocator.IsRegistered<IFixtureService>(), Is.False);
             Assert.That(borrowed.DisposeCount, Is.Zero);
         }
+
+        [Test]
+        public void PresentationTeardown_RestoresPreviousFactory()
+        {
+            var managerRoot = new GameObject("Panel manager ownership fixture");
+            try
+            {
+                var manager = managerRoot.AddComponent<PanelManager>();
+                var previous = new PanelPresenterFactory();
+                var owned = new PanelPresenterFactory();
+                manager.PresenterFactory = previous;
+                SetPresenterFactory(owned);
+                AttachPresentation(manager);
+                AttachPresentation(manager);
+                Assert.That(manager.PresenterFactory, Is.SameAs(owned));
+
+                TearDownServices();
+                TearDownServices();
+
+                Assert.That(manager.PresenterFactory, Is.SameAs(previous));
+            }
+            finally { UnityEngine.Object.DestroyImmediate(managerRoot); }
+        }
+
+        [Test]
+        public void PresentationTeardown_PreservesReplacementFactory()
+        {
+            var managerRoot = new GameObject("Panel manager replacement fixture");
+            try
+            {
+                var manager = managerRoot.AddComponent<PanelManager>();
+                var owned = new PanelPresenterFactory();
+                var replacement = new PanelPresenterFactory();
+                SetPresenterFactory(owned);
+                AttachPresentation(manager);
+                manager.PresenterFactory = replacement;
+
+                TearDownServices();
+
+                Assert.That(manager.PresenterFactory, Is.SameAs(replacement));
+            }
+            finally { UnityEngine.Object.DestroyImmediate(managerRoot); }
+        }
+
+        private void SetPresenterFactory(PanelPresenterFactory factory) =>
+            typeof(GameInstaller).GetField("presenterFactory", BindingFlags.Instance | BindingFlags.NonPublic)
+                .SetValue(installer, factory);
+
+        private void AttachPresentation(PanelManager manager) =>
+            typeof(GameInstaller).GetMethod("AttachPresentation", BindingFlags.Instance | BindingFlags.NonPublic)
+                .Invoke(installer, new object[] { manager });
 
         private void Register(IFixtureService service, bool ownsInstance)
         {

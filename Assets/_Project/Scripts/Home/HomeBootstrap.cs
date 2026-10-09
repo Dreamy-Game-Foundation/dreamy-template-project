@@ -8,8 +8,6 @@ namespace Dreamy.Template.Home
     [DisallowMultipleComponent]
     public sealed class HomeBootstrap : MonoBehaviour
     {
-        private HomePresenter presenter;
-
         private void Start()
         {
             InitializeAsync().Forget();
@@ -29,9 +27,7 @@ namespace Dreamy.Template.Home
                     return;
                 }
 
-                HomePanel panel = await PanelManager.Instance.Show<HomePanel>(Address.HomePanel);
-                if (this == null) return;
-                presenter = new HomePresenter(panel, new HomeNavigator());
+                await PanelManager.Instance.Show<HomePanel>(Address.HomePanel);
             }
             catch (OperationCanceledException)
             {
@@ -42,10 +38,5 @@ namespace Dreamy.Template.Home
             }
         }
 
-        private void OnDestroy()
-        {
-            presenter?.Dispose();
-            presenter = null;
-        }
     }
 }

@@ -9,9 +9,14 @@ using Dreamy.Datasave;
 using Dreamy.Economy;
 using Dreamy.Feature.Shop.Integration;
 using Dreamy.Settings;
+using Dreamy.Feature.Settings.Integration;
+using Dreamy.Template.Home;
+using Dreamy.Template.Demo;
+using Dreamy.UI;
 using Dreamy.Shop;
 using Dreamy.Template.Pooling;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Dreamy.Template
 {
@@ -27,6 +32,9 @@ namespace Dreamy.Template
         private IResourceBalanceSource walletBalanceSource;
         private IDataConfigService dataConfig;
         private IShopPurchaseGateway purchaseGateway;
+        private PanelPresenterFactory presenterFactory;
+        private readonly Dictionary<PanelManager, PanelPresenterFactory> previousFactories = new();
+        private bool isOpeningRateUs;
         private readonly List<EntitlementEffectBinding> entitlementBindings = new();
         private static GameInstaller instance;
         private readonly List<Action> teardownActions = new();
@@ -80,6 +88,7 @@ namespace Dreamy.Template
 
                 // 4. Features: all required services and config are now ready.
                 InstallFeatures();
+                InstallPresentation();
                 cancellationToken.ThrowIfCancellationRequested();
 
                 State = BootstrapState.Ready;
@@ -140,22 +149,26 @@ namespace Dreamy.Template
             dataConfig = new DataConfigService(new ResourcesJsonConfigSource());
             dataConfig.Register<TemplateConfig>("templateConfig");
             dataConfig.Register<TestConfigTable>("testConfigs");
-            ShopInstaller.RegisterConfig(dataConfig);
+            ShopFeatureInstaller.RegisterConfig(dataConfig);
 
+            RegisterService<IDataConfigService>(dataConfig, ownsInstance: true);
             await dataConfig.InitializeAsync(cancellationToken);
             cancellationToken.ThrowIfCancellationRequested();
-            RegisterService<IDataConfigService>(dataConfig, ownsInstance: true);
         }
 
         private void InstallFeatures()
         {
+            presenterFactory = new PanelPresenterFactory();
             if (!ServiceLocator.TryGet<ISettingsPlatformGateway>(out var settingsGateway))
             {
                 settingsGateway = new SettingsPlatformGateway();
                 RegisterService<ISettingsPlatformGateway>(settingsGateway, ownsInstance: true);
             }
+            ServiceLocator.TryGet<ISettingsHapticsGateway>(out var hapticsGateway);
+            ServiceLocator.TryGet<ISettingsReviewGateway>(out var reviewGateway);
             TrackFeatureInstallation<ISettingsService>(() =>
-                SettingsInstaller.Install(ServiceLocator.Get<IAudioService>(), settingsGateway));
+                SettingsFeatureInstaller.Install(presenterFactory, ServiceLocator.Get<IAudioService>(),
+                    () => OpenRateUsAsync().Forget(), settingsGateway, hapticsGateway, reviewGateway));
 
 #if UNITY_EDITOR
             // Local IAP simulation belongs to the Editor demo only.
@@ -168,8 +181,63 @@ namespace Dreamy.Template
             ServiceLocator.TryGet(out purchaseGateway);
 #endif
             TrackFeatureInstallation<IShopService>(() =>
-                ShopInstaller.Install(dataConfig.GetTable<ShopCatalogConfig>(), wallet, purchaseGateway));
+                ShopFeatureInstaller.Install(presenterFactory, dataConfig.GetTable<ShopCatalogConfig>(),
+                    wallet, purchaseGateway, (IResourceBalanceProvider)wallet));
             InstallEntitlementEffects();
+        }
+
+        private void InstallPresentation()
+        {
+            presenterFactory.Register<HomePanel>(view => new HomePresenter(view, new HomeNavigator()));
+            presenterFactory.Register<FoundationDemoPanel>(view =>
+                new FoundationDemoRoot(view, datasave, dataConfig));
+            RegisterService<PanelPresenterFactory>(presenterFactory);
+            SceneManager.sceneLoaded += AttachScenePresentation;
+            SceneManager.sceneUnloaded += PruneScenePresentation;
+            foreach (var manager in FindObjectsByType<PanelManager>(
+                FindObjectsInactive.Include, FindObjectsSortMode.None)) AttachPresentation(manager);
+        }
+
+        private void AttachScenePresentation(Scene scene, LoadSceneMode mode)
+        {
+            if (State != BootstrapState.Ready) return;
+            foreach (var root in scene.GetRootGameObjects())
+                foreach (var manager in root.GetComponentsInChildren<PanelManager>(true))
+                    AttachPresentation(manager);
+        }
+
+        private void PruneScenePresentation(Scene scene)
+        {
+            foreach (var manager in new List<PanelManager>(previousFactories.Keys))
+                if (manager == null || manager.gameObject.scene == scene) previousFactories.Remove(manager);
+        }
+
+        private void AttachPresentation(PanelManager manager)
+        {
+            if (manager == null || previousFactories.ContainsKey(manager)) return;
+            previousFactories.Add(manager, manager.PresenterFactory);
+            manager.PresenterFactory = presenterFactory;
+        }
+
+        private async UniTask OpenRateUsAsync()
+        {
+            if (isOpeningRateUs || State != BootstrapState.Ready || !PanelManager.HasInstance) return;
+            isOpeningRateUs = true;
+            try { await PanelManager.Instance.Transition<RateUsPanel>(Address.RateUsPanel); }
+            catch (OperationCanceledException) { }
+            catch (Exception exception) { Debug.LogException(exception, this); }
+            finally { isOpeningRateUs = false; }
+        }
+
+        private void ReleasePresentation()
+        {
+            SceneManager.sceneLoaded -= AttachScenePresentation;
+            SceneManager.sceneUnloaded -= PruneScenePresentation;
+            foreach (var entry in previousFactories)
+                if (entry.Key != null && ReferenceEquals(entry.Key.PresenterFactory, presenterFactory))
+                    entry.Key.PresenterFactory = entry.Value;
+            previousFactories.Clear();
+            presenterFactory = null;
         }
 
         private void RegisterService<T>(T service, bool ownsInstance = false) where T : class
@@ -203,6 +271,7 @@ namespace Dreamy.Template
 
         private void TearDownServices()
         {
+            ReleasePresentation();
             DisposeEntitlementEffects();
             while (teardownActions.Count > 0)
             {

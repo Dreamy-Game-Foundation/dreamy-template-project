@@ -24,8 +24,7 @@ operation-specific explanation. Direct calls with a cancelled token throw
 OperationCanceledException. The package SettingsModel checks capabilities first,
 so unsupported operations normally return Unavailable without calling the adapter.
 
-GDPR/Restore/Open Store remain hidden according to SettingsViewState. The rating
-panel can still collect its UI rating; requesting the native review is unavailable.
+GDPR/Restore/Open Store remain hidden according to SettingsViewState. The Rate Us action stays hidden until the gateway can open the store or an eligible review reward is configured.
 No consent, restore, store launch, review or reward is simulated by this adapter.
 
 ## Connecting DreamySDK later

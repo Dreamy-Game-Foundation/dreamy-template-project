@@ -2,14 +2,17 @@ using System;
 using Cysharp.Threading.Tasks;
 using Dreamy.DataConfig;
 using Dreamy.Datasave;
+using Dreamy.UI;
 using UnityEngine;
 
 namespace Dreamy.Template.Demo
 {
-    public sealed class FoundationDemoRoot : IDisposable
+    public sealed class FoundationDemoRoot : IPanelPresenter
     {
         private readonly IDatasaveService datasave;
         private readonly FoundationDemoPanel panel;
+        private readonly IDataConfigService dataConfig;
+        private bool isBound;
         private TemplateSave saveData;
         private int score;
         private float health = 100f;
@@ -22,8 +25,13 @@ namespace Dreamy.Template.Demo
         {
             this.panel = panel ?? throw new ArgumentNullException(nameof(panel));
             this.datasave = datasave ?? throw new ArgumentNullException(nameof(datasave));
-            if (dataConfig == null) throw new ArgumentNullException(nameof(dataConfig));
+            this.dataConfig = dataConfig ?? throw new ArgumentNullException(nameof(dataConfig));
+        }
 
+        public void Show()
+        {
+            if (disposed || isBound) return;
+            isBound = true;
             TemplateConfig config = dataConfig.GetTable<TemplateConfig>();
             saveData = datasave.Load<TemplateSave>();
             if (!saveData.IsInitialized)
@@ -42,8 +50,6 @@ namespace Dreamy.Template.Demo
             panel.SaveRequested += Save;
             panel.LoadRequested += Load;
             panel.CloseRequested += Close;
-            panel.OnPostHide += Dispose;
-            panel.Destroyed += Dispose;
             RefreshPanel();
             panel.SetStatus($"Demo opened | count={saveData.DemoOpenCount} | starting score={config.StartingScore}");
         }
@@ -100,8 +106,6 @@ namespace Dreamy.Template.Demo
             panel.SaveRequested -= Save;
             panel.LoadRequested -= Load;
             panel.CloseRequested -= Close;
-            panel.OnPostHide -= Dispose;
-            panel.Destroyed -= Dispose;
         }
     }
 }

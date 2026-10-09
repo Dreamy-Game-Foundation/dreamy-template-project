@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-10-08",
+  "unityVersion": "6000.4.12f1",
+  "packages": {
+    "com.dreamy.assets": {
+      "version": "0.1.1",
+      "commit": "68b5a7457ed79dda01b0e0865c445db12ffba0b0",
+      "source": "https://github.com/Dreamy-Game-Foundation/com.dreamy.assets.git#68b5a7457ed79dda01b0e0865c445db12ffba0b0",
+      "status": "source-verified",
+      "dependencies": {
+        "com.unity.addressables": "2.7.2",
+        "com.cysharp.unitask": "2.5.10",
+        "com.dreamy.core": "1.1.2"
+      }
+    },
+    "com.dreamy.audio": {
+      "version": "0.1.0",
+      "commit": "69128a81faeb781bfdf9a4b93720a8381fc40fc2",
+      "source": "https://github.com/Dreamy-Game-Foundation/com.dreamy.audio.git#69128a81faeb781bfdf9a4b93720a8381fc40fc2",
+      "status": "source-verified",
+      "dependencies": {
+        "com.unity.ugui": "2.0.0",
+        "com.unity.modules.audio": "1.0.0",
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.particlesystem": "1.0.0"
+      }
+    },
+    "com.dreamy.core": {
+      "version": "1.1.2",
+      "commit": "d15d6dfa711ea48d361b090d90a9f177772d8e6e",
+      "source": "https://github.com/Dreamy-Game-Foundation/com.dreamy.core.git#d15d6dfa711ea48d361b090d90a9f177772d8e6e",
+      "status": "source-verified",
+      "dependencies": {}
+    },
+    "com.dreamy.dataconfig": {
+      "version": "0.2.0",
+      "commit": "e0e45081bd6f986923e33dcc7956e9da895de50c",
+      "source": "https://github.com/Dreamy-Game-Foundation/com.dreamy.dataconfig.git#e0e45081bd6f986923e33dcc7956e9da895de50c",
+      "status": "source-verified",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      }
+    },
+    "com.dreamy.datasave": {
+      "version": "0.2.0",
+      "commit": "a88e22b0da2034c150937e3efd23454a3528303a",
+      "source": "https://github.com/Dreamy-Game-Foundation/com.dreamy.datasave.git#a88e22b0da2034c150937e3efd23454a3528303a",
+      "status": "source-verified",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      }
+    },
+    "com.dreamy.editor-tools": {
+      "version": "0.2.1",
+      "commit": "bc22e7193c4b2c858246f1cfb7e9e70f670a8c55",
+      "source": "https://github.com/Dreamy-Game-Foundation/com.dreamy.editor-tools.git#bc22e7193c4b2c858246f1cfb7e9e70f670a8c55",
+      "status": "source-verified",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      }
+    },
+    "com.dreamy.feature": {
+      "version": "0.1.0",
+      "commit": "d129106fb06cee5174ebcda6ddff47abd3f66242",
+      "source": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feature.git#d129106fb06cee5174ebcda6ddff47abd3f66242",
+      "status": "source-verified",
+      "dependencies": {}
+    },
+    "com.dreamy.feature.economy": {
+      "version": "0.2.0",
+      "commit": "8749620c46c987d6e8c57e2346403ab5c2815ac1",
+      "source": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feature.economy.git#8749620c46c987d6e8c57e2346403ab5c2815ac1",
+      "status": "source-verified",
+      "dependencies": {
+        "com.dreamy.core": "1.1.2",
+        "com.dreamy.ui": "0.2.0",
+        "com.dreamy.datasave": "0.2.0"
+      }
+    },
+    "com.dreamy.feature.settings": {
+      "version": "0.2.0",
+      "commit": "ca94ba519264c96a352e83daa816f2e831dcd7a8",
+      "source": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feature.settings.git#ca94ba519264c96a352e83daa816f2e831dcd7a8",
+      "status": "source-verified",
+      "dependencies": {
+        "com.dreamy.core": "1.1.2",
+        "com.dreamy.audio": "0.1.0",
+        "com.cysharp.unitask": "2.5.10",
+        "com.dreamy.feature": "0.1.0",
+        "com.dreamy.ui": "0.2.0"
+      }
+    },
+    "com.dreamy.feature.shop": {
+      "version": "0.1.1",
+      "commit": "7104090600db99c019a6d5330e0cca40676e5ca1",
+      "source": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feature.shop.git#7104090600db99c019a6d5330e0cca40676e5ca1",
+      "status": "source-verified",
+      "dependencies": {
+        "com.dreamy.core": "1.1.2",
+        "com.dreamy.dataconfig": "0.2.0",
+        "com.dreamy.feature.economy": "0.2.0",
+        "com.dreamy.feature": "0.1.0",
+        "com.dreamy.ui": "0.2.0",
+        "com.cysharp.unitask": "2.5.10"
+      }
+    },
+    "com.dreamy.ui": {
+      "version": "0.2.0",
+      "commit": "91bfb340955d0fc819b8f7475e6407358f5cbf53",
+      "source": "https://github.com/Dreamy-Game-Foundation/com.dreamy.ui.git#91bfb340955d0fc819b8f7475e6407358f5cbf53",
+      "status": "source-verified",
+      "dependencies": {
+        "com.unity.ugui": "2.0.0",
+        "com.cysharp.unitask": "2.5.10",
+        "com.demigiant.dotween": "0.0.3",
+        "com.dreamy.core": "1.1.2",
+        "com.dreamy.assets": "0.1.1"
+      }
+    }
+  },
+  "contracts": {
+    "presentation": "GameInstaller owns the shared PanelPresenterFactory; PanelManager owns presenter creation and disposal per opening.",
+    "featureInstallers": "Imported SettingsFeatureInstaller and ShopFeatureInstaller match the pinned package samples; host asmdefs include their direct dependencies.",
+    "runtimeEditorBoundary": "Runtime assemblies do not reference Editor assemblies."
+  },
+  "validation": {
+    "editorCompile": "Passed",
+    "projectEditModeTests": "11 passed, 0 failed (installer ownership, factory ownership, Home cached presenter lifecycle, save regressions).",
+    "playModeSmoke": "Passed: Bootstrap to Main/Home; duplicate Shop Show; Shop reopen after deferred Destroy; Settings/RateUs; return to Home.",
+    "upstreamUiEditModeTests": {
+      "passed": 1,
+      "failed": 5,
+      "note": "The upstream fixture retains counters across tests and assumes OnEnable/OnDisable for non-ExecuteAlways MonoBehaviours in EditMode. Package testables remain disabled by default. No package cache edits."
+    },
+    "knownLimitations": [
+      "Non-cached ShopPanel uses deferred Destroy; immediate same-frame Hide then Transition can reuse the pending-destruction instance. Allow a frame after Hide for automated reopen checks.",
+      "Platform Settings gateways remain unavailable until the host SDK is connected.",
+      "No Android/iOS player build or device verification was run."
+    ]
+  }
+}

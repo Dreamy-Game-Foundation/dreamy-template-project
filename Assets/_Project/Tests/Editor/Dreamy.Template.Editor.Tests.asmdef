@@ -7,7 +7,9 @@
         "Dreamy.Datasave.Runtime",
         "Dreamy.DataConfig.Runtime",
         "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner"
+        "UnityEditor.TestRunner",
+        "Dreamy.UI.Runtime",
+        "Dreamy.UI.Presentation"
     ],
     "includePlatforms": [
         "Editor"

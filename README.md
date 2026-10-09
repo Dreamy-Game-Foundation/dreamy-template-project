@@ -73,6 +73,16 @@ BootstrapScene
   -> HomeBootstrap / FoundationDemoRoot show their configured UI
 ```
 
+## Package Revisions And Panel Presenters
+
+Dreamy Git dependencies are pinned to the latest default-branch commits verified on 2026-10-08. See `compatibility/dreamy-packages.json` for versions and commits. Updating requires checking remote commits and changing the manifest pins; Unity regenerates packages-lock.json.
+
+GameInstaller builds a shared PanelPresenterFactory after config and services are ready. SettingsFeatureInstaller and ShopFeatureInstaller install their services and presenter constructors. Home and Foundation Demo register their presenters in the same factory. Each scene's PanelManager receives it before Start; callers only open panels. PanelManager releases presenters on close/disable/destroy/failure and creates fresh ones on cached reopen. Teardown restores prior manager factories and service registrations.
+
+The upstream UI EditMode test fixture currently has five failing cases (persistent counters and Play Mode callback assumptions); its tests are not enabled by default. Project regression tests and Play Mode smoke evidence are recorded in `compatibility/dreamy-packages.json`. Non-cached panels use deferred Destroy: automated Hide/reopen checks must allow a frame before reopening.
+
+Assemblies using IPanelPresenter or PanelPresenterFactory must reference Dreamy.UI.Presentation. Imported feature samples in Assets require migration alongside package updates; preserve their prefab and .meta references.
+
 ## Bootstrap And Service Usage
 
 `GameInstaller` is the composition root. Add global services there or in a dedicated
@@ -171,7 +181,7 @@ Example:
 HomePanel panel = await PanelManager.Instance.Show<HomePanel>(Address.HomePanel);
 ```
 
-Shop navigation is owned by `HomeNavigator`: create the feature ShopPanel, bind its ShopPresenter, render offers, then transition. Release the presenter on hide/destroy.
+Shop navigation is owned by `HomeNavigator`; it transitions to ShopPanel. GameInstaller registers ShopFeatureInstaller in the shared factory, and PanelManager owns the presenter lifecycle.
 
 UI rules:
 

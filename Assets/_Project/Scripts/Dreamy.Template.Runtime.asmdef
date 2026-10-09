@@ -20,7 +20,7 @@
         "Dreamy.Feature.Shop.Integration.Runtime",
         "Dreamy.Settings.Runtime",
         "Dreamy.Feature.Settings.Integration.Runtime",
-        "Unity.Newtonsoft.Json"
+        "Dreamy.UI.Presentation"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
