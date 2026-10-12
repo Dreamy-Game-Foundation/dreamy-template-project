@@ -4,12 +4,12 @@
     "references": [
         "Dreamy.Settings.Runtime",
         "Dreamy.Core.Runtime",
+        "Dreamy.Audio.Runtime",
         "Dreamy.Economy.Runtime",
         "Dreamy.UI.Runtime",
         "Unity.TextMeshPro",
         "UnityEngine.UI",
         "UniTask",
-        "Dreamy.Audio.Runtime",
         "Dreamy.UI.Presentation"
     ],
     "includePlatforms": [],

@@ -1618,9 +1618,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1316269333568228854, guid: 58d7c1a38f4e4d83920eff2d9a6de08a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2003}
-    - targetCorrespondingSourceObject: {fileID: 1316269333568228854, guid: 58d7c1a38f4e4d83920eff2d9a6de08a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6529602969854933034}
   m_SourcePrefab: {fileID: 100100000, guid: 58d7c1a38f4e4d83920eff2d9a6de08a, type: 3}
 --- !u!1 &3936894159055043097 stripped
 GameObject:
@@ -1650,18 +1647,6 @@ MonoBehaviour:
   rateButton: {fileID: 3839943538497354058}
   closeButton: {fileID: 4311943167742064922}
   statusText: {fileID: 0}
---- !u!114 &6529602969854933034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3936894159055043097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b39127fae3daa974fbacdc93d75c9a72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Dreamy.Feature.Settings.Integration.Runtime::Dreamy.Feature.Settings.Integration.RateUsPanelLauncher
 --- !u!224 &8608538697936342953 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6021690696789473350, guid: 58d7c1a38f4e4d83920eff2d9a6de08a, type: 3}

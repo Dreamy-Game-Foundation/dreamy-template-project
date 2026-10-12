@@ -30,6 +30,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aaf44ae2917c45749a7bdf79e64c2cc7
+    m_Address: Panel/SettingsPanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d156d2ae8a81df948bb4f3a23be16d2b
     m_Address: UI
     m_ReadOnly: 0
@@ -37,16 +42,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d6e00e3d3e7b2714581cc90c53ce61c2
     m_Address: Panel/ShopPanel.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: aaf44ae2917c45749a7bdf79e64c2cc7
-    m_Address: Panel/SettingsPanel.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 38d8c1e2b942447a8e425a434326091e
-    m_Address: Panel/RateUsPanel.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

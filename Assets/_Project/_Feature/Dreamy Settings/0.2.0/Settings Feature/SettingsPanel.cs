@@ -14,8 +14,6 @@ namespace Dreamy.Feature.Settings.Integration
         [SerializeField] private Toggle hapticsToggle;
         [SerializeField] private Button gdprButton;
         [SerializeField] private Button restorePurchasesButton;
-        // Preserve the legacy prefab reference while Rate Us owns the store action.
-        [SerializeField] private Button openStoreButton;
         [SerializeField] private Button openRateUsButton;
         [SerializeField] private Button closeButton;
 
@@ -32,7 +30,6 @@ namespace Dreamy.Feature.Settings.Integration
 
         private void OnEnable()
         {
-            if (openStoreButton != null) openStoreButton.gameObject.SetActive(false);
             musicToggle.onValueChanged.AddListener(RequestMusicToggle);
             sfxToggle.onValueChanged.AddListener(RequestSfxToggle);
             if (hapticsToggle != null) hapticsToggle.onValueChanged.AddListener(RequestHapticsToggle);

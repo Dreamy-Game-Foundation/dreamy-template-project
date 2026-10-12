@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using Dreamy.Core;
 using Dreamy.UI;
@@ -15,8 +16,16 @@ namespace Dreamy.Template.Tests
         private interface IFixtureService { }
         private sealed class FixtureService : IFixtureService, IDisposable
         {
+            private readonly Action onDispose;
+
+            public FixtureService(Action onDispose = null) => this.onDispose = onDispose;
+
             public int DisposeCount { get; private set; }
-            public void Dispose() => DisposeCount++;
+            public void Dispose()
+            {
+                DisposeCount++;
+                onDispose?.Invoke();
+            }
         }
 
         [SetUp]
@@ -50,6 +59,22 @@ namespace Dreamy.Template.Tests
             Assert.That(ServiceLocator.Get<IFixtureService>(), Is.SameAs(replacement));
             Assert.That(owned.DisposeCount, Is.EqualTo(1));
             Assert.That(replacement.DisposeCount, Is.Zero);
+        }
+
+        [Test]
+        public void TearDown_ReleasesRegistrationsInReverseOrder()
+        {
+            var order = new List<string>();
+            var first = new FixtureService(() => order.Add("first"));
+            var second = new FixtureService(() => order.Add("second"));
+            Register(first, ownsInstance: true);
+            Register(second, ownsInstance: true);
+
+            TearDownServices();
+            TearDownServices();
+
+            Assert.That(order, Is.EqualTo(new[] { "second", "first" }));
+            Assert.That(ServiceLocator.IsRegistered<IFixtureService>(), Is.False);
         }
 
         [Test]
