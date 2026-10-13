@@ -62,11 +62,11 @@
       "hash": "69128a81faeb781bfdf9a4b93720a8381fc40fc2"
     },
     "com.dreamy.core": {
-      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.core.git#v1.1.2",
+      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.core.git#v1.2.0",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "d15d6dfa711ea48d361b090d90a9f177772d8e6e"
+      "hash": "ba844659fbc65655f21b082f89115295167f2405"
     },
     "com.dreamy.dataconfig": {
       "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.dataconfig.git#v0.2.1",
@@ -103,7 +103,7 @@
       "hash": "d129106fb06cee5174ebcda6ddff47abd3f66242"
     },
     "com.dreamy.feature.economy": {
-      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feature.economy.git#v0.2.0",
+      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feature.economy.git#v0.2.1",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -111,10 +111,10 @@
         "com.dreamy.ui": "0.2.0",
         "com.dreamy.datasave": "0.2.0"
       },
-      "hash": "8749620c46c987d6e8c57e2346403ab5c2815ac1"
+      "hash": "97ff875f73735c4169062545949aeee7b87de1fa"
     },
     "com.dreamy.feature.settings": {
-      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feature.settings.git#v0.2.0",
+      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feature.settings.git#9183481806df933a9fb5c5c6756b28e049a94a2e",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -124,21 +124,21 @@
         "com.dreamy.feature": "0.1.0",
         "com.dreamy.ui": "0.2.0"
       },
-      "hash": "ca94ba519264c96a352e83daa816f2e831dcd7a8"
+      "hash": "9183481806df933a9fb5c5c6756b28e049a94a2e"
     },
     "com.dreamy.feature.shop": {
-      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feature.shop.git#v0.1.1",
+      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feature.shop.git#v0.1.2",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.dreamy.core": "1.1.2",
         "com.dreamy.dataconfig": "0.2.0",
-        "com.dreamy.feature.economy": "0.2.0",
+        "com.dreamy.feature.economy": "0.2.1",
         "com.dreamy.feature": "0.1.0",
         "com.dreamy.ui": "0.2.0",
         "com.cysharp.unitask": "2.5.10"
       },
-      "hash": "7104090600db99c019a6d5330e0cca40676e5ca1"
+      "hash": "3fee66cfd839d2d626e5c15878dcf0a440c413f9"
     },
     "com.dreamy.ui": {
       "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.ui.git#v0.2.0",
