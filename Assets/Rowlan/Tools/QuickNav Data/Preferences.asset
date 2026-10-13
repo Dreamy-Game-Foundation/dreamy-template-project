@@ -15,86 +15,14 @@ MonoBehaviour:
   selectedTabIndex: 0
   historyItemsMax: 20
   history:
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-effd9780e715d184493ded304c8dec9b-793437579-0
   - context: 1
     title: 
-    unityObject: {fileID: 1913687934710241997, guid: d6e00e3d3e7b2714581cc90c53ce61c2, type: 3}
-    objectGuid: GlobalObjectId_V1-1-d6e00e3d3e7b2714581cc90c53ce61c2-1913687934710241997-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-d6e00e3d3e7b2714581cc90c53ce61c2-8971546250349980301-1046680549432196127
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-d6e00e3d3e7b2714581cc90c53ce61c2-7837544927558415698-8530184601498396594
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-d6e00e3d3e7b2714581cc90c53ce61c2-1316269333568228854-633489077865928507
+    unityObject: {fileID: 11500000, guid: abc6da31ec34d2f478cbe4e9563624e0, type: 3}
+    objectGuid: GlobalObjectId_V1-1-abc6da31ec34d2f478cbe4e9563624e0-11500000-0
   - context: 1
     title: 
-    unityObject: {fileID: 1913687934710241997, guid: d6e00e3d3e7b2714581cc90c53ce61c2, type: 3}
-    objectGuid: GlobalObjectId_V1-1-d6e00e3d3e7b2714581cc90c53ce61c2-1913687934710241997-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 102900000, guid: 915d02a2a70544a1d88e11829dc70576, type: 3}
-    objectGuid: GlobalObjectId_V1-1-915d02a2a70544a1d88e11829dc70576-102900000-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 102900000, guid: f595d037f703278cfb6c93f6e8334b6f, type: 3}
-    objectGuid: GlobalObjectId_V1-1-f595d037f703278cfb6c93f6e8334b6f-102900000-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-d6e00e3d3e7b2714581cc90c53ce61c2-1316269333568228854-633489077865928507
-  - context: 1
-    title: 
-    unityObject: {fileID: 1913687934710241997, guid: d6e00e3d3e7b2714581cc90c53ce61c2, type: 3}
-    objectGuid: GlobalObjectId_V1-1-d6e00e3d3e7b2714581cc90c53ce61c2-1913687934710241997-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 102900000, guid: 7e289733144537ec2ba55663589cd696, type: 3}
-    objectGuid: GlobalObjectId_V1-1-7e289733144537ec2ba55663589cd696-102900000-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-0-00000000000000000000000000000000-0-0
-  - context: 0
-    title: 
-    unityObject: {fileID: 0}
-    objectGuid: GlobalObjectId_V1-2-dc791f55a639ec0f9bf85c642a653b67-1316269333568228854-633489077865928507
-  - context: 1
-    title: 
-    unityObject: {fileID: 1913687934710241997, guid: dc791f55a639ec0f9bf85c642a653b67, type: 3}
-    objectGuid: GlobalObjectId_V1-1-dc791f55a639ec0f9bf85c642a653b67-1913687934710241997-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 5897886265953266890, guid: a260c768d83b4860bdaebbf27be168e2, type: 3}
-    objectGuid: GlobalObjectId_V1-1-a260c768d83b4860bdaebbf27be168e2-5897886265953266890-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 5897886265953266890, guid: 7a30b14f4df338ceca89f362f14f3179, type: 3}
-    objectGuid: GlobalObjectId_V1-1-7a30b14f4df338ceca89f362f14f3179-5897886265953266890-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 5897886265953266890, guid: a260c768d83b4860bdaebbf27be168e2, type: 3}
-    objectGuid: GlobalObjectId_V1-1-a260c768d83b4860bdaebbf27be168e2-5897886265953266890-0
-  - context: 1
-    title: 
-    unityObject: {fileID: 5897886265953266890, guid: a6741d66d3b13904aa42297f41e12a82, type: 3}
-    objectGuid: GlobalObjectId_V1-1-a6741d66d3b13904aa42297f41e12a82-5897886265953266890-0
+    unityObject: {fileID: 3536928556136900550, guid: aaf44ae2917c45749a7bdf79e64c2cc7, type: 3}
+    objectGuid: GlobalObjectId_V1-1-aaf44ae2917c45749a7bdf79e64c2cc7-3536928556136900550-0
   favorites:
   - context: 1
     title: 

@@ -25,7 +25,7 @@ namespace Dreamy.Template
             SceneManager.sceneLoaded += AttachScenePresentation;
             SceneManager.sceneUnloaded += PruneScenePresentation;
             foreach (var manager in FindObjectsByType<PanelManager>(
-                FindObjectsInactive.Include, FindObjectsSortMode.None)) AttachPresentation(manager);
+                FindObjectsInactive.Include)) AttachPresentation(manager);
         }
 
         private void AttachScenePresentation(Scene scene, LoadSceneMode mode)

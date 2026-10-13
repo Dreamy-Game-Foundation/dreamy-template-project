@@ -114,7 +114,7 @@
       "hash": "97ff875f73735c4169062545949aeee7b87de1fa"
     },
     "com.dreamy.feature.settings": {
-      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feature.settings.git#9183481806df933a9fb5c5c6756b28e049a94a2e",
+      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feature.settings.git#v0.2.2",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -124,7 +124,7 @@
         "com.dreamy.feature": "0.1.0",
         "com.dreamy.ui": "0.2.0"
       },
-      "hash": "9183481806df933a9fb5c5c6756b28e049a94a2e"
+      "hash": "81e0f8cc36a80e681ca675dc86f2037fa0dc3904"
     },
     "com.dreamy.feature.shop": {
       "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feature.shop.git#v0.1.2",
