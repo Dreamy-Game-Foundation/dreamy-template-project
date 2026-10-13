@@ -15,6 +15,7 @@ namespace Dreamy.Template
         [SerializeField] private bool prettySaveInEditor = true;
 
         private CancellationTokenSource initializationCancellation;
+        private static GameInstaller activeInstaller;
 
         public static BootstrapState State { get; private set; }
         public static Exception InitializationException { get; private set; }
@@ -22,12 +23,21 @@ namespace Dreamy.Template
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetStatics()
         {
+            activeInstaller = null;
             State = BootstrapState.None;
             InitializationException = null;
         }
 
         private void Awake()
         {
+            if (activeInstaller != null && activeInstaller != this)
+            {
+                // Reject only this component; a reloaded scene may also own GameInit.
+                Destroy(this);
+                return;
+            }
+
+            activeInstaller = this;
             initializationCancellation = new CancellationTokenSource();
             DontDestroyOnLoad(gameObject);
             InitializeAsync().Forget();
@@ -92,6 +102,7 @@ namespace Dreamy.Template
             TearDownServices();
             initializationCancellation.Dispose();
             initializationCancellation = null;
+            if (activeInstaller == this) activeInstaller = null;
         }
     }
 }

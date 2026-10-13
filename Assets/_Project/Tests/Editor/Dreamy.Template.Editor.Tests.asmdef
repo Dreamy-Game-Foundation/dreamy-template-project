@@ -9,7 +9,9 @@
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "Dreamy.UI.Runtime",
-        "Dreamy.UI.Presentation"
+        "Dreamy.UI.Presentation",
+        "Dreamy.Shop.Runtime",
+        "UniTask"
     ],
     "includePlatforms": [
         "Editor"

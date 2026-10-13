@@ -7,7 +7,11 @@ namespace Dreamy.Template
 {
     public sealed class GameInit : MonoBehaviour
     {
-        private void Start() => InitializeAsync().Forget();
+        private void Start()
+        {
+            Application.targetFrameRate = 60;
+            InitializeAsync().Forget();
+        }
 
         private async UniTaskVoid InitializeAsync()
         {

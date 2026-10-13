@@ -17,6 +17,12 @@ namespace Dreamy.Template
 {
     public sealed partial class GameInstaller
     {
+#if UNITY_EDITOR
+        [Header("Shop testing (Editor only)")]
+        [Tooltip("Simulate successful IAP purchases in Play Mode. Rewards and ownership use the normal wallet/save flow.")]
+        [SerializeField] private bool simulateIapPurchasesInEditor = true;
+#endif
+
         private readonly List<EntitlementEffectBinding> entitlementBindings = new();
 
         private void InstallFeatures()
@@ -66,6 +72,15 @@ namespace Dreamy.Template
         {
             if (cancellationToken.IsCancellationRequested)
                 return UniTask.FromResult(ShopGatewayPurchaseResult.Cancelled());
+
+#if UNITY_EDITOR
+            if (simulateIapPurchasesInEditor)
+            {
+                var transactionId = $"editor-iap-{Guid.NewGuid():N}";
+                Debug.Log($"[Shop] Simulated IAP purchase: {request.StoreProductId} ({transactionId}).", this);
+                return UniTask.FromResult(ShopGatewayPurchaseResult.Purchased(transactionId));
+            }
+#endif
 
             // TODO: DreamySDK.Purchase(request.StoreProductId, ...)
             // Map the SDK result to Purchased(validatedTransactionId), Cancelled() or Failed().

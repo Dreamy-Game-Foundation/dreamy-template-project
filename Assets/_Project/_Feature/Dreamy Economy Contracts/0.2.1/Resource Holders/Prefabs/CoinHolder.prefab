@@ -8,6 +8,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2238628897681597761, guid: 5cecfc7961a27e94e81e33540b9c02c7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2dfee5f7d16066d4fbc280a13beda68c, type: 3}
+    - target: {fileID: 2238628897681597761, guid: 5cecfc7961a27e94e81e33540b9c02c7, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2238628897681597761, guid: 5cecfc7961a27e94e81e33540b9c02c7, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2238628897681597761, guid: 5cecfc7961a27e94e81e33540b9c02c7, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3043561310249718802, guid: 5cecfc7961a27e94e81e33540b9c02c7, type: 3}
+      propertyPath: autoRefresh
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4683990611763790443, guid: 5cecfc7961a27e94e81e33540b9c02c7, type: 3}
       propertyPath: m_Name
       value: CoinHolder
