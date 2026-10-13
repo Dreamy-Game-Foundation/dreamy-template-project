@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.borodar.rainbow-folders": "https://github.com/Borod4r/Rainbow-Folders-2.git?path=Assets/Plugins/Borodar/RainbowFolders",
     "com.coplaydev.unity-mcp": "https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main",
     "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
     "com.demigiant.dotween": "https://github.com/grashaar/DOTween.git",

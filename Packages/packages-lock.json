@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.borodar.rainbow-folders": {
+      "version": "https://github.com/Borod4r/Rainbow-Folders-2.git?path=Assets/Plugins/Borodar/RainbowFolders",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "3aea959649c771299ce93958ff4d58b4a3874f37"
+    },
     "com.coplaydev.unity-mcp": {
       "version": "https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main",
       "depth": 0,

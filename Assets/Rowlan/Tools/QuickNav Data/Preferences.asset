@@ -14,7 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedTabIndex: 0
   historyItemsMax: 20
-  history: []
+  history:
+  - context: 1
+    title: 
+    unityObject: {fileID: 11400000, guid: 5916f80a437893fb899ee852eda88af6, type: 2}
+    objectGuid: GlobalObjectId_V1-3-5916f80a437893fb899ee852eda88af6-11400000-0
+  - context: 1
+    title: 
+    unityObject: {fileID: 102900000, guid: d65b9d4b257636a43a866200092e4a8c, type: 3}
+    objectGuid: GlobalObjectId_V1-1-d65b9d4b257636a43a866200092e4a8c-102900000-0
+  - context: 1
+    title: 
+    unityObject: {fileID: 11400000, guid: 5916f80a437893fb899ee852eda88af6, type: 2}
+    objectGuid: GlobalObjectId_V1-3-5916f80a437893fb899ee852eda88af6-11400000-0
+  - context: 1
+    title: 
+    unityObject: {fileID: 102900000, guid: 00000000000000001000000000000000, type: 3}
+    objectGuid: GlobalObjectId_V1-1-00000000000000001000000000000000-102900000-0
   favorites:
   - context: 1
     title: 
