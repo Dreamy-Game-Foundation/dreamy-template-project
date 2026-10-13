@@ -20,7 +20,8 @@
         "Dreamy.Feature.Shop.Integration.Runtime",
         "Dreamy.Settings.Runtime",
         "Dreamy.UI.Presentation",
-        "Dreamy.Feature.Settings.Integration.Runtime"
+        "Dreamy.Feature.Settings.Integration.Runtime",
+        "Dreamy.Feedback.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

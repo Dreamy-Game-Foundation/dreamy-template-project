@@ -45,14 +45,8 @@ namespace Dreamy.Template
 
         private void InstallShop()
         {
-            IShopPurchaseGateway purchaseGateway;
-            // Local IAP simulation belongs to the Editor demo only.
-            if (!ServiceLocator.TryGet(out purchaseGateway))
-            {
-                purchaseGateway = new SimulatedShopPurchaseGateway();
-                RegisterService<IShopPurchaseGateway>(purchaseGateway, ownsInstance: true);
-            }
-            ServiceLocator.TryGet(out purchaseGateway);
+            // The host registers its billing gateway; Shop reports unavailable when none is installed.
+            ServiceLocator.TryGet<IShopPurchaseGateway>(out var purchaseGateway);
             TrackFeatureInstallation<IShopService>(() =>
                 ShopFeatureInstaller.Install(presenterFactory, dataConfig.GetTable<ShopCatalogConfig>(),
                     wallet, purchaseGateway, (IResourceBalanceProvider)wallet));

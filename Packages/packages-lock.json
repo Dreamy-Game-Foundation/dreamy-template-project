@@ -140,6 +140,18 @@
       },
       "hash": "3fee66cfd839d2d626e5c15878dcf0a440c413f9"
     },
+    "com.dreamy.feedback": {
+      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feedback.git#v0.4.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.ugui": "2.0.0",
+        "com.unity.modules.particlesystem": "1.0.0",
+        "com.cysharp.unitask": "2.5.10",
+        "com.unity.modules.imageconversion": "1.0.0"
+      },
+      "hash": "2d22a64f83d409bae291f12aad3e0cb8c1a970df"
+    },
     "com.dreamy.ui": {
       "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.ui.git#v0.2.0",
       "depth": 0,
