@@ -38,8 +38,8 @@ Presenter cần gỡ event và hủy tác vụ theo lần mở trong Dispose. To
 
 Tham khảo `HomePresenter`, `HomePanel`, `HomeNavigator` và `ShopFeatureInstaller` để thêm feature theo cùng cách tổ chức.
 
-Để test Shop, chạy BootstrapScene trong Editor rồi mua gói IAP. `Simulate Iap Purchases In Editor` trên GameInstaller mặc định bật: mỗi lần mua trả thành công với transaction ID riêng, Shop cấp thưởng qua wallet và lưu quyền sở hữu như bình thường. Gói consumable có thể mua nhiều lần; gói mua một lần sẽ chuyển sang đã sở hữu. Dữ liệu test được lưu vào save hiện tại. Tắt tùy chọn này để kiểm tra trường hợp billing chưa cấu hình. Gateway do host đăng ký sẵn vẫn được ưu tiên.
+Để test Shop, chạy BootstrapScene trong Editor hoặc bản build rồi mua gói IAP. Gateway tự giả lập mua thành công, không cần bật tùy chọn: mỗi lần mua có transaction ID riêng, Shop cấp thưởng qua wallet và lưu quyền sở hữu như bình thường. Gói consumable có thể mua nhiều lần; gói mua một lần sẽ chuyển sang đã sở hữu. Dữ liệu test được lưu vào save hiện tại. Gateway do host đăng ký sẵn vẫn được ưu tiên.
 
-Giả lập chỉ được biên dịch trong Editor. Billing trên thiết bị trong `PurchaseWithBillingAsync` hiện còn TODO và trả thất bại; thay bằng tích hợp SDK/backend thật trước khi phát hành.
+`PurchaseWithBillingAsync` hiện giả lập trên mọi nền tảng; thay phần giả lập bằng tích hợp SDK/backend thật khi thêm billing.
 
 Xem [README chính](../../../../README.md) để biết cách cài project/package, sử dụng Addressables, UniTask, Sprite Atlas, asmdef và quy trình kiểm tra.

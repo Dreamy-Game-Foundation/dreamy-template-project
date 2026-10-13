@@ -4,7 +4,6 @@ using Cysharp.Threading.Tasks;
 using Dreamy.Shop;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.TestTools;
 
 namespace Dreamy.Template.Tests
 {
@@ -25,14 +24,14 @@ namespace Dreamy.Template.Tests
         public void TearDown() => Object.DestroyImmediate(root);
 
         [Test]
-        public void EditorPurchases_SucceedWithDistinctTransactionIds()
+        public void SimulatedPurchases_SucceedWithDistinctTransactionIds()
         {
             var first = Purchase();
             var second = Purchase();
 
             Assert.That(first.IsSuccess, Is.True);
             Assert.That(second.IsSuccess, Is.True);
-            Assert.That(first.TransactionId, Does.StartWith("editor-iap-"));
+            Assert.That(first.TransactionId, Does.StartWith("simulated-iap-"));
             Assert.That(second.TransactionId, Is.Not.EqualTo(first.TransactionId));
         }
 
@@ -45,19 +44,6 @@ namespace Dreamy.Template.Tests
             var result = Purchase(cancellation.Token);
 
             Assert.That(result.Status, Is.EqualTo(ShopGatewayPurchaseStatus.Cancelled));
-            Assert.That(result.TransactionId, Is.Null);
-        }
-
-        [Test]
-        public void DisabledSimulation_FailsWithoutGrantingATransaction()
-        {
-            typeof(GameInstaller).GetField("simulateIapPurchasesInEditor", BindingFlags.Instance | BindingFlags.NonPublic)
-                .SetValue(installer, false);
-            LogAssert.Expect(LogType.Warning, "[Shop] Billing is not configured for test.product.");
-
-            var result = Purchase();
-
-            Assert.That(result.Status, Is.EqualTo(ShopGatewayPurchaseStatus.Failed));
             Assert.That(result.TransactionId, Is.Null);
         }
 
