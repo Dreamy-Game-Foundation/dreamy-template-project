@@ -789,7 +789,7 @@ MonoBehaviour:
   iconCount: 8
   iconSource: {fileID: 0}
   target: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3aecf8e5e0297cbea8a42bb6116674bc, type: 3}
   amount: 1
 --- !u!224 &5686162882325269481 stripped
 RectTransform:

@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using Dreamy.Audio;
 using Dreamy.Core;
 using Dreamy.Economy;
 using Dreamy.Feature.Settings.Integration;
 using Dreamy.Feature.Shop.Integration;
+using Dreamy.Feedback;
 using Dreamy.Settings;
 using Dreamy.Shop;
-using Dreamy.Template.Feedback;
 using Dreamy.UI;
 using UnityEngine;
 
@@ -33,8 +34,12 @@ namespace Dreamy.Template
             }
             if (!ServiceLocator.TryGet<ISettingsHapticsGateway>(out var hapticsGateway))
             {
+                ServiceLocator.TryGet<IHapticService>(out var hapticService);
                 hapticsGateway = new PlayerPrefsSettingsHapticsGateway(
-                    MobileHaptics.SetEnabled, () => MobileHaptics.IsSupported);
+                    enabled => { if (hapticService != null) hapticService.Enabled = enabled; },
+                    () => hapticService != null && (Application.isEditor ||
+                        Application.platform == RuntimePlatform.Android ||
+                        Application.platform == RuntimePlatform.IPhonePlayer));
                 RegisterService<ISettingsHapticsGateway>(hapticsGateway, ownsInstance: true);
             }
             ServiceLocator.TryGet<ISettingsReviewGateway>(out var reviewGateway);
@@ -45,12 +50,27 @@ namespace Dreamy.Template
 
         private void InstallShop()
         {
-            // The host registers its billing gateway; Shop reports unavailable when none is installed.
-            ServiceLocator.TryGet<IShopPurchaseGateway>(out var purchaseGateway);
+            if (!ServiceLocator.TryGet<IShopPurchaseGateway>(out var purchaseGateway))
+            {
+                purchaseGateway = new ShopPurchaseGateway(PurchaseWithBillingAsync);
+                RegisterService<IShopPurchaseGateway>(purchaseGateway, ownsInstance: true);
+            }
             TrackFeatureInstallation<IShopService>(() =>
                 ShopFeatureInstaller.Install(presenterFactory, dataConfig.GetTable<ShopCatalogConfig>(),
-                    wallet, purchaseGateway, (IResourceBalanceProvider)wallet));
+                    wallet, purchaseGateway, (IResourceBalanceProvider)wallet, feedbackHost));
             InstallEntitlementEffects();
+        }
+
+        private UniTask<ShopGatewayPurchaseResult> PurchaseWithBillingAsync(
+            ShopGatewayPurchaseRequest request, CancellationToken cancellationToken)
+        {
+            if (cancellationToken.IsCancellationRequested)
+                return UniTask.FromResult(ShopGatewayPurchaseResult.Cancelled());
+
+            // TODO: DreamySDK.Purchase(request.StoreProductId, ...)
+            // Map the SDK result to Purchased(validatedTransactionId), Cancelled() or Failed().
+            Debug.LogWarning($"[Shop] Billing is not configured for {request.StoreProductId}.", this);
+            return UniTask.FromResult(ShopGatewayPurchaseResult.Failed());
         }
 
         private void InstallEntitlementEffects()

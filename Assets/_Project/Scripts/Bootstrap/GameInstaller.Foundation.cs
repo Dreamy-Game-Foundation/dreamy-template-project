@@ -6,6 +6,7 @@ using Dreamy.DataConfig;
 using Dreamy.Datasave;
 using Dreamy.Economy;
 using Dreamy.Feature.Shop.Integration;
+using Dreamy.Feedback;
 using Dreamy.Template.Pooling;
 using UnityEngine;
 
@@ -13,6 +14,10 @@ namespace Dreamy.Template
 {
     public sealed partial class GameInstaller
     {
+        [Header("Feedback")]
+        [SerializeField] private FeedbackHost feedbackHostPrefab;
+
+        private FeedbackHost feedbackHost;
         private IDatasaveService datasave;
         private IDataConfigService dataConfig;
         private IResourceWallet wallet;
@@ -40,6 +45,34 @@ namespace Dreamy.Template
             RegisterService<IPoolService>(new LeanPoolService(), ownsInstance: true);
             // The Audio package owns the instance; only undo our registration.
             RegisterService<IAudioService>(DreamyAudio.Service);
+            InstallFeedback();
+        }
+
+        private void InstallFeedback()
+        {
+            if (feedbackHostPrefab == null)
+                throw new System.InvalidOperationException("GameInstaller needs a FeedbackHost prefab.");
+
+            var host = Instantiate(feedbackHostPrefab, transform);
+            feedbackHost = host;
+            // Host owns its services. Unregister them before shutting down the rig.
+            teardownActions.Add(() =>
+            {
+                if (host == null) return;
+                host.Shutdown();
+                if (Application.isPlaying) Destroy(host.gameObject);
+                else DestroyImmediate(host.gameObject);
+            });
+            host.Initialize();
+            RegisterService<FeedbackHost>(host);
+            RegisterService<IFeedbackService>(host.Feedback);
+            RegisterService<IVfxService>(host.Vfx);
+            RegisterService<IFloatingTextService>(host.FloatingText);
+            RegisterService<IUiFeedbackService>(host.Ui);
+            if (host.Haptic != null) RegisterService<IHapticService>(host.Haptic);
+            if (host.IconFly != null) RegisterService<IIconFlyService>(host.IconFly);
+            if (host.Screen != null) RegisterService<IScreenFeedbackService>(host.Screen);
+            if (host.CameraShake != null) RegisterService<ICameraShakeService>(host.CameraShake);
         }
 
         private void InstallEconomy()

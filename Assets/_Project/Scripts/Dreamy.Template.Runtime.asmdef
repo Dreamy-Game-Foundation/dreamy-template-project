@@ -21,7 +21,8 @@
         "Dreamy.Settings.Runtime",
         "Dreamy.UI.Presentation",
         "Dreamy.Feature.Settings.Integration.Runtime",
-        "Dreamy.Feedback.Runtime"
+        "Dreamy.Feedback.Runtime",
+        "Dreamy.Feedback.Contracts"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
