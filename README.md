@@ -165,6 +165,14 @@ Rules:
 - Keep save schemas versioned.
 - Add migration when changing released save structure.
 
+Foundation Demo keeps its data in a single `TemplateSave` class using the default
+Datasave schema version. Development saves were reset; legacy schemas and field
+aliases are no longer supported. The model contains only current demo state.
+If loading fails, the demo remains interactive but disables Save until Load
+succeeds. It does not delete or reset the save. A failed write keeps the current
+score available for another Save attempt; the panel reports failure and the
+Console records the exception.
+
 ## UI Usage
 
 UI panels are loaded and controlled through Dreamy UI.

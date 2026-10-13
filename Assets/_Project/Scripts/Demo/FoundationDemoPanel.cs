@@ -1,4 +1,5 @@
 using System;
+using Cysharp.Threading.Tasks;
 using Dreamy.UI;
 using TMPro;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Dreamy.Template.Demo
 {
-    public sealed class FoundationDemoPanel : UIPanel
+    public sealed class FoundationDemoPanel : UIPanel, IFoundationDemoView
     {
         [Header("Labels")]
         [SerializeField] private TMP_Text statusText;
@@ -51,6 +52,9 @@ namespace Dreamy.Template.Demo
             if (closeButton != null) closeButton.onClick.RemoveListener(OnClose);
             base.OnDisable();
         }
+
+        public void Close() => Hide().Forget();
+        public void SetSaveInteractable(bool value) => saveButton.interactable = value;
 
         public void SetStatus(string value) => statusText.text = value;
         public void SetScore(int value) => scoreText.text = $"Score: {value}";

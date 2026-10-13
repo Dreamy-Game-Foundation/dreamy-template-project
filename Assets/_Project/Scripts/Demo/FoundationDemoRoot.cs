@@ -1,17 +1,31 @@
 using System;
-using Cysharp.Threading.Tasks;
-using Dreamy.DataConfig;
 using Dreamy.Datasave;
 using Dreamy.UI;
 using UnityEngine;
 
 namespace Dreamy.Template.Demo
 {
+    public interface IFoundationDemoView
+    {
+        event Action AddScoreRequested;
+        event Action DamageRequested;
+        event Action HealRequested;
+        event Action SaveRequested;
+        event Action LoadRequested;
+        event Action CloseRequested;
+        void SetStatus(string value);
+        void SetScore(int value);
+        void SetHealth(float value);
+        void SetSaveInteractable(bool value);
+        void Close();
+    }
+
     public sealed class FoundationDemoRoot : IPanelPresenter
     {
         private readonly IDatasaveService datasave;
-        private readonly FoundationDemoPanel panel;
-        private readonly IDataConfigService dataConfig;
+        private readonly IFoundationDemoView panel;
+        private readonly Func<TemplateConfig> getConfig;
+        private bool canSave;
         private bool isBound;
         private TemplateSave saveData;
         private int score;
@@ -19,30 +33,21 @@ namespace Dreamy.Template.Demo
         private bool disposed;
 
         public FoundationDemoRoot(
-            FoundationDemoPanel panel,
+            IFoundationDemoView panel,
             IDatasaveService datasave,
-            IDataConfigService dataConfig)
+            Func<TemplateConfig> getConfig)
         {
             this.panel = panel ?? throw new ArgumentNullException(nameof(panel));
             this.datasave = datasave ?? throw new ArgumentNullException(nameof(datasave));
-            this.dataConfig = dataConfig ?? throw new ArgumentNullException(nameof(dataConfig));
+            this.getConfig = getConfig ?? throw new ArgumentNullException(nameof(getConfig));
         }
 
         public void Show()
         {
             if (disposed || isBound) return;
-            isBound = true;
-            TemplateConfig config = dataConfig.GetTable<TemplateConfig>();
-            saveData = datasave.Load<TemplateSave>();
-            if (!saveData.IsInitialized)
-            {
-                saveData.CurrentScore = config.StartingScore;
-                saveData.BestScore = Mathf.Max(saveData.BestScore, saveData.CurrentScore);
-                saveData.IsInitialized = true;
-            }
-            saveData.DemoOpenCount++;
-            datasave.Save(saveData);
-            score = saveData.CurrentScore;
+            TemplateConfig config = getConfig();
+            score = config.StartingScore;
+            panel.SetSaveInteractable(false);
 
             panel.AddScoreRequested += AddScore;
             panel.DamageRequested += Damage;
@@ -51,7 +56,12 @@ namespace Dreamy.Template.Demo
             panel.LoadRequested += Load;
             panel.CloseRequested += Close;
             RefreshPanel();
-            panel.SetStatus($"Demo opened | count={saveData.DemoOpenCount} | starting score={config.StartingScore}");
+            isBound = true;
+            if (TryLoad())
+            {
+                saveData.DemoOpenCount++;
+                Persist($"Demo opened | count={saveData.DemoOpenCount} | starting score={config.StartingScore}");
+            }
         }
 
         private void AddScore()
@@ -74,18 +84,55 @@ namespace Dreamy.Template.Demo
 
         private void Save()
         {
+            if (!canSave) return;
             saveData.CurrentScore = score;
             saveData.BestScore = Mathf.Max(saveData.BestScore, score);
-            datasave.Save(saveData);
-            panel.SetStatus($"Saved | score={saveData.CurrentScore} | best score={saveData.BestScore}");
+            Persist($"Saved | score={saveData.CurrentScore} | best score={saveData.BestScore}");
         }
 
-        private void Load()
+        private void Persist(string successStatus)
         {
-            saveData = datasave.Load<TemplateSave>();
-            score = saveData.CurrentScore;
-            RefreshPanel();
-            panel.SetStatus($"Loaded | score={saveData.CurrentScore} | best score={saveData.BestScore}");
+            try
+            {
+                datasave.Save(saveData);
+                panel.SetStatus(successStatus);
+            }
+            catch (Exception exception)
+            {
+                Debug.LogWarning($"Foundation demo save failed: {exception}");
+                panel.SetStatus("Save failed. Your score is still available; try Save again.");
+            }
+        }
+
+        private void Load() => TryLoad();
+
+        private bool TryLoad()
+        {
+            try
+            {
+                TemplateSave loaded = datasave.Load<TemplateSave>();
+                if (!loaded.IsInitialized)
+                {
+                    loaded.CurrentScore = getConfig().StartingScore;
+                    loaded.BestScore = Mathf.Max(loaded.BestScore, loaded.CurrentScore);
+                    loaded.IsInitialized = true;
+                }
+                saveData = loaded;
+                score = loaded.CurrentScore;
+                canSave = true;
+                panel.SetSaveInteractable(true);
+                RefreshPanel();
+                panel.SetStatus($"Loaded | score={loaded.CurrentScore} | best score={loaded.BestScore}");
+                return true;
+            }
+            catch (Exception exception)
+            {
+                Debug.LogWarning($"Foundation demo load failed: {exception}");
+                canSave = false;
+                panel.SetSaveInteractable(false);
+                panel.SetStatus("Save could not be loaded. Saving is disabled to protect your data. Try Load again.");
+                return false;
+            }
         }
 
         private void RefreshPanel()
@@ -94,7 +141,7 @@ namespace Dreamy.Template.Demo
             panel.SetHealth(health);
         }
 
-        private void Close() => panel.Hide().Forget();
+        private void Close() => panel.Close();
 
         public void Dispose()
         {

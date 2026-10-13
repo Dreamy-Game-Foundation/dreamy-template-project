@@ -20,7 +20,7 @@ namespace Dreamy.Template
         {
             presenterFactory.Register<HomePanel>(view => new HomePresenter(view, new HomeNavigator()));
             presenterFactory.Register<FoundationDemoPanel>(view =>
-                new FoundationDemoRoot(view, datasave, dataConfig));
+                new FoundationDemoRoot(view, datasave, () => dataConfig.GetTable<TemplateConfig>()));
             RegisterService<PanelPresenterFactory>(presenterFactory);
             SceneManager.sceneLoaded += AttachScenePresentation;
             SceneManager.sceneUnloaded += PruneScenePresentation;
