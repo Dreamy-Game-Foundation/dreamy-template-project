@@ -11,6 +11,9 @@
         "Dreamy.UI.Runtime",
         "Dreamy.UI.Presentation",
         "Dreamy.Shop.Runtime",
+        "Dreamy.Economy.Runtime",
+        "Dreamy.DailyReward.Runtime",
+        "Dreamy.Missions.Runtime",
         "UniTask"
     ],
     "includePlatforms": [

@@ -5,6 +5,9 @@ using Dreamy.Core.Pooling;
 using Dreamy.DataConfig;
 using Dreamy.Datasave;
 using Dreamy.Economy;
+using Dreamy.Economy.Rewards;
+using Dreamy.DailyReward;
+using Dreamy.Missions;
 using Dreamy.Feature.Shop.Integration;
 using Dreamy.Feedback;
 using Dreamy.Template.Pooling;
@@ -22,6 +25,7 @@ namespace Dreamy.Template
         private IDataConfigService dataConfig;
         private IResourceWallet wallet;
         private IResourceBalanceSource walletBalanceSource;
+        private IRewardDeliveryGateway rewardGateway;
 
         private void InstallPersistence()
         {
@@ -82,6 +86,8 @@ namespace Dreamy.Template
             walletBalanceSource = resourceWallet;
             RegisterService<IResourceWallet>(resourceWallet, ownsInstance: true);
             RegisterService<IResourceBalanceProvider>(resourceWallet);
+            rewardGateway = new RewardDeliveryGateway(new IRewardDestination[] { resourceWallet });
+            RegisterService<IRewardDeliveryGateway>(rewardGateway);
         }
 
         private async UniTask InstallConfigurationAsync(CancellationToken cancellationToken)
@@ -90,6 +96,8 @@ namespace Dreamy.Template
             dataConfig.Register<TemplateConfig>("templateConfig");
             dataConfig.Register<TestConfigTable>("testConfigs");
             ShopFeatureInstaller.RegisterConfig(dataConfig);
+            DailyRewardInstaller.RegisterConfig(dataConfig);
+            MissionInstaller.RegisterConfig(dataConfig);
 
             RegisterService<IDataConfigService>(dataConfig, ownsInstance: true);
             await dataConfig.InitializeAsync(cancellationToken);

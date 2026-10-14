@@ -16,6 +16,8 @@
         "Dreamy.Audio.Runtime",
         "Dreamy.Audio.Runtime.Components",
         "Dreamy.Economy.Runtime",
+        "Dreamy.DailyReward.Runtime",
+        "Dreamy.Missions.Runtime",
         "Dreamy.Shop.Runtime",
         "Dreamy.Feature.Shop.Integration.Runtime",
         "Dreamy.Settings.Runtime",

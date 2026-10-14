@@ -1,0 +1,58 @@
+using System;
+using Cysharp.Threading.Tasks;
+using System.Collections.Generic;
+using Dreamy.Missions;
+using Dreamy.UI;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Dreamy.Feature.Missions.Integration
+{
+    public sealed class MissionPanel : UIPanel, IMissionView
+    {
+        [SerializeField] private Button closeButton;
+        [SerializeField] private TMP_Text statusText;
+        [SerializeField] private Transform itemContainer;
+        [SerializeField] private MissionItem itemPrefab;
+        private readonly List<MissionItem> items = new();
+        public override bool CanBack => true;
+        public event Action<string> ClaimRequested;
+        public event Action CloseRequested;
+        public void ConfigureControls(IMissionService service) =>
+            GetComponent<MissionDemoControls>()?.Configure(service);
+        private void OnEnable()
+        {
+            closeButton.onClick.AddListener(RequestClose);
+        }
+        protected override void OnDisable()
+        {
+            closeButton.onClick.RemoveListener(RequestClose);
+            base.OnDisable();
+        }
+        public void Render(IReadOnlyList<MissionState> state)
+        {
+            while (items.Count < state.Count)
+            {
+                MissionItem item = Instantiate(itemPrefab, itemContainer);
+                item.ClaimRequested += RequestClaim;
+                items.Add(item);
+            }
+            for (int i = 0; i < items.Count; i++)
+            {
+                items[i].gameObject.SetActive(i < state.Count);
+                if (i < state.Count) items[i].Render(state[i]);
+            }
+        }
+        public void ShowClaimResult(MissionClaimStatus result) =>
+            statusText.text = result == MissionClaimStatus.Claimed ? "Reward received" : result.ToString();
+        public void Close() => Hide().Forget();
+        protected override void OnDestroy()
+        {
+            foreach (MissionItem item in items) if (item != null) item.ClaimRequested -= RequestClaim;
+            base.OnDestroy();
+        }
+        private void RequestClaim(string id) => ClaimRequested?.Invoke(id);
+        private void RequestClose() => CloseRequested?.Invoke();
+    }
+}

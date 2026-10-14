@@ -7,6 +7,10 @@ using Dreamy.Core;
 using Dreamy.Economy;
 using Dreamy.Feature.Settings.Integration;
 using Dreamy.Feature.Shop.Integration;
+using Dreamy.Feature.DailyReward.Integration;
+using Dreamy.Feature.Missions.Integration;
+using Dreamy.DailyReward;
+using Dreamy.Missions;
 using Dreamy.Feedback;
 using Dreamy.Settings;
 using Dreamy.Shop;
@@ -23,6 +27,13 @@ namespace Dreamy.Template
         {
             InstallSettings();
             InstallShop();
+            TrackFeatureInstallation<IDailyRewardService>(() =>
+                DailyRewardFeatureInstaller.Install(presenterFactory,
+                    dataConfig.GetTable<DailyRewardScheduleConfig>(), datasave,
+                    rewardGateway, new SystemRewardClock()));
+            TrackFeatureInstallation<IMissionService>(() =>
+                MissionFeatureInstaller.Install(presenterFactory,
+                    dataConfig.GetTable<MissionCatalogConfig>(), datasave, rewardGateway));
         }
 
         private void InstallSettings()

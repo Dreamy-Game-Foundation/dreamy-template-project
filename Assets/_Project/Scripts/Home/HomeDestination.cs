@@ -4,6 +4,8 @@ namespace Dreamy.Template.Home
     {
         Shop,
         Settings,
-        Demo
+        Demo,
+        DailyReward,
+        Missions
     }
 }

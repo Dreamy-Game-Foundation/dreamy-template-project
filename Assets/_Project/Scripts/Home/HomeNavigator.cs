@@ -3,6 +3,8 @@ using Cysharp.Threading.Tasks;
 using Dreamy.Template.Demo;
 using Dreamy.Feature.Shop.Integration;
 using Dreamy.Feature.Settings.Integration;
+using Dreamy.Feature.DailyReward.Integration;
+using Dreamy.Feature.Missions.Integration;
 using Dreamy.UI;
 
 namespace Dreamy.Template.Home
@@ -21,6 +23,12 @@ namespace Dreamy.Template.Home
             {
                 switch (destination)
                 {
+                    case HomeDestination.DailyReward:
+                        await PanelManager.Instance.Show<DailyRewardPanel>(Address.DailyRewardPanel);
+                        break;
+                    case HomeDestination.Missions:
+                        await PanelManager.Instance.Show<MissionPanel>(Address.MissionPanel);
+                        break;
                     case HomeDestination.Demo:
                         await PanelManager.Instance.Transition<FoundationDemoPanel>(Address.FoundationDemoPanel);
                         break;
