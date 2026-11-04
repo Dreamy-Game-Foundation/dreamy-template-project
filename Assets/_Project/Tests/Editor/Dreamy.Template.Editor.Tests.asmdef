@@ -11,7 +11,15 @@
         "Dreamy.UI.Runtime",
         "Dreamy.UI.Presentation",
         "Dreamy.Shop.Runtime",
-        "UniTask"
+        "UniTask",
+        "Dreamy.Economy.Runtime",
+        "Dreamy.Economy.Recovery.Unity",
+        "Dreamy.Settings.Runtime",
+        "Dreamy.Feature.Settings.Integration.Runtime",
+        "Unity.TextMeshPro",
+        "UnityEngine.UI",
+        "Unity.Addressables.Editor",
+        "Dreamy.Economy.UI.Runtime"
     ],
     "includePlatforms": [
         "Editor"

@@ -1,0 +1,26 @@
+{
+  "status": "complete",
+  "scope": "Upgrade existing Dreamy packages only; no Localization or other new package; language hidden without gateway.",
+  "phases": {
+    "preflight": "complete",
+    "packages": "complete",
+    "samples": "complete",
+    "recovery": "complete",
+    "tests": "complete"
+  },
+  "lessons": {
+    "recall": "Unavailable: instructed docs/agents/dreamy-workflow.md and Dreamy CLI are absent.",
+    "observations": [
+      "MCP initially selected another Unity project; selected and verified template before mutations.",
+      "Release version bumps in existing dirty manifest are metadata only; compare commit diffs before migrations.",
+      "UI changelog mentions IPanelTransition but locked source does not contain the type.",
+      "Unity UPM fetch failed: local release tags/commits are not all present at origin. Embedded exact git archives for portability; no pushes performed.",
+      "New C# files require asset import/refresh before compiling; do not accept old-assembly test runs as new-change proof.",
+      "Economy upgrade relocates the base holder prefab into Samples~; import that prefab with its existing GUID before validating host variants.",
+      "Imported holder/Shop/Home prefab overrides had autoRefresh=false; enable it for DeferRefresh-based purchase presentation.",
+      "Execute-code smoke probes must wait for Bootstrap Ready and inspect Cost only on VirtualCurrency offers.",
+      "Editor delayCall did not drain during automation; invoked only the identified task-owned build callback once and removed it."
+    ]
+  },
+  "verification": "summary.json"
+}

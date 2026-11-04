@@ -1,0 +1,29 @@
+{
+    "name": "Dreamy.UI.Editor.Tests",
+    "rootNamespace": "",
+    "references": [
+        "Dreamy.UI.Runtime",
+        "DOTween.Modules",
+        "UnityEditor.TestRunner",
+        "UnityEngine.TestRunner",
+        "UniTask",
+        "Dreamy.UI.Presentation",
+        "Dreamy.Core.Runtime"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "DOTween.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

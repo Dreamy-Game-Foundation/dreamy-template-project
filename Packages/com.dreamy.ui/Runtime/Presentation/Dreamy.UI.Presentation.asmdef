@@ -1,0 +1,7 @@
+{
+  "name": "Dreamy.UI.Presentation",
+  "rootNamespace": "Dreamy.UI",
+  "references": [],
+  "autoReferenced": true,
+  "noEngineReferences": true
+}

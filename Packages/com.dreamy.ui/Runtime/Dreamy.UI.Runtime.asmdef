@@ -1,0 +1,21 @@
+{
+    "name": "Dreamy.UI.Runtime",
+    "rootNamespace": "Dreamy.UI",
+    "references": [
+        "Dreamy.Core.Runtime",
+        "Dreamy.Assets.Runtime",
+        "UniTask",
+        "DOTween.Modules",
+        "Unity.TextMeshPro",
+        "Dreamy.UI.Presentation"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

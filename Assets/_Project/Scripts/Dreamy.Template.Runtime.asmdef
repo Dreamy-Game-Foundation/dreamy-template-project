@@ -22,7 +22,11 @@
         "Dreamy.UI.Presentation",
         "Dreamy.Feature.Settings.Integration.Runtime",
         "Dreamy.Feedback.Runtime",
-        "Dreamy.Feedback.Contracts"
+        "Dreamy.Feedback.Contracts",
+        "Dreamy.Economy.UI.Runtime",
+        "Dreamy.Economy.UI.Integration",
+        "Dreamy.Economy.Recovery.Unity",
+        "Dreamy.Shop.UI.Integration"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

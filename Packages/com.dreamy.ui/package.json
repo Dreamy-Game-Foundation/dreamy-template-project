@@ -1,0 +1,33 @@
+{
+  "name": "com.dreamy.ui",
+  "version": "1.1.0",
+  "displayName": "Dreamy UI",
+  "description": "Reusable Unity UI panel, tab, button, safe area, and tween helpers inspired by the local Base.UI flow.",
+  "unity": "6000.0",
+  "type": "library",
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Dreamy Game Studio"
+  },
+  "dependencies": {
+    "com.unity.ugui": "2.0.0",
+    "com.cysharp.unitask": "2.5.10",
+    "com.demigiant.dotween": "0.0.3",
+    "com.dreamy.core": "1.1.2",
+    "com.dreamy.assets": "1.0.1"
+  },
+  "keywords": [
+    "ui",
+    "panel",
+    "tabs",
+    "tween",
+    "dreamy"
+  ],
+  "samples": [
+    {
+      "displayName": "Tween Presets",
+      "description": "Default timing presets for Scale, Fade, Move, Rotate, Size, Color, MoveFade and ScaleFade UI tweens.",
+      "path": "Samples~/TweenPresets"
+    }
+  ]
+}

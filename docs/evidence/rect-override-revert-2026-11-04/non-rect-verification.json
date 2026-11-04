@@ -1,0 +1,43 @@
+[
+  {
+    "path": "Assets/_Project/Prefabs/UI/EconomyHolder.prefab",
+    "removedNonRectOverrides": [
+      [
+        "{fileID: 3406828434621076817, guid: c81d639b62734a13981155bbce9ef683, type: 3}",
+        "m_Name",
+        " GemHolder",
+        "{fileID: 0}"
+      ],
+      [
+        "{fileID: 7967401092985592714, guid: e72603487e1846788e844014acddf579, type: 3}",
+        "m_Name",
+        " CoinHolder",
+        "{fileID: 0}"
+      ]
+    ],
+    "addedNonRectOverrides": []
+  },
+  {
+    "path": "Assets/_Project/Prefabs/Panel/HomePanel.prefab",
+    "removedNonRectOverrides": [],
+    "addedNonRectOverrides": []
+  },
+  {
+    "path": "Assets/_Project/_Feature/Dreamy Shop/0.1.2/Shop Feature/Prefabs/ShopPanel.prefab",
+    "removedNonRectOverrides": [
+      [
+        "{fileID: 827869848653664368, guid: 58d7c1a38f4e4d83920eff2d9a6de08a, type: 3}",
+        "settings",
+        " ",
+        "{fileID: 0}"
+      ],
+      [
+        "{fileID: 5697225683112244798, guid: 58d7c1a38f4e4d83920eff2d9a6de08a, type: 3}",
+        "m_Enabled",
+        " 0",
+        "{fileID: 0}"
+      ]
+    ],
+    "addedNonRectOverrides": []
+  }
+]

@@ -56,6 +56,7 @@ namespace Dreamy.Template
             walletBalanceSource = null;
             dataConfig = null;
             feedbackHost = null;
+            shopResourceRecovery = null;
         }
     }
 }

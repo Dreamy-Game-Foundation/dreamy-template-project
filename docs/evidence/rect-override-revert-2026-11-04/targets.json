@@ -1,0 +1,18 @@
+[
+  "Assets/_Project/Prefabs/[LoadingScreen].prefab",
+  "Assets/_Project/Prefabs/UI/EconomyHolder.prefab",
+  "Assets/_Project/Prefabs/Panel/FoundationDemoPanel.prefab",
+  "Assets/_Project/Prefabs/Panel/HomePanel.prefab",
+  "Assets/_Project/Prefabs/Demo/FoundationDemo.prefab",
+  "Assets/_Project/Prefabs/UI/ResourceSuggestions/GemSuggestionPanel.prefab",
+  "Assets/_Project/Prefabs/UI/ResourceSuggestions/CoinSuggestionPanel.prefab",
+  "Assets/_Project/Prefabs/UI/ResourceSuggestions/ResourceSuggestionPanel.prefab",
+  "Assets/_Project/_Feature/Dreamy Settings/0.2.2/Settings Feature/Prefabs/SettingsPanel.prefab",
+  "Assets/_Project/_Feature/Dreamy Settings/0.2.2/Settings Feature/Prefabs/RateUsPanel.prefab",
+  "Assets/_Project/_Feature/Dreamy Shop/0.1.2/Shop Feature/Prefabs/ShopPanel.prefab",
+  "Assets/_Project/_Feature/Dreamy Shop/0.1.2/Shop Feature/Prefabs/ShopOfferItem.prefab",
+  "Assets/_Project/_Feature/Dreamy Economy Contracts/0.2.1/Wallet Demo/EconomyDemoPanel.prefab",
+  "Assets/_Project/_Feature/Dreamy Economy Contracts/0.2.1/Resource Holders/Prefabs/ResourceUIHolder.prefab",
+  "Assets/_Project/_Feature/Dreamy Economy Contracts/0.2.1/Resource Holders/Prefabs/GemHolder.prefab",
+  "Assets/_Project/_Feature/Dreamy Economy Contracts/0.2.1/Resource Holders/Prefabs/CoinHolder.prefab"
+]

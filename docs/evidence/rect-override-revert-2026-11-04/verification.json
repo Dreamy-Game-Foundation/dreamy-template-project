@@ -1,0 +1,32 @@
+[
+  {
+    "path": "Assets/_Project/Prefabs/UI/EconomyHolder.prefab",
+    "children": 6,
+    "failures": []
+  },
+  {
+    "path": "Assets/_Project/Prefabs/Panel/HomePanel.prefab",
+    "children": 6,
+    "failures": []
+  },
+  {
+    "path": "Assets/_Project/_Feature/Dreamy Shop/0.1.2/Shop Feature/Prefabs/ShopPanel.prefab",
+    "children": 6,
+    "failures": []
+  },
+  {
+    "path": "Assets/_Project/_Feature/Dreamy Economy Contracts/0.2.1/Resource Holders/Prefabs/ResourceUIHolder.prefab",
+    "children": 3,
+    "failures": []
+  },
+  {
+    "path": "Assets/_Project/_Feature/Dreamy Economy Contracts/0.2.1/Resource Holders/Prefabs/GemHolder.prefab",
+    "children": 3,
+    "failures": []
+  },
+  {
+    "path": "Assets/_Project/_Feature/Dreamy Economy Contracts/0.2.1/Resource Holders/Prefabs/CoinHolder.prefab",
+    "children": 3,
+    "failures": []
+  }
+]

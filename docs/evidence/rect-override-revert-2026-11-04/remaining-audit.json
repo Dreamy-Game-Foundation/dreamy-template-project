@@ -1,0 +1,66 @@
+[
+  {
+    "path": "Assets/_Project/Prefabs/[LoadingScreen].prefab",
+    "remainingStaleRectOverrides": 0
+  },
+  {
+    "path": "Assets/_Project/Prefabs/UI/EconomyHolder.prefab",
+    "remainingStaleRectOverrides": 0
+  },
+  {
+    "path": "Assets/_Project/Prefabs/Panel/FoundationDemoPanel.prefab",
+    "remainingStaleRectOverrides": 0
+  },
+  {
+    "path": "Assets/_Project/Prefabs/Panel/HomePanel.prefab",
+    "remainingStaleRectOverrides": 0
+  },
+  {
+    "path": "Assets/_Project/Prefabs/Demo/FoundationDemo.prefab",
+    "remainingStaleRectOverrides": 0
+  },
+  {
+    "path": "Assets/_Project/Prefabs/UI/ResourceSuggestions/GemSuggestionPanel.prefab",
+    "remainingStaleRectOverrides": 0
+  },
+  {
+    "path": "Assets/_Project/Prefabs/UI/ResourceSuggestions/CoinSuggestionPanel.prefab",
+    "remainingStaleRectOverrides": 0
+  },
+  {
+    "path": "Assets/_Project/Prefabs/UI/ResourceSuggestions/ResourceSuggestionPanel.prefab",
+    "remainingStaleRectOverrides": 0
+  },
+  {
+    "path": "Assets/_Project/_Feature/Dreamy Settings/0.2.2/Settings Feature/Prefabs/SettingsPanel.prefab",
+    "remainingStaleRectOverrides": 0
+  },
+  {
+    "path": "Assets/_Project/_Feature/Dreamy Settings/0.2.2/Settings Feature/Prefabs/RateUsPanel.prefab",
+    "remainingStaleRectOverrides": 0
+  },
+  {
+    "path": "Assets/_Project/_Feature/Dreamy Shop/0.1.2/Shop Feature/Prefabs/ShopPanel.prefab",
+    "remainingStaleRectOverrides": 0
+  },
+  {
+    "path": "Assets/_Project/_Feature/Dreamy Shop/0.1.2/Shop Feature/Prefabs/ShopOfferItem.prefab",
+    "remainingStaleRectOverrides": 0
+  },
+  {
+    "path": "Assets/_Project/_Feature/Dreamy Economy Contracts/0.2.1/Wallet Demo/EconomyDemoPanel.prefab",
+    "remainingStaleRectOverrides": 0
+  },
+  {
+    "path": "Assets/_Project/_Feature/Dreamy Economy Contracts/0.2.1/Resource Holders/Prefabs/ResourceUIHolder.prefab",
+    "remainingStaleRectOverrides": 0
+  },
+  {
+    "path": "Assets/_Project/_Feature/Dreamy Economy Contracts/0.2.1/Resource Holders/Prefabs/GemHolder.prefab",
+    "remainingStaleRectOverrides": 0
+  },
+  {
+    "path": "Assets/_Project/_Feature/Dreamy Economy Contracts/0.2.1/Resource Holders/Prefabs/CoinHolder.prefab",
+    "remainingStaleRectOverrides": 0
+  }
+]

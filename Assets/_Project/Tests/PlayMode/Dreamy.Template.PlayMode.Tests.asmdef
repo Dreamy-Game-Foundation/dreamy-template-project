@@ -1,0 +1,24 @@
+{
+  "name": "Dreamy.Template.PlayMode.Tests",
+  "references": [
+    "Dreamy.Datasave.Runtime",
+    "Dreamy.Economy.Runtime",
+    "Dreamy.Economy.UI.Runtime",
+    "Dreamy.Shop.Runtime",
+    "Dreamy.Feature.Shop.Integration.Runtime",
+    "Dreamy.Feedback.Runtime",
+    "Dreamy.Feedback.Contracts",
+    "Dreamy.UI.Runtime",
+    "Dreamy.UI.Presentation",
+    "Unity.TextMeshPro",
+    "UnityEngine.UI",
+    "UniTask"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ],
+  "defineConstraints": [
+    "UNITY_INCLUDE_TESTS"
+  ],
+  "autoReferenced": false
+}

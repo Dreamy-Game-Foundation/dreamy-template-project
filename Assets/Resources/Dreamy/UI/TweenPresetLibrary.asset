@@ -23,3 +23,7 @@ MonoBehaviour:
     preset: {fileID: 11400000, guid: eb3ffa2895944c3419fa21f2c0abdf3a, type: 2}
   - type: 4
     preset: {fileID: 11400000, guid: cd932b039fe673d45b73e18c4ab4c7e8, type: 2}
+  - type: 5
+    preset: {fileID: 11400000, guid: b05230f25cc4082ae86c0b07b8ed5e80, type: 2}
+  - type: 6
+    preset: {fileID: 11400000, guid: d373e877b09537537a7b4fba55e0edc1, type: 2}

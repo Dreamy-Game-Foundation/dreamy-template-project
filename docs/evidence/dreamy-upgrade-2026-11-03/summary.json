@@ -1,0 +1,44 @@
+{
+  "status": "complete",
+  "date": "2026-11-03",
+  "unity": "6000.4.12f1",
+  "scope": "Only the same 12 Dreamy package IDs; Localization absent, Settings language hidden.",
+  "verification": {
+    "packageAndInitialTemplateEditMode": {
+      "passed": 121,
+      "job": "808e5a6ed7ac49d4800b3f74ac7ab316"
+    },
+    "finalTemplateEditMode": {
+      "passed": 33,
+      "job": "28aba8dc2ebc48babebf1f77c61e1bb9",
+      "note": "Supersedes the 29 template tests included in the 121-test run; adds four authored holder prefab cases."
+    },
+    "tweenEditMode": {
+      "passed": 28,
+      "job": "d408eab4db024c1f9ac0ad50f0aeb5df"
+    },
+    "holderPlayMode": {
+      "passed": 19,
+      "job": "ab031299045e49be80e2d92d5b964e51"
+    },
+    "shopRealFlightPlayMode": {
+      "passed": 3,
+      "job": "90a0c15fa781499c90c4a8e2470fa5e4"
+    },
+    "addressablesAndroid": "passed; see addressables-build.json",
+    "manualSmoke": [
+      "Bootstrap Ready -> MainScene -> Home",
+      "Settings visible; language unavailable; no dropdown; no Localization installed",
+      "Real Shop unaffordable virtual offer -> Gem popup -> Later",
+      "Repeat same offer -> popup -> Acquire -> existing Shop; balances unchanged",
+      "Console: zero errors; Editor stopped at clean BootstrapScene"
+    ]
+  },
+  "remainingGates": [
+    "Android/iOS player build and device execution were not run.",
+    "Full unrelated UI/presenter suite not run; selected tween and consumer lifecycle tests only."
+  ],
+  "baselineKnownIssue": "Existing static TMP font source Editor GUID remains unresolved; no new unresolved project asset GUIDs.",
+  "localSaveBackup": "/tmp/dreamy-template-pre-upgrade-20261103141644",
+  "sourcePolicy": "Embedded exact Git snapshots; no source package edits or push/tag operations."
+}

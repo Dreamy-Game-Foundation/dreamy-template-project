@@ -55,9 +55,12 @@ namespace Dreamy.Template
                 purchaseGateway = new ShopPurchaseGateway(PurchaseWithBillingAsync);
                 RegisterService<IShopPurchaseGateway>(purchaseGateway, ownsInstance: true);
             }
+            var catalog = dataConfig.GetTable<ShopCatalogConfig>();
+            InstallShopResourceRecovery(catalog);
             TrackFeatureInstallation<IShopService>(() =>
-                ShopFeatureInstaller.Install(presenterFactory, dataConfig.GetTable<ShopCatalogConfig>(),
-                    wallet, purchaseGateway, (IResourceBalanceProvider)wallet, feedbackHost));
+                ShopFeatureInstaller.Install(presenterFactory, catalog,
+                    wallet, purchaseGateway, (IResourceBalanceProvider)wallet, feedbackHost,
+                    RecoverShopResourcesAsync));
             InstallEntitlementEffects();
         }
 

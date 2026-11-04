@@ -1,0 +1,272 @@
+{
+  "edit-tests": {
+    "result": {
+      "success": true,
+      "message": "Test job status retrieved.",
+      "error": null,
+      "data": {
+        "job_id": "808e5a6ed7ac49d4800b3f74ac7ab316",
+        "status": "succeeded",
+        "mode": "EditMode",
+        "started_unix_ms": 1793715279199,
+        "finished_unix_ms": 1793715290956,
+        "last_update_unix_ms": 1793715290956,
+        "progress": {
+          "completed": 121,
+          "total": 121,
+          "current_test_full_name": null,
+          "current_test_started_unix_ms": 1793715290722,
+          "last_finished_test_full_name": "Dreamy.Template.Tests.TemplateSaveTests.SaveAndLoad_PreservesDemoState(0)",
+          "last_finished_unix_ms": 1793715290723,
+          "stuck_suspected": false,
+          "editor_is_focused": false,
+          "run_in_background": null,
+          "focus_nudge_attempts": null,
+          "focus_nudge_limit": null,
+          "focus_nudge_status": null,
+          "blocked_reason": null,
+          "failures_so_far": [],
+          "failures_capped": false
+        },
+        "error": null,
+        "result": {
+          "mode": "EditMode",
+          "summary": {
+            "total": 121,
+            "passed": 121,
+            "failed": 0,
+            "skipped": 0,
+            "durationSeconds": 5.9583719,
+            "resultState": "Passed"
+          },
+          "results": []
+        }
+      },
+      "hint": null
+    }
+  },
+  "tween-tests": {
+    "result": {
+      "success": true,
+      "message": "Test job status retrieved.",
+      "error": null,
+      "data": {
+        "job_id": "d408eab4db024c1f9ac0ad50f0aeb5df",
+        "status": "succeeded",
+        "mode": "EditMode",
+        "started_unix_ms": 1793715326728,
+        "finished_unix_ms": 1793715333703,
+        "last_update_unix_ms": 1793715333703,
+        "progress": {
+          "completed": 28,
+          "total": 28,
+          "current_test_full_name": null,
+          "current_test_started_unix_ms": 1793715333501,
+          "last_finished_test_full_name": "Dreamy.UI.Tests.Editor.UITweenPlayerTests.SlotDelay_AppliesToInactiveDescendants_AndClearRestoresPreset(Manual)",
+          "last_finished_unix_ms": 1793715333502,
+          "stuck_suspected": false,
+          "editor_is_focused": false,
+          "run_in_background": null,
+          "focus_nudge_attempts": null,
+          "focus_nudge_limit": null,
+          "focus_nudge_status": null,
+          "blocked_reason": null,
+          "failures_so_far": [],
+          "failures_capped": false
+        },
+        "error": null,
+        "result": {
+          "mode": "EditMode",
+          "summary": {
+            "total": 28,
+            "passed": 28,
+            "failed": 0,
+            "skipped": 0,
+            "durationSeconds": 1.5943456,
+            "resultState": "Passed"
+          },
+          "results": []
+        }
+      },
+      "hint": null
+    }
+  },
+  "holder-tests": {
+    "result": {
+      "success": true,
+      "message": "Test job status retrieved.",
+      "error": null,
+      "data": {
+        "job_id": "ab031299045e49be80e2d92d5b964e51",
+        "status": "succeeded",
+        "mode": "PlayMode",
+        "started_unix_ms": 1793715352478,
+        "finished_unix_ms": 1793715359525,
+        "last_update_unix_ms": 1793715359525,
+        "progress": {
+          "completed": 19,
+          "total": 19,
+          "current_test_full_name": null,
+          "current_test_started_unix_ms": 1793715359520,
+          "last_finished_test_full_name": "Dreamy.Economy.Tests.ResourceUIHolderTests.TwoHolders_DeferOne_DoesNotBlockTheOther",
+          "last_finished_unix_ms": 1793715359521,
+          "stuck_suspected": false,
+          "editor_is_focused": false,
+          "run_in_background": null,
+          "focus_nudge_attempts": null,
+          "focus_nudge_limit": null,
+          "focus_nudge_status": null,
+          "blocked_reason": null,
+          "failures_so_far": [],
+          "failures_capped": false
+        },
+        "error": null,
+        "result": {
+          "mode": "PlayMode",
+          "summary": {
+            "total": 19,
+            "passed": 19,
+            "failed": 0,
+            "skipped": 0,
+            "durationSeconds": 0.1217299,
+            "resultState": "Passed"
+          },
+          "results": []
+        }
+      },
+      "hint": null
+    }
+  },
+  "final-template-tests": {
+    "result": {
+      "success": true,
+      "message": "Test job status retrieved.",
+      "error": null,
+      "data": {
+        "job_id": "28aba8dc2ebc48babebf1f77c61e1bb9",
+        "status": "succeeded",
+        "mode": "EditMode",
+        "started_unix_ms": 1793715522059,
+        "finished_unix_ms": 1793715531051,
+        "last_update_unix_ms": 1793715531051,
+        "progress": {
+          "completed": 33,
+          "total": 33,
+          "current_test_full_name": null,
+          "current_test_started_unix_ms": 1793715530811,
+          "last_finished_test_full_name": "Dreamy.Template.Tests.TemplateSaveTests.SaveAndLoad_PreservesDemoState(0)",
+          "last_finished_unix_ms": 1793715530811,
+          "stuck_suspected": false,
+          "editor_is_focused": false,
+          "run_in_background": null,
+          "focus_nudge_attempts": null,
+          "focus_nudge_limit": null,
+          "focus_nudge_status": null,
+          "blocked_reason": null,
+          "failures_so_far": [],
+          "failures_capped": false
+        },
+        "error": null,
+        "result": {
+          "mode": "EditMode",
+          "summary": {
+            "total": 33,
+            "passed": 33,
+            "failed": 0,
+            "skipped": 0,
+            "durationSeconds": 3.1880622,
+            "resultState": "Passed"
+          },
+          "results": []
+        }
+      },
+      "hint": null
+    }
+  },
+  "flight-tests": {
+    "result": {
+      "success": true,
+      "message": "Test job status retrieved.",
+      "error": null,
+      "data": {
+        "job_id": "90a0c15fa781499c90c4a8e2470fa5e4",
+        "status": "succeeded",
+        "mode": "PlayMode",
+        "started_unix_ms": 1793715871761,
+        "finished_unix_ms": 1793715875264,
+        "last_update_unix_ms": 1793715875264,
+        "progress": {
+          "completed": 3,
+          "total": 3,
+          "current_test_full_name": null,
+          "current_test_started_unix_ms": 1793715875230,
+          "last_finished_test_full_name": "Dreamy.Template.Tests.ShopFeedbackIntegrationTests.ShopPresenterDisposeStopsFlightAndReleasesRewardHolder",
+          "last_finished_unix_ms": 1793715875247,
+          "stuck_suspected": false,
+          "editor_is_focused": true,
+          "run_in_background": null,
+          "focus_nudge_attempts": null,
+          "focus_nudge_limit": null,
+          "focus_nudge_status": null,
+          "blocked_reason": null,
+          "failures_so_far": [],
+          "failures_capped": false
+        },
+        "error": null,
+        "result": {
+          "mode": "PlayMode",
+          "summary": {
+            "total": 3,
+            "passed": 3,
+            "failed": 0,
+            "skipped": 0,
+            "durationSeconds": 1.5680415,
+            "resultState": "Passed"
+          },
+          "results": []
+        }
+      },
+      "hint": null
+    }
+  },
+  "settings-smoke": {
+    "success": true,
+    "message": "Code executed successfully.",
+    "data": {
+      "result": {
+        "settingsVisible": true,
+        "languageAvailable": false,
+        "languageDropdownPresent": false,
+        "localizationInstalled": false
+      },
+      "compiler": "codedom"
+    }
+  },
+  "shortage-smoke": {
+    "success": true,
+    "message": "Code executed successfully.",
+    "data": {
+      "result": {
+        "popupVisible": true,
+        "resource": "currency.gem",
+        "required": 750,
+        "safeArea": true,
+        "gemBalance": 251
+      },
+      "compiler": "codedom"
+    }
+  },
+  "reopen-acquire-smoke": {
+    "success": true,
+    "message": "Code executed successfully.",
+    "data": {
+      "result": {
+        "shopVisible": true,
+        "shortageCount": 0,
+        "coinBalance": 2200,
+        "gemBalance": 251
+      },
+      "compiler": "codedom"
+    }
+  }
+}

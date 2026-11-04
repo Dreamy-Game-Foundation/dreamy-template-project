@@ -1,0 +1,32 @@
+{
+  "com.dreamy.feature": {
+    "commit": "fec5ceeb850964c4a76d5b763cef3c1db406fec1",
+    "files": 33,
+    "differences": []
+  },
+  "com.dreamy.ui": {
+    "commit": "b2db2683bc9784b82954c484906e140d79297014",
+    "files": 152,
+    "differences": []
+  },
+  "com.dreamy.feature.economy": {
+    "commit": "80471e0be27c8dfc83add82875cc06e3f81dfea4",
+    "files": 282,
+    "differences": []
+  },
+  "com.dreamy.feature.shop": {
+    "commit": "c1631298d2660805b984f1cafc56abe7b3567c19",
+    "files": 91,
+    "differences": []
+  },
+  "com.dreamy.feature.settings": {
+    "commit": "4eeb5cbe2a46474b13c5cac1cc6bce3e956c5fc2",
+    "files": 69,
+    "differences": []
+  },
+  "com.dreamy.editor-tools": {
+    "commit": "9872f81ac6e8a61676c3667feaf05a006f72bc71",
+    "files": 33,
+    "differences": []
+  }
+}

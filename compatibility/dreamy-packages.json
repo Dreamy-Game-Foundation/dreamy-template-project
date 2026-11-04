@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "sourceInspectedOn": "2026-11-03",
+  "unityVersion": "6000.4.12f1",
+  "verification": "Targeted consumer Editor tests and Android Addressables build passed; see docs/evidence/dreamy-upgrade-2026-11-03/summary.json. Player/device compatibility not verified.",
+  "packages": {
+    "com.dreamy.assets": {
+      "version": "1.0.1",
+      "commit": "8785340d88041f6c06e5986818f22d9d7eb1f547",
+      "source": "https://github.com/Dreamy-Game-Foundation/com.dreamy.assets.git#v1.0.1",
+      "status": "source-verified",
+      "dependencies": {
+        "com.unity.addressables": "2.7.2",
+        "com.cysharp.unitask": "2.5.10",
+        "com.dreamy.core": "1.1.2"
+      }
+    },
+    "com.dreamy.audio": {
+      "version": "1.0.3",
+      "commit": "d34d9f67982565b09841225bc18d600b9277de18",
+      "source": "https://github.com/Dreamy-Game-Foundation/com.dreamy.audio.git#v1.0.3",
+      "status": "source-verified",
+      "dependencies": {
+        "com.unity.ugui": "2.0.0",
+        "com.unity.modules.audio": "1.0.0",
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.particlesystem": "1.0.0"
+      }
+    },
+    "com.dreamy.core": {
+      "version": "1.2.0",
+      "commit": "ba844659fbc65655f21b082f89115295167f2405",
+      "source": "https://github.com/Dreamy-Game-Foundation/com.dreamy.core.git#v1.2.0",
+      "status": "source-verified",
+      "dependencies": {}
+    },
+    "com.dreamy.dataconfig": {
+      "version": "1.0.1",
+      "commit": "df0a952f2ce95e3742b13d3607af2eb8dcb7df3c",
+      "source": "https://github.com/Dreamy-Game-Foundation/com.dreamy.dataconfig.git#v1.0.1",
+      "status": "source-verified",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      }
+    },
+    "com.dreamy.datasave": {
+      "version": "1.0.1",
+      "commit": "8e8fcc82ff953c92986167c794e7c076b0d48236",
+      "source": "https://github.com/Dreamy-Game-Foundation/com.dreamy.datasave.git#v1.0.1",
+      "status": "source-verified",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      }
+    },
+    "com.dreamy.editor-tools": {
+      "version": "1.0.1",
+      "commit": "9872f81ac6e8a61676c3667feaf05a006f72bc71",
+      "source": "file:com.dreamy.editor-tools",
+      "status": "source-verified",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      }
+    },
+    "com.dreamy.feature": {
+      "version": "0.2.0",
+      "commit": "fec5ceeb850964c4a76d5b763cef3c1db406fec1",
+      "source": "file:com.dreamy.feature",
+      "status": "source-verified",
+      "dependencies": {}
+    },
+    "com.dreamy.feature.economy": {
+      "version": "0.8.0",
+      "commit": "80471e0be27c8dfc83add82875cc06e3f81dfea4",
+      "source": "file:com.dreamy.feature.economy",
+      "status": "source-verified",
+      "dependencies": {
+        "com.dreamy.core": "1.1.2",
+        "com.dreamy.ui": "1.0.5",
+        "com.dreamy.datasave": "0.2.0",
+        "com.cysharp.unitask": "2.5.10",
+        "com.unity.ugui": "2.0.0",
+        "com.dreamy.feature": "0.2.0"
+      }
+    },
+    "com.dreamy.feature.settings": {
+      "version": "0.3.0",
+      "commit": "4eeb5cbe2a46474b13c5cac1cc6bce3e956c5fc2",
+      "source": "file:com.dreamy.feature.settings",
+      "status": "source-verified",
+      "dependencies": {
+        "com.dreamy.core": "1.1.2",
+        "com.dreamy.audio": "0.1.0",
+        "com.cysharp.unitask": "2.5.10",
+        "com.dreamy.feature": "0.1.0",
+        "com.dreamy.ui": "0.2.0"
+      }
+    },
+    "com.dreamy.feature.shop": {
+      "version": "0.3.0",
+      "commit": "c1631298d2660805b984f1cafc56abe7b3567c19",
+      "source": "file:com.dreamy.feature.shop",
+      "status": "source-verified",
+      "dependencies": {
+        "com.dreamy.core": "1.1.2",
+        "com.dreamy.dataconfig": "0.2.0",
+        "com.dreamy.feature.economy": "0.8.0",
+        "com.dreamy.feature": "0.2.0",
+        "com.dreamy.ui": "1.0.5",
+        "com.cysharp.unitask": "2.5.10",
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      }
+    },
+    "com.dreamy.feedback": {
+      "version": "0.4.0",
+      "commit": "2d22a64f83d409bae291f12aad3e0cb8c1a970df",
+      "source": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feedback.git#v0.4.0",
+      "status": "source-verified",
+      "dependencies": {
+        "com.unity.ugui": "2.0.0",
+        "com.unity.modules.particlesystem": "1.0.0",
+        "com.cysharp.unitask": "2.5.10",
+        "com.unity.modules.imageconversion": "1.0.0"
+      }
+    },
+    "com.dreamy.ui": {
+      "version": "1.1.0",
+      "commit": "b2db2683bc9784b82954c484906e140d79297014",
+      "source": "file:com.dreamy.ui",
+      "status": "source-verified",
+      "dependencies": {
+        "com.unity.ugui": "2.0.0",
+        "com.cysharp.unitask": "2.5.10",
+        "com.demigiant.dotween": "0.0.3",
+        "com.dreamy.core": "1.1.2",
+        "com.dreamy.assets": "1.0.1"
+      }
+    }
+  },
+  "drift": [
+    {
+      "package": "com.dreamy.ui",
+      "claim": "IPanelTransition mentioned in historical changelog",
+      "observation": "Type absent from installed 1.1.0 source; template uses UITweenPlayer directly."
+    }
+  ],
+  "consumerValidationOn": "2026-11-03"
+}

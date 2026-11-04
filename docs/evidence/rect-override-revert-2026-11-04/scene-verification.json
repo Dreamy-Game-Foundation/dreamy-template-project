@@ -1,0 +1,54 @@
+[
+  {
+    "holder": "GemHolder",
+    "children": [
+      {
+        "name": "Icon",
+        "anchorMin": "(0.00, 0.50)",
+        "anchorMax": "(0.00, 0.50)",
+        "position": "(40.00, 0.00)",
+        "size": "(56.00, 56.00)"
+      },
+      {
+        "name": "DisplayName",
+        "anchorMin": "(0.00, 0.00)",
+        "anchorMax": "(0.65, 1.00)",
+        "position": "(38.00, 0.00)",
+        "size": "(-84.00, -16.00)"
+      },
+      {
+        "name": "Amount",
+        "anchorMin": "(0.65, 0.00)",
+        "anchorMax": "(1.00, 1.00)",
+        "position": "(-4.00, 0.00)",
+        "size": "(-16.00, -16.00)"
+      }
+    ]
+  },
+  {
+    "holder": "CoinHolder",
+    "children": [
+      {
+        "name": "Icon",
+        "anchorMin": "(0.00, 0.50)",
+        "anchorMax": "(0.00, 0.50)",
+        "position": "(40.00, 0.00)",
+        "size": "(56.00, 56.00)"
+      },
+      {
+        "name": "DisplayName",
+        "anchorMin": "(0.00, 0.00)",
+        "anchorMax": "(0.65, 1.00)",
+        "position": "(38.00, 0.00)",
+        "size": "(-84.00, -16.00)"
+      },
+      {
+        "name": "Amount",
+        "anchorMin": "(0.65, 0.00)",
+        "anchorMax": "(1.00, 1.00)",
+        "position": "(-4.00, 0.00)",
+        "size": "(-16.00, -16.00)"
+      }
+    ]
+  }
+]

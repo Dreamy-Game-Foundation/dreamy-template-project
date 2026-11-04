@@ -1,0 +1,9 @@
+{
+  "unresolvedProjectReferences": [
+    {
+      "path": "Assets/_Project/Fonts/magic SDF.asset",
+      "guid": "95312ff80af849d42b1e9a9ddf066fa0"
+    }
+  ],
+  "baselineKnownMissing": "Fonts/magic SDF.asset: source font Editor reference; static atlas population mode."
+}

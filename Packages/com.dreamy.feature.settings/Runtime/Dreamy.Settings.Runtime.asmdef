@@ -1,0 +1,19 @@
+{
+  "name": "Dreamy.Settings.Runtime",
+  "rootNamespace": "Dreamy.Settings",
+  "references": [
+    "Dreamy.Core.Runtime",
+    "Dreamy.Audio.Runtime",
+    "UniTask",
+    "Dreamy.UI.Presentation"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": true
+}

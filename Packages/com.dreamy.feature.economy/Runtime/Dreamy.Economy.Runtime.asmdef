@@ -1,0 +1,16 @@
+{
+  "name": "Dreamy.Economy.Runtime",
+  "rootNamespace": "Dreamy.Economy",
+  "references": [
+    "Dreamy.Datasave.Runtime"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": true
+}

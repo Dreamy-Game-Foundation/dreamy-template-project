@@ -4,6 +4,8 @@ Template Unity dành cho game mobile của Dreamy. Project cung cấp luồng kh
 
 Code dùng chung nằm trong các package Dreamy; `Assets/_Project` chứa scene, prefab, dữ liệu và code tích hợp riêng của game. Template là điểm khởi đầu; billing, product ID, nội dung game và cấu hình phát hành cần được hoàn thiện theo từng sản phẩm.
 
+Lịch sử cập nhật template nằm trong [CHANGELOG.md](CHANGELOG.md).
+
 ## Mục lục
 
 - [Cài đặt và chạy lần đầu](#cài-đặt-và-chạy-lần-đầu)
@@ -94,17 +96,21 @@ Phiên bản bên dưới lấy từ manifest và package đã resolve tại th�
 | Package | Phiên bản | Vai trò và cách dùng trong game |
 | --- | --- | --- |
 | `com.dreamy.core` | 1.2.0 | Service locator, event bus, state machine, lifecycle, logging và contract pooling. Dùng ở composition root hoặc controller cấp cao để kết nối các hệ thống. |
-| `com.dreamy.dataconfig` | 0.2.1 | Config JSON có kiểu, chỉ đọc và validation. Dùng cho catalog, chỉ số, level, reward và tuning; đăng ký bảng trước khi khởi tạo config. |
-| `com.dreamy.datasave` | 0.2.0 | Lưu/đọc JSON có version, atomic write, migration và codec. Dùng cho tiến trình và trạng thái người chơi. |
-| `com.dreamy.assets` | 0.1.1 | Loader Addressables/Resources, cache, request/progress và helper atlas. Xác định chủ sở hữu asset và chính sách giải phóng trước khi dùng. |
-| `com.dreamy.ui` | 0.2.0 | Panel, navigation, tab, button, safe area, tween và presenter lifecycle. Mở panel qua manager, đăng ký presenter tại installer. |
-| `com.dreamy.audio` | 0.1.0 | Audio library, music/SFX, mixer bus, pooling và component trigger. Cấu hình catalog/key rồi phát âm thanh qua audio service. |
-| `com.dreamy.editor-tools` | 0.2.2 | Tiện ích chỉ chạy trong Editor. Dùng cho authoring/workflow; không tham chiếu từ assembly Runtime. |
-| `com.dreamy.feature` | 0.1.0 | Contract, dữ liệu, enum và tiện ích chung cho các feature casual. Dùng khi feature cần chia sẻ contract, không đặt logic riêng của game vào đây. |
-| `com.dreamy.feature.economy` | 0.2.1 | Resource ID ổn định, wallet lưu qua Datasave và contract cấp tài nguyên chống lặp. Dùng chung một wallet cho Shop và các view số dư. |
-| `com.dreamy.feature.settings` | 0.2.2 | Feature MVP cho audio/haptic và hành động nền tảng. Import Settings Feature rồi cung cấp gateway của host. |
-| `com.dreamy.feature.shop` | 0.1.2 | Catalog Shop, trao đổi tài nguyên và luồng mua qua gateway. Import Shop Feature, nối catalog, wallet và billing thật của game. |
+| `com.dreamy.dataconfig` | 1.0.1 | Config JSON có kiểu, chỉ đọc và validation. Dùng cho catalog, chỉ số, level, reward và tuning; đăng ký bảng trước khi khởi tạo config. |
+| `com.dreamy.datasave` | 1.0.1 | Lưu/đọc JSON có version, atomic write, migration và codec. Dùng cho tiến trình và trạng thái người chơi. |
+| `com.dreamy.assets` | 1.0.1 | Loader Addressables/Resources, cache, request/progress và helper atlas. Xác định chủ sở hữu asset và chính sách giải phóng trước khi dùng. |
+| `com.dreamy.ui` | 1.1.0 | Panel, navigation, tab, button, safe area, tween và presenter lifecycle. Mở panel qua manager, đăng ký presenter tại installer. |
+| `com.dreamy.audio` | 1.0.3 | Audio library, music/SFX, mixer bus, pooling và component trigger. Cấu hình catalog/key rồi phát âm thanh qua audio service. |
+| `com.dreamy.editor-tools` | 1.0.1 | Tiện ích chỉ chạy trong Editor. Dùng cho authoring/workflow; không tham chiếu từ assembly Runtime. |
+| `com.dreamy.feature` | 0.2.0 | Contract, dữ liệu, enum và tiện ích chung cho các feature casual. Dùng khi feature cần chia sẻ contract, không đặt logic riêng của game vào đây. |
+| `com.dreamy.feature.economy` | 0.8.0 | Resource ID ổn định, wallet lưu qua Datasave và contract cấp tài nguyên chống lặp. Dùng chung một wallet cho Shop và các view số dư. |
+| `com.dreamy.feature.settings` | 0.3.0 | Feature MVP cho audio/haptic và hành động nền tảng. Import Settings Feature rồi cung cấp gateway của host. |
+| `com.dreamy.feature.shop` | 0.3.0 | Catalog Shop, trao đổi tài nguyên và luồng mua qua gateway. Import Shop Feature, nối catalog, wallet và billing thật của game. |
 | `com.dreamy.feedback` | 0.4.0 | VFX, haptic, floating text, icon fly, hiệu ứng màn hình/camera và sequence. Dùng để phản hồi kết quả, giữ nghiệp vụ trong service. |
+
+Feature, UI, Economy, Shop, Settings và Editor Tools hiện được lưu cùng project trong `Packages/com.dreamy.*`, vì các revision mới chưa có đầy đủ trên Git remote. Manifest dùng đường dẫn `file:` tương đối trong project, không phụ thuộc sandbox trên máy. Commit nguồn chính xác nằm tại `docs/evidence/dreamy-upgrade-2026-11-03/source-snapshots.json`. Khi chuyển lại sang Git, chỉ dùng tag/commit đã tồn tại trên remote và resolve lại lock.
+
+Settings 0.3.0 có contract chọn ngôn ngữ tùy chọn. Template chưa cài Localization và không truyền language gateway; giữ giao diện ngôn ngữ ẩn, không import prefab Settings mới có dropdown trong đợt cập nhật này.
 
 Tên package và tên assembly không luôn giống nhau: `com.dreamy.feature.economy` cung cấp assembly `Dreamy.Economy.Runtime`, còn Shop sử dụng `Dreamy.Shop.Runtime`. Chọn reference theo file asmdef thực tế.
 
@@ -123,7 +129,7 @@ Tên package và tên assembly không luôn giống nhau: `com.dreamy.feature.ec
 | LeanPool | Pool GameObject, dùng qua adapter của project. |
 | Odin Inspector, QuickNav, Rainbow Folders, Unity MCP | Công cụ hỗ trợ Inspector, điều hướng, tổ chức và thao tác Editor. |
 
-`compatibility/dreamy-packages.json` từng là hồ sơ kiểm tra riêng của Dreamy, **không phải file mặc định của Unity** và hiện không có trong working tree. Unity quản lý dependency bằng manifest và lock file; không cần tạo lại hồ sơ đó để chạy template.
+[compatibility/dreamy-packages.json](compatibility/dreamy-packages.json) ghi phiên bản, commit nguồn và phạm vi kiểm chứng Dreamy của template. Đây là hồ sơ riêng của project; Unity vẫn quản lý dependency bằng manifest và lock file. Kết quả kiểm tra đợt nâng package nằm trong [summary.json](docs/evidence/dreamy-upgrade-2026-11-03/summary.json).
 
 ## Bootstrap và service
 
@@ -164,6 +170,22 @@ Xem thêm [hướng dẫn bootstrap](Assets/_Project/Scripts/Bootstrap/README.md
 | Trạng thái bền vững | Datasave / wallet | Score tốt nhất, tiến trình, tiền, entitlement. |
 | Trạng thái phiên/UI | Service/presenter | Tab chọn, đang mua, loading, dữ liệu render. |
 | Unity asset | Prefab, atlas, Addressables/Resources | Hình ảnh, audio, panel. |
+
+### Economy 0.8 và Shop 0.3
+
+Wallet vẫn có một owner trong GameInstaller, dùng save key `economy`. Schema mới là v4, giữ balances, entitlement và transaction IDs cũ; các collection receipt/inventory được khởi tạo khi load. Trước rollout, sao lưu save và kiểm chứng migration; client cũ không đọc được envelope v4 nên rollback ứng dụng cần chính sách dữ liệu tương ứng. Bộ test template kiểm tra migration từ v1 và chống grant lặp sau restart bằng file tạm riêng.
+
+`GameInstaller.Recovery.cs` đăng ký hai popup thiếu Coin/Gem qua shared presenter factory và Addressables. Popup đóng trước khi chuyển đến offer trong Shop; trở về không tự mua, grant hoặc retry. Người chơi xác nhận lại thao tác. Resource không có route trả về PresentationUnavailable.
+
+Shop giữ refresh của các reward holder trước khi wallet thay đổi và giải phóng sau icon flight; holder trừ cost và HUD Home tiếp tục tự refresh. Đóng/ẩn panel, cancellation và dispose đều phải giải phóng scope. Các thư mục sample `0.1.2`/`0.2.2` dưới `_Feature` giữ đường dẫn lịch sử và GUID; source tích hợp đã được cập nhật, không import thêm bản trùng script/asmdef.
+
+### Layout và override của resource holder
+
+CoinHolder/GemHolder kế thừa `ResourceUIHolder.prefab` trong sample đã import. Prefab nền mới dùng anchor/offset đặt trực tiếp cho Icon, DisplayName và Amount; không còn HorizontalLayoutGroup điều khiển các thành phần bên trong holder.
+
+Khi nâng từ bản cũ, revert các override Rect con bị sót như anchor Y = 0, AnchoredPosition = 0 và SizeDelta.y = 0. Kiểm tra cả prefab variant, holder lồng trong EconomyHolder/Home/Shop và instance trong scene: override ở lớp ngoài vẫn có thể đè layout dù variant đã sửa. Giữ vị trí/kích thước root do host bố trí, các chỉnh sửa layout có chủ đích và binding icon/text/resource.
+
+Đợt sửa ngày 2026-11-04 đã gỡ 218 override Rect cũ tại EconomyHolder, HomePanel, ShopPanel và UIPortraitSandbox. Kiểm tra lại 16 prefab và các holder trong scene cho thấy các Rect con kế thừa đúng layout nền, binding icon/text còn đầy đủ. Hồ sơ kiểm tra: [rect override checkpoint](docs/evidence/rect-override-revert-2026-11-04/checkpoint.json). Đây là kiểm tra asset qua Editor; chưa chạy lại PlayMode hay build sau lần sửa layout này.
 
 ### DataConfig
 
@@ -252,7 +274,7 @@ Addressables tải asset bằng address và quản lý dependency/bundle. Templa
 5. Trong Groups, chọn **Build > New Build > Default Build Script** để build content cho target hiện tại.
 6. Play Mode dùng **Use Asset Database** khi phát triển; dùng **Use Existing Build** để thử content đã build. Kiểm tra tùy chọn build Addressables cùng player trước khi tạo build ứng dụng.
 
-Các key code đang sử dụng gồm `Panel/HomePanel.prefab`, `Panel/FoundationDemoPanel.prefab`, `Panel/ShopPanel.prefab`, `Panel/SettingsPanel.prefab`, `Panel/RateUsPanel.prefab` và `SpriteAtlas/ShopOfferAtlas.spriteatlasv2`. Folder `Panel`/`SpriteAtlas` cũng có entry trong group. `MainScene` được SceneLoader tải bằng SceneManager và danh sách scene build, không phải bằng Addressables.
+Các key code đang sử dụng gồm `Panel/HomePanel.prefab`, `Panel/FoundationDemoPanel.prefab`, `Panel/ShopPanel.prefab`, `Panel/SettingsPanel.prefab`, `Panel/RateUsPanel.prefab`, `Panel/CoinSuggestionPanel.prefab`, `Panel/GemSuggestionPanel.prefab` và `SpriteAtlas/ShopOfferAtlas.spriteatlasv2`. Folder `Panel`/`SpriteAtlas` cũng có entry trong group. `MainScene` được SceneLoader tải bằng SceneManager và danh sách scene build, không phải bằng Addressables.
 
 Panel đã dùng Dreamy UI thì để manager/loader quản lý việc tải và giải phóng. Đừng release handle hay asset của manager từ code gọi mở panel.
 
@@ -446,7 +468,7 @@ Sự hiện diện của profile/sample không phải bằng chứng build Andro
 
 - Chờ compile xong và kiểm tra Console không có lỗi mới.
 - Chạy BootstrapScene, thử Home → Demo/Shop/Settings, Back và mở lại panel cache.
-- Với thay đổi service/save/presenter, chạy test liên quan ở **Window > General > Test Runner > EditMode**. Test hiện có: `TemplateSaveTests`, `InstallerOwnershipTests`, `HomePresenterLifecycleTests`, `LeanPoolServiceTests`.
+- Với thay đổi service/save/presenter, chạy test liên quan ở **Window > General > Test Runner > EditMode**. Test hiện có: `TemplateSaveTests`, `InstallerOwnershipTests`, `HomePresenterLifecycleTests`, `LeanPoolServiceTests`, `ShopBillingTests`, `PackageUpgradeTests`.
 - Với scene/prefab/async UI, kiểm tra PlayMode; với content/build, thử Existing Build và player đúng target.
 - Test package upstream là phạm vi khác với regression của host; không suy ra mọi test package đã pass khi chỉ chạy test template.
 

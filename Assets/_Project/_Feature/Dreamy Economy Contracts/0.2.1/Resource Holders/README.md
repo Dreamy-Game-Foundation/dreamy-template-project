@@ -8,6 +8,8 @@ Giữ nguyên folder, .meta, asmdef và reference prefab khi chuyển vào proje
 
 CoinHolder và GemHolder là variant của ResourceUIHolder. Đặt dưới safe area, chọn Resource Type, gán icon trong ResourceDisplayCatalog và cung cấp IResourceBalanceProvider. Provider observable tự cập nhật balance. Holder là HUD, không phải UIPanel.
 
+Trong template hiện tại, prefab nền ResourceUIHolder đã được import tại folder Prefabs bên cạnh hai variant; đường dẫn 0.2.1 giữ lịch sử import, package đang dùng là Economy 0.8.0. Các Rect con Icon, DisplayName và Amount dùng anchor/offset trực tiếp từ prefab nền. Khi nâng bản cũ, revert các override Rect con bằng 0 do layout cũ để lại, kể cả override trong prefab chứa holder và instance trong scene; giữ binding và vị trí root do host bố trí. Auto-refresh bật cho các holder của template; Shop dùng DeferRefresh để trì hoãn riêng reward HUD trong khi icon bay.
+
 ## Addressables cho HUD/overlay
 
 ResourceUIHolder không phải UIPanel. Có thể đặt trực tiếp dưới Canvas và bind/initialize như hướng dẫn trên. Nếu cần tải theo yêu cầu:

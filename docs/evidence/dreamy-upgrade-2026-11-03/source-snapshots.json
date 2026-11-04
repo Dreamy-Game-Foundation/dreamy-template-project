@@ -1,0 +1,44 @@
+{
+  "com.dreamy.feature": {
+    "version": "0.2.0",
+    "commit": "fec5ceeb850964c4a76d5b763cef3c1db406fec1",
+    "requestedRef": "v0.2.0",
+    "repository": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feature.git",
+    "reason": "Local source snapshot: requested release refs unavailable from origin during Unity resolve."
+  },
+  "com.dreamy.ui": {
+    "version": "1.1.0",
+    "commit": "b2db2683bc9784b82954c484906e140d79297014",
+    "requestedRef": "v1.1.0",
+    "repository": "https://github.com/Dreamy-Game-Foundation/com.dreamy.ui.git",
+    "reason": "Local source snapshot: requested release refs unavailable from origin during Unity resolve."
+  },
+  "com.dreamy.feature.economy": {
+    "version": "0.8.0",
+    "commit": "80471e0be27c8dfc83add82875cc06e3f81dfea4",
+    "requestedRef": "v0.8.0",
+    "repository": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feature.economy.git",
+    "reason": "Local source snapshot: requested release refs unavailable from origin during Unity resolve."
+  },
+  "com.dreamy.feature.shop": {
+    "version": "0.3.0",
+    "commit": "c1631298d2660805b984f1cafc56abe7b3567c19",
+    "requestedRef": "v0.3.0",
+    "repository": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feature.shop.git",
+    "reason": "Local source snapshot: requested release refs unavailable from origin during Unity resolve."
+  },
+  "com.dreamy.feature.settings": {
+    "version": "0.3.0",
+    "commit": "4eeb5cbe2a46474b13c5cac1cc6bce3e956c5fc2",
+    "requestedRef": "4eeb5cbe2a46474b13c5cac1cc6bce3e956c5fc2",
+    "repository": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feature.settings.git",
+    "reason": "Local source snapshot: requested release refs unavailable from origin during Unity resolve."
+  },
+  "com.dreamy.editor-tools": {
+    "version": "1.0.1",
+    "commit": "9872f81ac6e8a61676c3667feaf05a006f72bc71",
+    "requestedRef": "9872f81ac6e8a61676c3667feaf05a006f72bc71",
+    "repository": "https://github.com/Dreamy-Game-Foundation/com.dreamy.editor-tools.git",
+    "reason": "Local source snapshot: requested release refs unavailable from origin during Unity resolve."
+  }
+}
