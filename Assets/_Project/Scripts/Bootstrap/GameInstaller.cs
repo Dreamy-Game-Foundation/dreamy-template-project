@@ -68,6 +68,9 @@ namespace Dreamy.Template
                 cancellationToken.ThrowIfCancellationRequested();
 
                 State = BootstrapState.Ready;
+#if (UNITY_EDITOR || DEVELOPMENT_BUILD) && !DISABLE_DREAMY_DEBUGGER
+                InstallDebugging();
+#endif
             }
             catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
             {

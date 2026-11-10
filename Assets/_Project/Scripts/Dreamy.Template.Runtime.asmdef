@@ -26,7 +26,10 @@
         "Dreamy.Economy.UI.Runtime",
         "Dreamy.Economy.UI.Integration",
         "Dreamy.Economy.Recovery.Unity",
-        "Dreamy.Shop.UI.Integration"
+        "Dreamy.Shop.UI.Integration",
+        "Dreamy.Debugger.Runtime",
+        "Dreamy.Debugger.Engine",
+        "Dreamy.Debugger.Presentation"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

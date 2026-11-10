@@ -1,0 +1,5 @@
+<linker>
+  <assembly fullname="Dreamy.Template.Runtime">
+    <type fullname="Dreamy.Template.Debugging.TemplateCheats" preserve="all" />
+  </assembly>
+</linker>

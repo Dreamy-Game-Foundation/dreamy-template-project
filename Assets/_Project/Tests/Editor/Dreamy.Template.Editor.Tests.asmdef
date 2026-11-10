@@ -19,7 +19,8 @@
         "Unity.TextMeshPro",
         "UnityEngine.UI",
         "Unity.Addressables.Editor",
-        "Dreamy.Economy.UI.Runtime"
+        "Dreamy.Economy.UI.Runtime",
+        "Dreamy.Audio.Runtime"
     ],
     "includePlatforms": [
         "Editor"

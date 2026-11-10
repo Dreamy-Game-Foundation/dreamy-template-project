@@ -1,0 +1,24 @@
+{
+  "status": "complete",
+  "package": "com.dreamy.debugger 0.1.4",
+  "configuration": "Assets/_Project/Data/TemplateDebuggerConfiguration.asset",
+  "loading": "Manual via GameInstaller after Ready",
+  "policy": "Development",
+  "tests": {
+    "job": "545befc5b0b84076b4ef362836ce84c3",
+    "passed": 34,
+    "failed": 0,
+    "coverage": "real wallet grants, ownership IDs/non-stacking, invalid amounts, disk reload plus template regression suite"
+  },
+  "limitations": [
+    "No visual unlock/control interaction receipt",
+    "No IL2CPP/device run"
+  ],
+  "observedFailures": [
+    "Missing Presentation attribute namespace corrected",
+    "Wallet test used IDisposable incorrectly; corrected before successful 34-test receipt"
+  ],
+  "pin": "0000",
+  "audioCheats": false,
+  "followup": "Removed Music/SFX controls and audio constructor dependency; Unity refresh/compile completed, Console zero errors. Previous grant tests apply to grant behavior; not rerun for control removal."
+}

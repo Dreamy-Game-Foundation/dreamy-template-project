@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5177555cf5a84210a028ceaa96c719b7, type: 3}
+  m_Name: TemplateDebuggerConfiguration
+  m_EditorClassIdentifier: Dreamy.Debugger.Engine::Dreamy.Debugger.DebuggerConfiguration
+  Mode: 1
+  RequiredTaps: 5
+  TapGapSeconds: 0.4
+  SequenceTimeoutSeconds: 2.5
+  Credential: 0000
+  Passphrase: 0
+  SessionSeconds: 300
+  PersistRuntimePreferences: 1
+  PreferenceRevision: 1
+  InitialHud: 2
+  ShowCornerTrigger: 1
+  TapPosition: 0
+  InitialHudPosition: 3
+  HudOffset: {x: 12, y: 12}
+  HudScale: 1
+  HudMemory: 1
+  HudAudio: 0
+  HudDragEnabled: 1
+  HudTapToCycle: 1
+  HudCloseButton: 1
+  FpsGood: {r: 0.46, g: 0.83, b: 0.23, a: 1}
+  FpsCaution: {r: 0.95, g: 0.82, b: 0.2, a: 1}
+  FpsCritical: {r: 0.86, g: 0.16, b: 0.12, a: 1}
+  GoodFps: 60
+  CautionFps: 30
+  LowFpsWarning: 0
+  LowFpsThreshold: 30
+  LowFpsSustain: 3
+  LowFpsCooldown: 60
+  AutoReportErrors: 0
+  AllowScreenshots: 0
+  UploadDuringGameplay: 0
+  RelayUrl: 
+  LimitedClientKey: 
+  UploadsEnabled: 0
+  ReportCooldownSeconds: 60
+  ScreenshotLongEdge: 960

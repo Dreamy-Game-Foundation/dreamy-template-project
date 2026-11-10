@@ -165,7 +165,7 @@ namespace Dreamy.Feedback.Samples.Tests
                 var previous = RenderTexture.active; RenderTexture.active = target;
                 var texture = new Texture2D(width, height, TextureFormat.RGB24, false);
                 texture.ReadPixels(new Rect(0, 0, width, height), 0, 0); texture.Apply(); RenderTexture.active = previous;
-                string folder = Path.GetFullPath(Path.Combine(Application.dataPath, "../.omo/evidence/feedback-modular")); Directory.CreateDirectory(folder);
+                string folder = Path.GetFullPath(Path.Combine(Application.dataPath, "../docs/evidence/feedback-modular")); Directory.CreateDirectory(folder);
                 File.WriteAllBytes(Path.Combine(folder, name + ".png"), texture.EncodeToPNG()); Object.Destroy(texture);
             }
             finally

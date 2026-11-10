@@ -1,0 +1,14 @@
+{
+  "status": "complete",
+  "unity": "6000.4.12f1",
+  "tests": {
+    "assembly": "Dreamy.EditorTools.Tests.Editor",
+    "passed": 45,
+    "failed": 0,
+    "skipped": 1,
+    "job": "4c03bb164aa74cc3a37dd1898fcddc4b"
+  },
+  "limitations": [
+    "Player/device and native clipboard paste not tested"
+  ]
+}

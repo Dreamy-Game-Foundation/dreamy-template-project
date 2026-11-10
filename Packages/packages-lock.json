@@ -50,7 +50,7 @@
       "hash": "8785340d88041f6c06e5986818f22d9d7eb1f547"
     },
     "com.dreamy.audio": {
-      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.audio.git#v1.0.3",
+      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.audio.git#v1.0.5",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -59,7 +59,7 @@
         "com.unity.modules.physics": "1.0.0",
         "com.unity.modules.particlesystem": "1.0.0"
       },
-      "hash": "d34d9f67982565b09841225bc18d600b9277de18"
+      "hash": "59e8d8256c1dd2b796ef31ffefe3ebdec9074d49"
     },
     "com.dreamy.core": {
       "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.core.git#v1.2.0",
@@ -86,12 +86,31 @@
       },
       "hash": "8e8fcc82ff953c92986167c794e7c076b0d48236"
     },
+    "com.dreamy.debugger": {
+      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.debugger.git#9ede4634253634b5c217667eb3fc54d728c242bb",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.ugui": "2.0.0",
+        "com.unity.modules.imgui": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0",
+        "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.modules.imageconversion": "1.0.0",
+        "com.unity.modules.screencapture": "1.0.0",
+        "com.unity.modules.androidjni": "1.0.0",
+        "com.unity.modules.animation": "1.0.0",
+        "com.unity.modules.audio": "1.0.0"
+      },
+      "hash": "9ede4634253634b5c217667eb3fc54d728c242bb"
+    },
     "com.dreamy.editor-tools": {
       "version": "file:com.dreamy.editor-tools",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "3.2.1"
+        "com.unity.nuget.newtonsoft-json": "3.2.1",
+        "com.unity.modules.screencapture": "1.0.0",
+        "com.unity.modules.imageconversion": "1.0.0"
       }
     },
     "com.dreamy.feature": {
@@ -140,7 +159,7 @@
       }
     },
     "com.dreamy.feedback": {
-      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feedback.git#v0.4.0",
+      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.feedback.git#v0.4.1",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -149,7 +168,7 @@
         "com.cysharp.unitask": "2.5.10",
         "com.unity.modules.imageconversion": "1.0.0"
       },
-      "hash": "2d22a64f83d409bae291f12aad3e0cb8c1a970df"
+      "hash": "02de01d1f1aec1edaf689dfae2c53b949ee70650"
     },
     "com.dreamy.ui": {
       "version": "file:com.dreamy.ui",

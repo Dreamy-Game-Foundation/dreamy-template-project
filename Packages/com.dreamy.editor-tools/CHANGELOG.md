@@ -2,7 +2,22 @@
 
 All notable changes to this package will be documented in this file.
 
-## [Unreleased]
+## [1.2.0] - 2026-11-10
+
+Source version prepared locally; no tag or publication is implied. Additive Package Manager capabilities warrant a minor version bump; no serialized asset migration is required.
+
+- Expanded Dreamy Package Manager with a portable, versioned package catalog, project additions/overrides and optional remote catalogs; new package entries require no C# changes.
+- Added resolved installed/source/direct/transitive views, search/filters, verified GitHub release tags, registry versions, stable/prerelease selection, cache/error/retry states, package details and JSON reports.
+- Added dependency change previews, commit-pinned install/update, explicit source switching for local packages, serialized UPM operations, reload reconciliation and guarded manifest/lock snapshot restore.
+- Added focused Editor regression coverage for catalog extension, version ordering, dependency safety, source protection, network failures and cancellation.
+
+## [1.1.0] - 2026-11-06
+
+- Added in-window clipboard requirements and a Copy Install Command button for Ubuntu Wayland/X11; Windows shows that no extra installation is needed.
+
+- Added Editor-only Game View Screenshot with Copy, Save and Copy + Save modes, realtime countdown/cancel, preview, Copy Image/Save As, menu and configurable shortcut.
+- Added Windows DIB image clipboard and Ubuntu wl-copy/xclip adapters with dependency checks and in-memory PNG transfer; Copy-only creates no image files.
+- Added frame timeout, lifecycle cleanup, independent output results and Editor regressions; declared ScreenCapture/ImageConversion module dependencies.
 
 - Added configurable Dreamy/Clear Save Data shortcut (Ctrl+Shift+Alt+C; Cmd+Shift+Option+C on macOS), delegating to Datasave with its existing confirmation dialog.
 

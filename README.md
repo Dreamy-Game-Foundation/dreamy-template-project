@@ -100,15 +100,15 @@ Phiên bản bên dưới lấy từ manifest và package đã resolve tại th�
 | `com.dreamy.datasave` | 1.0.1 | Lưu/đọc JSON có version, atomic write, migration và codec. Dùng cho tiến trình và trạng thái người chơi. |
 | `com.dreamy.assets` | 1.0.1 | Loader Addressables/Resources, cache, request/progress và helper atlas. Xác định chủ sở hữu asset và chính sách giải phóng trước khi dùng. |
 | `com.dreamy.ui` | 1.1.0 | Panel, navigation, tab, button, safe area, tween và presenter lifecycle. Mở panel qua manager, đăng ký presenter tại installer. |
-| `com.dreamy.audio` | 1.0.3 | Audio library, music/SFX, mixer bus, pooling và component trigger. Cấu hình catalog/key rồi phát âm thanh qua audio service. |
-| `com.dreamy.editor-tools` | 1.0.1 | Tiện ích chỉ chạy trong Editor. Dùng cho authoring/workflow; không tham chiếu từ assembly Runtime. |
+| `com.dreamy.audio` | 1.0.5 | Audio library, music/SFX, mixer bus, pooling và component trigger. Cấu hình catalog/key rồi phát âm thanh qua audio service. |
+| `com.dreamy.editor-tools` | 1.2.0 | Tiện ích chỉ chạy trong Editor. Dùng cho authoring/workflow; không tham chiếu từ assembly Runtime. |
 | `com.dreamy.feature` | 0.2.0 | Contract, dữ liệu, enum và tiện ích chung cho các feature casual. Dùng khi feature cần chia sẻ contract, không đặt logic riêng của game vào đây. |
-| `com.dreamy.feature.economy` | 0.8.0 | Resource ID ổn định, wallet lưu qua Datasave và contract cấp tài nguyên chống lặp. Dùng chung một wallet cho Shop và các view số dư. |
+| `com.dreamy.feature.economy` | 0.8.1 | Resource ID ổn định, wallet lưu qua Datasave và contract cấp tài nguyên chống lặp. Dùng chung một wallet cho Shop và các view số dư. |
 | `com.dreamy.feature.settings` | 0.3.0 | Feature MVP cho audio/haptic và hành động nền tảng. Import Settings Feature rồi cung cấp gateway của host. |
 | `com.dreamy.feature.shop` | 0.3.0 | Catalog Shop, trao đổi tài nguyên và luồng mua qua gateway. Import Shop Feature, nối catalog, wallet và billing thật của game. |
-| `com.dreamy.feedback` | 0.4.0 | VFX, haptic, floating text, icon fly, hiệu ứng màn hình/camera và sequence. Dùng để phản hồi kết quả, giữ nghiệp vụ trong service. |
+| `com.dreamy.feedback` | 0.4.1 | VFX, haptic, floating text, icon fly, hiệu ứng màn hình/camera và sequence. Dùng để phản hồi kết quả, giữ nghiệp vụ trong service. |
 
-Feature, UI, Economy, Shop, Settings và Editor Tools hiện được lưu cùng project trong `Packages/com.dreamy.*`, vì các revision mới chưa có đầy đủ trên Git remote. Manifest dùng đường dẫn `file:` tương đối trong project, không phụ thuộc sandbox trên máy. Commit nguồn chính xác nằm tại `docs/evidence/dreamy-upgrade-2026-11-03/source-snapshots.json`. Khi chuyển lại sang Git, chỉ dùng tag/commit đã tồn tại trên remote và resolve lại lock.
+Feature, UI, Economy, Shop, Settings và Editor Tools hiện được lưu cùng project trong `Packages/com.dreamy.*`, để giữ nguồn tích hợp và GUID đã kiểm tra trong template. Manifest dùng đường dẫn `file:` tương đối trong project, không phụ thuộc sandbox trên máy. Phiên bản và commit nguồn hiện tại nằm tại `compatibility/dreamy-packages.json`; hồ sơ cập nhật ngày 2026-11-10 nằm trong `docs/evidence/dreamy-upgrade-2026-11-10`. Khi chuyển lại sang Git, chỉ dùng tag/commit đã tồn tại trên remote và resolve lại lock.
 
 Settings 0.3.0 có contract chọn ngôn ngữ tùy chọn. Template chưa cài Localization và không truyền language gateway; giữ giao diện ngôn ngữ ẩn, không import prefab Settings mới có dropdown trong đợt cập nhật này.
 
@@ -504,3 +504,9 @@ git diff -- README.md
 - [Economy — Resource Holders](<Assets/_Project/_Feature/Dreamy Economy Contracts/0.2.1/Resource Holders/README.md>).
 - [Feedback cơ bản](<Assets/_Project/_Feature/Dreamy Feedback/0.4.0/Basic Feedback/README.md>).
 - README, Samples và source của từng package trong Package Manager để đối chiếu API của bản đang cài.
+
+### Kiểm tra tích hợp sau cập nhật 2026-11-10
+
+Audio 1.0.5 sửa waveform trong Editor; giữ AudioBootstrap hiện có trong BootstrapScene, GameInstaller chỉ đăng ký service do Audio sở hữu. Economy 0.8.1 và Feedback 0.4.1 không đổi runtime/save contract. Tiếp tục dùng một wallet chung, hoãn refresh riêng holder thưởng trong lúc IconFly và giải phóng scope khi đóng/dispose Shop. Không import lại sample chỉ để đổi tên thư mục phiên bản vì các prefab tích hợp đang giữ GUID/binding riêng.
+
+Editor Tools 1.2.0 yêu cầu Unity 6000.4, cung cấp Package Manager và Game View Screenshot. Giữ Runtime asmdef độc lập với Editor Tools; output screenshot nằm ngoài Git. Sample Feedback đã đồng bộ đường dẫn ảnh kiểm chứng sang `docs/evidence/feedback-modular`.
