@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "message": "Build Succeeded.",
+  "data": {
+    "job_id": "build-e9288b2d62",
+    "result": "succeeded",
+    "platform": "Android",
+    "output_path": "Builds/BuildReportSmoke-20261110/DreamyTemplate.apk",
+    "started_at": "2026-11-10T04:18:13.094862Z",
+    "duration_seconds": 267.96527499999996,
+    "completed_at": "2026-11-10T04:22:41.060137Z",
+    "total_size_mb": 1144.7,
+    "errors": 0,
+    "warnings": 29
+  }
+}

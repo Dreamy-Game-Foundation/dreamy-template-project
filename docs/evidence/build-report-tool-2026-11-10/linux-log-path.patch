@@ -1,0 +1,38 @@
+--- a/Assets/Packages/BuildReport/Scripts/Editor/Utility/BRT_Util.cs
++++ b/Assets/Packages/BuildReport/Scripts/Editor/Utility/BRT_Util.cs
+@@ -1646,6 +1646,9 @@
+ 		{
+ 			get
+ 			{
++#if UNITY_EDITOR_LINUX
++				return Application.consoleLogPath;
++#else
+ 				if (System.Environment.OSVersion.Platform == PlatformID.Unix ||
+ 				    System.Environment.OSVersion.Platform == PlatformID.MacOSX)
+ 				{
+@@ -1653,6 +1656,7 @@
+ 				}
+ 
+ 				return GetEditorLogFileInWindows();
++#endif
+ 			}
+ 		}
+ 
+@@ -1660,6 +1664,9 @@
+ 		{
+ 			get
+ 			{
++#if UNITY_EDITOR_LINUX
++				return System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Application.consoleLogPath), "Editor-prev.log");
++#else
+ 				if (System.Environment.OSVersion.Platform == PlatformID.Unix ||
+ 				    System.Environment.OSVersion.Platform == PlatformID.MacOSX)
+ 				{
+@@ -1667,6 +1674,7 @@
+ 				}
+ 
+ 				return GetEditorLogFileInWindows("Editor-prev.log");
++#endif
+ 			}
+ 		}
+ 

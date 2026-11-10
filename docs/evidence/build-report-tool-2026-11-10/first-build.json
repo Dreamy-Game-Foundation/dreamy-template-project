@@ -1,0 +1,12 @@
+{
+  "job_id": "build-ddfcd0158f",
+  "result": "succeeded",
+  "duration_seconds": 225.124382,
+  "errors": 1,
+  "warnings": 24,
+  "unity_total_size_mb": 1144.7,
+  "apk_bytes": 54439548,
+  "report_created": false,
+  "error": "DirectoryNotFoundException: /home/tutrinh/Library/Logs/Unity/Editor.log",
+  "actual_log": "/home/tutrinh/.config/unity3d/Editor.log"
+}

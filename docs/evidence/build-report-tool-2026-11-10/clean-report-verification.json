@@ -1,0 +1,28 @@
+{
+  "reportPath": "/home/tutrinh/UnityBuildReports/dreamy-template-project-Android-2026Thg 1110-111818.xml",
+  "HasContents": true,
+  "ProjectName": "dreamy-template-project",
+  "BuildType": "Android",
+  "BuildFilePath": "/run/media/tutrinh/NewData/Unity Project/Dreamy Foundation/dreamy-template-project/Builds/BuildReportSmoke-20261110/DreamyTemplate.apk",
+  "TotalBuildSize": "51,92 MB",
+  "apkBytes": 54439548,
+  "sizeMatches": true,
+  "ScenesInBuild": [
+    {
+      "Enabled": true,
+      "Path": "Assets/_Project/Scenes/BootstrapScene.unity"
+    },
+    {
+      "Enabled": true,
+      "Path": "Assets/_Project/Scenes/MainScene.unity"
+    }
+  ],
+  "usedCount": 3173,
+  "unusedCount": 520,
+  "buildSizeCategories": 9,
+  "dependenciesReadable": true,
+  "texturesReadable": true,
+  "unityReportReadable": true,
+  "stillGetting": false,
+  "shouldSave": false
+}

@@ -1,0 +1,8 @@
+{
+  "apk_bytes": 54439548,
+  "sha256": "6f43fc3e65790d06517872ef068f0f043b832429801756f49eecae4915e2abc5",
+  "android_manifest": true,
+  "il2cpp_arm64": true,
+  "signature_verification": "apksigner verify exit 0",
+  "device_runtime": "not tested"
+}
