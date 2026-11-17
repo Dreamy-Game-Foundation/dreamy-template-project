@@ -62,11 +62,11 @@
       "hash": "59e8d8256c1dd2b796ef31ffefe3ebdec9074d49"
     },
     "com.dreamy.core": {
-      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.core.git#v1.2.0",
+      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.core.git#a491b74282456ddf7a707f5bf4e31f08c589627d",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "ba844659fbc65655f21b082f89115295167f2405"
+      "hash": "a491b74282456ddf7a707f5bf4e31f08c589627d"
     },
     "com.dreamy.dataconfig": {
       "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.dataconfig.git#v1.0.1",
@@ -87,7 +87,7 @@
       "hash": "8e8fcc82ff953c92986167c794e7c076b0d48236"
     },
     "com.dreamy.debugger": {
-      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.debugger.git#9ede4634253634b5c217667eb3fc54d728c242bb",
+      "version": "https://github.com/Dreamy-Game-Foundation/com.dreamy.debugger.git#v0.1.7",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -101,7 +101,7 @@
         "com.unity.modules.animation": "1.0.0",
         "com.unity.modules.audio": "1.0.0"
       },
-      "hash": "9ede4634253634b5c217667eb3fc54d728c242bb"
+      "hash": "1e5fd6ed45861ac2c451d3480cd81a4063fd17d0"
     },
     "com.dreamy.editor-tools": {
       "version": "file:com.dreamy.editor-tools",

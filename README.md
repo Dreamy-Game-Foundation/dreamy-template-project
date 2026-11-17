@@ -107,12 +107,19 @@ Phiên bản bên dưới lấy từ manifest và package đã resolve tại th�
 | `com.dreamy.feature.settings` | 0.3.0 | Feature MVP cho audio/haptic và hành động nền tảng. Import Settings Feature rồi cung cấp gateway của host. |
 | `com.dreamy.feature.shop` | 0.3.0 | Catalog Shop, trao đổi tài nguyên và luồng mua qua gateway. Import Shop Feature, nối catalog, wallet và billing thật của game. |
 | `com.dreamy.feedback` | 0.4.1 | VFX, haptic, floating text, icon fly, hiệu ứng màn hình/camera và sequence. Dùng để phản hồi kết quả, giữ nghiệp vụ trong service. |
+| `com.dreamy.debugger` | 0.1.7 | Debug overlay, cheat registry, FPS HUD, screenshot và diagnostic report; dùng cấu hình riêng của template trong development/Editor. |
 
-Feature, UI, Economy, Shop, Settings và Editor Tools hiện được lưu cùng project trong `Packages/com.dreamy.*`, để giữ nguồn tích hợp và GUID đã kiểm tra trong template. Manifest dùng đường dẫn `file:` tương đối trong project, không phụ thuộc sandbox trên máy. Phiên bản và commit nguồn hiện tại nằm tại `compatibility/dreamy-packages.json`; hồ sơ cập nhật ngày 2026-11-10 nằm trong `docs/evidence/dreamy-upgrade-2026-11-10`. Khi chuyển lại sang Git, chỉ dùng tag/commit đã tồn tại trên remote và resolve lại lock.
+Feature, UI, Economy, Shop, Settings và Editor Tools hiện được lưu cùng project trong `Packages/com.dreamy.*`, để giữ nguồn tích hợp và GUID đã kiểm tra trong template. Manifest dùng đường dẫn `file:` tương đối trong project, không phụ thuộc sandbox trên máy. Các bản embedded đã đối chiếu với remote ngày 2026-11-17; phiên bản nằm trong package.json và thay đổi tích hợp nằm trong CHANGELOG.md. Khi chuyển lại sang Git, chỉ dùng tag/commit đã tồn tại trên remote và resolve lại lock.
 
 Settings 0.3.0 có contract chọn ngôn ngữ tùy chọn. Template chưa cài Localization và không truyền language gateway; giữ giao diện ngôn ngữ ẩn, không import prefab Settings mới có dropdown trong đợt cập nhật này.
 
 Tên package và tên assembly không luôn giống nhau: `com.dreamy.feature.economy` cung cấp assembly `Dreamy.Economy.Runtime`, còn Shop sử dụng `Dreamy.Shop.Runtime`. Chọn reference theo file asmdef thực tế.
+
+### Debugger 0.1.7
+
+Debugger nhận các sửa lỗi truy cập, surface UI và Screenshot mode từ 0.1.5–0.1.7. Screenshot mode mặc định tắt; khi dùng manual Hide UI, `HideGameplayUi` điều khiển phần UI bị ẩn, độc lập với `GameplayUi` dùng cho ảnh xuất. Until restored là mặc định của manual hide; giữ cách khôi phục bằng F8/hold/gesture theo package.
+
+Template giữ cấu hình `Assets/_Project/Data/TemplateDebuggerConfiguration.asset`, gồm RequiredTaps = 5 và PreferenceRevision = 1; mặc định ba tap của package mới chỉ áp dụng cho cấu hình tạo mới. Không reset preference hoặc dữ liệu người chơi khi nâng package. Localization vẫn chưa tích hợp và UI ngôn ngữ Settings vẫn ẩn. Manifest khai báo `com.dreamy.debugger` trong `testables` để chạy test package tại consumer; native screenshot/share trên thiết bị cần kiểm chứng riêng. Kiểm chứng ngày 2026-11-17: 34 test template EditMode, 61 test Debugger EditMode và 37 test PlayMode Screenshot/startup/preferences pass; bootstrap Ready và cheat template đăng ký thành công trong MainScene. Chưa build APK/AAB trong đợt này.
 
 ### Dependency và công cụ khác
 
@@ -129,7 +136,7 @@ Tên package và tên assembly không luôn giống nhau: `com.dreamy.feature.ec
 | LeanPool | Pool GameObject, dùng qua adapter của project. |
 | Odin Inspector, QuickNav, Rainbow Folders, Unity MCP | Công cụ hỗ trợ Inspector, điều hướng, tổ chức và thao tác Editor. |
 
-[compatibility/dreamy-packages.json](compatibility/dreamy-packages.json) ghi phiên bản, commit nguồn và phạm vi kiểm chứng Dreamy của template. Đây là hồ sơ riêng của project; Unity vẫn quản lý dependency bằng manifest và lock file. Kết quả kiểm tra đợt nâng package nằm trong [summary.json](docs/evidence/dreamy-upgrade-2026-11-03/summary.json).
+Unity quản lý dependency bằng `Packages/manifest.json` và `Packages/packages-lock.json`. Ngày 2026-11-17 đã kiểm tra cả 13 package Dreamy trên remote: Assets 1.0.1, Audio 1.0.5, Core 1.2.0, DataConfig/Datasave 1.0.1, Debugger 0.1.7, Editor Tools 1.2.0, Feature 0.2.0, Economy 0.8.1, Settings/Shop 0.3.0, Feedback 0.4.1 và UI 1.1.0. Core pin commit `a491b74282456ddf7a707f5bf4e31f08c589627d` để nhận chỉnh lý changelog; không có thay đổi runtime so với tag 1.2.0.
 
 ## Bootstrap và service
 
@@ -185,7 +192,7 @@ CoinHolder/GemHolder kế thừa `ResourceUIHolder.prefab` trong sample đã imp
 
 Khi nâng từ bản cũ, revert các override Rect con bị sót như anchor Y = 0, AnchoredPosition = 0 và SizeDelta.y = 0. Kiểm tra cả prefab variant, holder lồng trong EconomyHolder/Home/Shop và instance trong scene: override ở lớp ngoài vẫn có thể đè layout dù variant đã sửa. Giữ vị trí/kích thước root do host bố trí, các chỉnh sửa layout có chủ đích và binding icon/text/resource.
 
-Đợt sửa ngày 2026-11-04 đã gỡ 218 override Rect cũ tại EconomyHolder, HomePanel, ShopPanel và UIPortraitSandbox. Kiểm tra lại 16 prefab và các holder trong scene cho thấy các Rect con kế thừa đúng layout nền, binding icon/text còn đầy đủ. Hồ sơ kiểm tra: [rect override checkpoint](docs/evidence/rect-override-revert-2026-11-04/checkpoint.json). Đây là kiểm tra asset qua Editor; chưa chạy lại PlayMode hay build sau lần sửa layout này.
+Đợt sửa ngày 2026-11-04 đã gỡ 218 override Rect cũ tại EconomyHolder, HomePanel, ShopPanel và UIPortraitSandbox. Kiểm tra lại 16 prefab và các holder trong scene cho thấy các Rect con kế thừa đúng layout nền, binding icon/text còn đầy đủ. Đây là kiểm tra asset qua Editor; chưa chạy lại PlayMode hay build sau lần sửa layout này.
 
 ### DataConfig
 
@@ -509,4 +516,4 @@ git diff -- README.md
 
 Audio 1.0.5 sửa waveform trong Editor; giữ AudioBootstrap hiện có trong BootstrapScene, GameInstaller chỉ đăng ký service do Audio sở hữu. Economy 0.8.1 và Feedback 0.4.1 không đổi runtime/save contract. Tiếp tục dùng một wallet chung, hoãn refresh riêng holder thưởng trong lúc IconFly và giải phóng scope khi đóng/dispose Shop. Không import lại sample chỉ để đổi tên thư mục phiên bản vì các prefab tích hợp đang giữ GUID/binding riêng.
 
-Editor Tools 1.2.0 yêu cầu Unity 6000.4, cung cấp Package Manager và Game View Screenshot. Giữ Runtime asmdef độc lập với Editor Tools; output screenshot nằm ngoài Git. Sample Feedback đã đồng bộ đường dẫn ảnh kiểm chứng sang `docs/evidence/feedback-modular`.
+Editor Tools 1.2.0 yêu cầu Unity 6000.4, cung cấp Package Manager và Game View Screenshot. Giữ Runtime asmdef độc lập với Editor Tools; output screenshot nằm ngoài Git. Các bản sample đã import giữ đường dẫn lịch sử và GUID của template.

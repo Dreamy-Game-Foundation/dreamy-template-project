@@ -2,6 +2,19 @@
 
 Lịch sử thay đổi tích hợp của Dreamy Template. Changelog của từng package nằm trong source package tương ứng.
 
+## 2026-11-17
+
+### Cập nhật toàn bộ package Dreamy đang cài
+
+- Đối chiếu tag và HEAD trên remote của cả 13 package đang dùng. Nâng Debugger từ 0.1.4 lên tag 0.1.7, commit `1e5fd6ed45861ac2c451d3480cd81a4063fd17d0`.
+- Debugger nhận Screenshot mode, các luồng capture và manual Hide UI độc lập, khôi phục UI, sửa safe area và surface/access UI. Dependency, GUID và schema save không đổi. Giữ cấu hình template RequiredTaps = 5, PreferenceRevision = 1 và các tính năng upload/report đang tắt; không reset dữ liệu hoặc import lại sample.
+- Core giữ version 1.2.0, chuyển sang commit `a491b74282456ddf7a707f5bf4e31f08c589627d` mới nhất để nhận sửa chú thích lịch sử API; runtime không đổi. Đồng bộ changelog Shop 0.3.0 với commit `3822cbaa6515168ff3fb9fa7254a4818d55cc736`.
+- Sáu package embedded khớp source HEAD trên remote: Editor Tools 1.2.0 (`074aa33bd982`), Feature 0.2.0 (`fec5ceeb8509`), Economy 0.8.1 (`2ed43e881a87`), Settings 0.3.0 (`4eeb5cbe2a46`), Shop 0.3.0 (`3822cbaa6515`) và UI 1.1.0 (`b2db2683bc97`).
+- Assets 1.0.1, Audio 1.0.5, DataConfig/Datasave 1.0.1 và Feedback 0.4.1 đã ở bản mới nhất; giữ nguyên source. Không thêm package mới; Localization chưa tích hợp và UI ngôn ngữ Settings vẫn ẩn.
+- Bật testables cho Debugger trong manifest. Compile sạch; 34 test EditMode template, 61 test EditMode Debugger và 37 test PlayMode Screenshot/startup/preferences đều pass tại Unity 6000.4.12f1.
+- Smoke từ BootstrapScene đến MainScene: bootstrap Ready, Debugger 0.1.7 chạy và đăng ký đủ cheat template; RequiredTaps = 5, PreferenceRevision = 1 giữ nguyên; Console không có error.
+- Cập nhật README theo nguồn package hiện tại, bỏ tham chiếu hiện hành tới evidence/compatibility đã được xóa. Chưa build APK/AAB hoặc kiểm chứng native screenshot/gallery/share trên thiết bị trong đợt này.
+
 ## 2026-11-04
 
 ### Sửa layout resource holder
